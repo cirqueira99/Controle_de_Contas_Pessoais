@@ -16,6 +16,7 @@ export class Conta{
   get dadosConta(){
     var dados = [ this.nome, this.tipo, this.tipo, this.data, this.pagamento ];
     
+    
     return dados;  
   }
 }
