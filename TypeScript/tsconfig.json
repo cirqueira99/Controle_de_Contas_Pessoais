@@ -3,7 +3,7 @@
     "outDir": "./dist/js", 
     "target": "ES6",
     "noEmitOnError": true,
-    "module": "system"
+    "module": "System"
   },
   "include": [  
     "./app/**/*"	

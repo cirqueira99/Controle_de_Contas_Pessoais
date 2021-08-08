@@ -16,7 +16,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "concurrently \"npm run watch\" \"npm run server\"",
-    "server": "lite-server --baseDir=dist",
+    "server": "lite-server --baseDir=../TypeScript",
     "compile": "tsc",
     "watch": "tsc -w"
   },
