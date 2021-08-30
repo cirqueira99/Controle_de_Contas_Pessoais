@@ -19,4 +19,26 @@ export class Conta{
     
     return dados;  
   }
+
+  cadastrarConta(): void{
+
+  }
+
+  atualizarConta(): void{
+
+  }
+
+  deletarConta(): void{
+
+  }
+
+  public static buscarDadosContas(): Object{
+    return fetch(`http://localhost:3000/contas`)
+    .then(resposta => {
+        if(resposta.ok){
+            return resposta.json()
+        }
+        throw new Error('Não foi possível listar as contas')
+    })
+  }
 }

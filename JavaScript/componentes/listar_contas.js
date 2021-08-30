@@ -3,7 +3,7 @@ import { Datas } from './datas.js';
 
 
 
-const criaNovaLinha = (id, data, nome, tipo, valor, pagamento) => {   
+const criarNovaLinha = (id, data, nome, tipo, valor, pagamento) => {   
   const table_tr = document.createElement('tr');
   table_tr.setAttribute('id', id)
   table_tr.classList.add('pointer')
@@ -55,14 +55,14 @@ export const listarContas = async (data_mes) =>  {
     var pago = 0.0;
     var pend = 0.0;
 
-    const lista = await buscarDadosContas();
+    const lista = await buscarDadosContas();  console.log(lista)
     
     const mes_input = document.querySelector('[data-mes]');
     mes_input.value = data_mes;
 
-    const dataUnicas = Datas.removeDatasRepetidas(lista, data_mes);
+    const datasUnicas = Datas.removeDatasRepetidas(lista, data_mes);
     
-    dataUnicas.forEach( (dia)=>{
+    datasUnicas.forEach( (dia)=>{
       const dataMoment = moment(dia, 'DD/MM/YYYY');
 
       lista.forEach(elemento => {
@@ -70,7 +70,7 @@ export const listarContas = async (data_mes) =>  {
         const diff = dataMoment.diff(dia);
 
         if(diff === 0){
-          table_list.appendChild(criaNovaLinha(elemento.id, elemento.data, elemento.nome, elemento.tipo, elemento.valor, elemento.pagamento));
+          table_list.appendChild(criarNovaLinha(elemento.id, elemento.data, elemento.nome, elemento.tipo, elemento.valor, elemento.pagamento));
           
           elemento.pagamento == true? pago += elemento.valor : pend += elemento.valor; 
         }        

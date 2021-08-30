@@ -1,16 +1,16 @@
-System.register(["./conta"], function (exports_1, context_1) {
-    "use strict";
-    var conta_1, conta;
-    var __moduleName = context_1 && context_1.id;
-    return {
-        setters: [
-            function (conta_1_1) {
-                conta_1 = conta_1_1;
-            }
-        ],
-        execute: function () {
-            conta = new conta_1.Conta('Ingles', 'Educação', 45.50, new Date());
-            console.log(conta.dadosConta);
-        }
-    };
-});
+import { ListarContas } from './controllers/listar_contas.js';
+//import * as moment from 'moment';
+//const moment = require('moment');
+//const mes: string = moment().format('YYYY-MM');
+const botao_adiciona = document.querySelector('[data-form-button]');
+const seta_prox = document.querySelector('[data-seta-prox]');
+const seta_ant = document.querySelector('[data-seta-ant]');
+const input_mes = document.querySelector('[data-mes]');
+const data = new Date();
+const ano = data.getFullYear();
+const mes = data.getMonth() + 1;
+var mes_string;
+(mes < 10) ? mes_string = (ano + "-" + "0" + mes) : mes_string = (ano + "-" + mes);
+sessionStorage.setItem('mes_storage', mes_string);
+const listarContas = new ListarContas();
+listarContas.listar(mes_string);

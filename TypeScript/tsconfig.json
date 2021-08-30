@@ -3,10 +3,10 @@
     "outDir": "./dist/js", 
     "target": "ES6",
     "noEmitOnError": true,
-    "module": "System"
+    "noImplicitAny": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true
   },
-  "include": [  
-    "./app/**/*"	
-  ]
+  "include": [ "./app/**/*" ]
     
 }

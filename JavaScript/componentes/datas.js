@@ -3,11 +3,11 @@ import { listarContas } from "./listar_contas.js";
 const removeDatasRepetidas = (lista, data_mes) => { 
 
   const datasUnicas = []
-  lista.forEach((lista => { 
-    const mes_lista = moment(lista.data, 'DD/MM/YYYY').format('YYYY-MM')
+  lista.forEach((elemento => { 
+    const mes_lista = moment(elemento.data, 'DD/MM/YYYY').format('YYYY-MM')
     
-    if( (datasUnicas.indexOf(lista.data) === -1) && (mes_lista == data_mes) ){
-        datasUnicas.push(lista.data)
+    if( (datasUnicas.indexOf(elemento.data) === -1) && (mes_lista == data_mes) ){
+        datasUnicas.push(elemento.data)
     }
   }))
   return datasUnicas

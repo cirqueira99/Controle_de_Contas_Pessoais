@@ -1,25 +1,31 @@
 {
-  "name": "typescript",
+  "name": "contas_typescript",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "dependencies": {
-    "typescript": "^4.3.5"
-  },
-  "devDependencies": {
-    "bootstrap": "^5.1.0",
-    "concurrently": "^6.2.0",
-    "jquery": "^3.6.0",
-    "lite-server": "^2.6.1",
-    "popper": "^1.0.1"
-  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "concurrently \"npm run watch\" \"npm run server\"",
-    "server": "lite-server --baseDir=../TypeScript",
+    "start": "concurrently \"npm run watch\" \"npm run database\" \"npm run server\" ",
     "compile": "tsc",
-    "watch": "tsc -w"
+    "watch": "tsc -w",
+    "database": "json-server --watch ./dist/database/db.json",
+    "server": "lite-server --baseDir=../TypeScript"
   },
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^6.2.1",
+    "json-server": "^0.16.3",
+    "lite-server": "^2.6.1",
+    "sass": "^1.37.5"
+  },
+  "dependencies": {
+    "@popperjs/core": "^2.9.3",
+    "@types/node": "^16.6.1",
+    "bootstrap": "^5.1.0",
+    "jquery": "^3.6.0",
+    "moment": "^2.29.1",
+    "popper.js": "^1.16.1",
+    "typescript": "^4.3.5"
+  }
 }
