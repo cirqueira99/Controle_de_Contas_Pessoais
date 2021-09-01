@@ -1,5 +1,5 @@
-import { Conta } from "./Conta.js"
-import { buscarDadosContas } from "./listar_contas.js"
+import { Conta } from "./Account.js"
+import { buscarDadosContas } from "./list_accounts.js"
 
 
 export const atualizarConta = async (id) => {
@@ -9,7 +9,7 @@ export const atualizarConta = async (id) => {
     lista_contas.forEach(elemento => {
       if(elemento.id == id){
         const conta = new Conta();
-        conta.atualizaCliente(elemento.id, elemento.data, elemento.nome, elemento.tipo, elemento.valor, true);
+        conta.atualizaConta(elemento.id, elemento.data, elemento.nome, elemento.tipo, elemento.valor, true);
       }
     })
   }

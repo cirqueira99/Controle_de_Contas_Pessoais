@@ -1,5 +1,5 @@
-import { CriarConta } from './controllers/criar_conta.js';
-import { ListarContas } from './controllers/listar_contas.js';
+import { CriarConta } from './controllers/create_accounts.js';
+import { ListarContas } from './controllers/list_accounts.js';
 
 //import * as moment from 'moment';
 //const moment = require('moment');

@@ -7,16 +7,28 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { Conta } from "../models/conta.js";
-import { Data } from "./datas.js";
+import { Conta } from "../models/accounts.js";
+import { Data } from "../functionalities/datas.js";
+import { Botao } from "../functionalities/create_buttons.js";
 export class ListarContas {
-    criarNovaLinha(conta) {
+    criarNovaLinha(id, data, nome, tipo, valor, pagamento) {
+        const id_string = id.toString();
+        const money = valor.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
         const table_tr = document.createElement('tr');
-        //table_tr.setAttribute('id', id)
         table_tr.classList.add('pointer');
         const td_pagar = document.createElement('td');
-        td_pagar.classList.add('text-right');
+        td_pagar.classList.add('text-center');
         const td_excluir = document.createElement('td');
+        const conteudo = `
+                    <th class="text-center" scope="row">${data}</th>
+                    <td>${nome}</td>
+                    <td>${tipo}</td>
+                    <td class="text-right">${money}</td>`;
+        table_tr.innerHTML = conteudo;
+        pagamento == true ? td_pagar.appendChild(Botao.BotaoContaPaga()) : td_pagar.appendChild(Botao.BotaoPagarConta(id_string));
+        table_tr.appendChild(td_pagar);
+        td_excluir.appendChild(Botao.BotaoDeleta());
+        table_tr.appendChild(td_excluir);
         return table_tr;
     }
     listar(data_mes) {
@@ -33,16 +45,23 @@ export class ListarContas {
                 var pend = 0.0;
                 const mes_input = document.querySelector('[data-mes]');
                 mes_input.value = data_mes;
-                const lista = yield Conta.buscarDadosContas();
-                const datasUnicas = Data.removeDatasRepetidas(lista, data_mes);
-                console.log(datasUnicas);
+                const lista_contas = yield Conta.buscarDadosContas();
+                const datasUnicas = Data.removeDatasRepetidas(lista_contas, data_mes);
                 datasUnicas.forEach((dia) => {
-                    for (var [key, value] of Object.entries(lista)) {
+                    for (var [key, value] of Object.entries(lista_contas)) {
                         if (value.data === dia) {
-                            table_list.appendChild(this.criarNovaLinha(value));
+                            table_list.appendChild(this.criarNovaLinha(value.id, value.data, value.nome, value.tipo, value.valor, value.pagamento));
+                            value.pagamento == true ? pago += value.valor : pend += value.valor;
                         }
                     }
                 });
+                total = pago + pend;
+                total = total.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
+                pago = pago.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
+                pend = pend.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
+                element_total.innerText = total;
+                element_pago.innerText = pago;
+                element_pend.innerText = pend;
             }
             catch (erro) {
                 console.log(erro);

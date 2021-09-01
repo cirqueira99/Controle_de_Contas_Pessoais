@@ -1,4 +1,4 @@
-import { listarContas } from "./listar_contas.js";
+import { listarContas } from "./list_accounts.js";
 
 const removeDatasRepetidas = (lista, data_mes) => { 
 

@@ -4,7 +4,7 @@
       "nome": "cpfl",
       "tipo": "Conta de Luz",
       "valor": 50,
-      "data": "15/06/2021",
+      "data": "15/07/2021",
       "pagamento": true,
       "id": 6
     },
@@ -12,7 +12,7 @@
       "nome": "Alura",
       "tipo": "Educação",
       "valor": 905,
-      "data": "14/07/2021",
+      "data": "14/08/2021",
       "pagamento": false,
       "id": 7
     },
@@ -20,7 +20,7 @@
       "nome": "Times Idiomas",
       "tipo": "Educação",
       "valor": 300,
-      "data": "15/08/2021",
+      "data": "15/09/2021",
       "pagamento": true,
       "id": 8
     },
@@ -28,7 +28,7 @@
       "nome": "Aluguel",
       "tipo": "Moradia",
       "valor": 300,
-      "data": "24/08/2021",
+      "data": "24/09/2021",
       "pagamento": false,
       "id": 9
     },
@@ -36,7 +36,7 @@
       "nome": "Gás",
       "tipo": "Moradia",
       "valor": 80.5,
-      "data": "28/06/2021",
+      "data": "28/07/2021",
       "pagamento": true,
       "id": 10
     },
@@ -44,7 +44,7 @@
       "nome": "Alura",
       "tipo": "Educação",
       "valor": 905,
-      "data": "01/06/2021",
+      "data": "01/08/2021",
       "pagamento": false,
       "id": 11
     },
@@ -52,15 +52,15 @@
       "nome": "Times Idiomas",
       "tipo": "Educação",
       "valor": 300,
-      "data": "15/07/2021",
-      "pagamento": true,
+      "data": "15/09/2021",
+      "pagamento": false,
       "id": 12
     },
     {
       "nome": "Aluguel",
       "tipo": "Moradia",
       "valor": 300,
-      "data": "24/07/2021",
+      "data": "24/08/2021",
       "pagamento": false,
       "id": 13
     },
@@ -68,7 +68,7 @@
       "nome": "Gás",
       "tipo": "Moradia",
       "valor": 80.5,
-      "data": "12/08/2021",
+      "data": "12/09/2021",
       "pagamento": false,
       "id": 14
     },
@@ -76,7 +76,7 @@
       "nome": "Supermercado ",
       "tipo": "Moradia",
       "valor": 250.53,
-      "data": "02/08/2021",
+      "data": "02/09/2021",
       "pagamento": false,
       "id": 15
     }

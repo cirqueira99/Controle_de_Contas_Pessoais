@@ -30,7 +30,7 @@ export class Conta{
     })
   }
   
-  atualizaCliente(id, data, nome, tipo, valor, pagamento) {
+  atualizaConta(id, data, nome, tipo, valor, pagamento) {
     return fetch(`http://localhost:3000/contas/${id}`, {
         method: 'PUT',
         headers: { 

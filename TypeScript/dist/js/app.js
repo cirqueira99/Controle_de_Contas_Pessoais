@@ -1,4 +1,4 @@
-import { ListarContas } from './controllers/listar_contas.js';
+import { ListarContas } from './controllers/list_accounts.js';
 //import * as moment from 'moment';
 //const moment = require('moment');
 //const mes: string = moment().format('YYYY-MM');

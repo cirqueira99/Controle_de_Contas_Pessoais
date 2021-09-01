@@ -1,5 +1,5 @@
-import { listarContas } from "./listar_contas.js";
-import { Conta } from "./Conta.js";
+import { listarContas } from "./list_accounts.js";
+import { Conta } from "./Account.js";
 
 export const criarConta = (evento) => {
     

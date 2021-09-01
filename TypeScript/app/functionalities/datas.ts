@@ -1,4 +1,4 @@
-import { Conta } from './../models/conta';
+import { Conta } from '../models/accounts';
 
 export class Data {
 

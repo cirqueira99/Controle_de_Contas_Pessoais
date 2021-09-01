@@ -1,5 +1,5 @@
-import { deletarConta } from "./deletar_conta.js"
-import { atualizarConta } from "./atualizar_conta.js";
+import { deletarConta } from "./delet_accounts.js"
+import { atualizarConta } from "./update_accounts.js";
 
 
 const BotaoDeleta = () => { 

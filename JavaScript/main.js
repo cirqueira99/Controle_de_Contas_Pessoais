@@ -1,5 +1,5 @@
-import { criarConta } from "./componentes/criar_conta.js";
-import { listarContas } from "./componentes/listar_contas.js";
+import { criarConta } from "./componentes/create_accounts.js";
+import { listarContas } from "./componentes/list_accounts.js";
 import { Datas } from "./componentes/datas.js"
 
 const botao_adiciona = document.querySelector('[data-form-button]');
