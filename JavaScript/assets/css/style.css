@@ -20,11 +20,13 @@ body{
   width: 100vw;
   min-height: 80vh;
 }
+
 .conteudo{
   display: flex;
   flex-direction: column;
   margin-top: 50px;
 }
+
 .corpo{
   background-color: var(--blue1);
   display: grid;
@@ -39,6 +41,7 @@ body{
   min-width: 700px;
   min-height: 300px;
 }
+
 .corpo__title{
   border-bottom: 1px solid rgba(0, 183, 255, 0.952);
   display: flex;
@@ -48,12 +51,14 @@ body{
   justify-content: center;
   align-items: center;
 }
+
 .title{
   color: aliceblue;  
   font-size: 1.5rem;
   font-weight: bold;
   text-align: center;
 }
+
 .form {
   display: grid;
   grid-area: campos;
@@ -64,15 +69,27 @@ body{
   padding: 0.5rem;
   justify-content: space-between;
 }
+
+.form__nome, .form__date, .form__select, .form__money {
+  height: 40px;  
+}
+
+.form__inputs {
+  background: #f8f9fa;
+  font-size: 14px;
+  height: 90%;
+  width: 100%;
+}
+
 .form__nome{
   grid-column: 1 / 1;
   grid-row: 1 / 2;
 }
-.select{
+.form_select{
   grid-column: 2 / 2;
   grid-row: 1 / 2;
 }
-.money{
+.form_money{
   grid-column: 1 / 1;
   grid-row: 2 / 3;
 }
@@ -113,7 +130,7 @@ body{
   color: white;  
   cursor: pointer;   
   text-align: center;
-  width: 35%;
+  width: 40%;
 }
 .mes__input:hover{
   background-color: #003f6780;

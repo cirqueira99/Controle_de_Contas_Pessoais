@@ -20,6 +20,25 @@ export class Conta {
         return dados;
     }
     cadastrarConta() {
+        return fetch(`http://localhost:3000/contas`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                nome: this.nome,
+                tipo: this.tipo,
+                valor: this.valor,
+                data: this.data,
+                pagamento: this.pagamento
+            })
+        })
+            .then(resposta => {
+            if (resposta.ok) {
+                return resposta.body;
+            }
+            throw new Error('Não foi possível criar uma conta');
+        });
     }
     static atualizarConta(id) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -74,6 +93,16 @@ export class Conta {
             throw new Error('Não foi possível listar as contas');
         });
     }
-    deletarConta() {
+    static deletarConta(evento) {
+        const botao = evento.target;
+        const id = botao.id;
+        return fetch(`http://localhost:3000/contas/${id}`, {
+            method: 'DELETE'
+        })
+            .then(resposta => {
+            if (!resposta.ok) {
+                throw new Error('Não foi possível deletar a conta');
+            }
+        });
     }
 }

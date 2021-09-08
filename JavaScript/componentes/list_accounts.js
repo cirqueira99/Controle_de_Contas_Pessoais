@@ -8,7 +8,7 @@ const criarNovaLinha = (id, data, nome, tipo, valor, pagamento) => {
   table_tr.setAttribute('id', id)
   table_tr.classList.add('pointer')
   const td_pagar = document.createElement('td');
-  td_pagar.classList.add('text-right');
+  td_pagar.classList.add('text-center');
   const td_excluir = document.createElement('td');
 
   const money = valor.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
@@ -31,7 +31,7 @@ const criarNovaLinha = (id, data, nome, tipo, valor, pagamento) => {
   return table_tr;
 };
 
-export const buscarDadosContas = () => {
+const buscarDadosContas = () => {
   return fetch(`http://localhost:3000/contas`)
   .then(resposta => {
       if(resposta.ok){
@@ -41,7 +41,7 @@ export const buscarDadosContas = () => {
   })
 }
 
-export const listarContas = async (data_mes) =>  {
+const listarContas = async (data_mes) =>  {
   try {
     const table_list = document.querySelector('[data-table-list]');
     table_list.classList.add('border-light');
@@ -55,7 +55,7 @@ export const listarContas = async (data_mes) =>  {
     var pago = 0.0;
     var pend = 0.0;
 
-    const lista = await buscarDadosContas();  console.log(lista)
+    const lista = await buscarDadosContas();  
     
     const mes_input = document.querySelector('[data-mes]');
     mes_input.value = data_mes;
@@ -91,4 +91,40 @@ export const listarContas = async (data_mes) =>  {
   catch(erro){
     console.log(erro)
   }  
+}
+
+const mesAnt = () => {
+  const mes_input = document.querySelector('[data-mes]').value;
+  const mes_subtract = moment(mes_input).subtract(1, 'month').format('YYYY-MM'); 
+
+  Listar.listarContas(mes_subtract);
+}
+
+const mesProx = () => {
+  const mes_input = document.querySelector('[data-mes]').value;   
+  const mes_add = moment(mes_input).add(1, 'month').format('YYYY-MM');
+
+  Listar.listarContas(mes_add);
+}
+
+const listarInputMes = () => {
+  var mes_storage = sessionStorage.getItem('mes_storage');
+  const mes_input = document.querySelector('[data-mes]').value; console.log(mes_input)  
+
+  if( mes_input != mes_storage ){
+    sessionStorage.removeItem('mes_storage');
+    mes_storage = mes_input;
+    sessionStorage.setItem('mes_storage', mes_storage);
+    Listar.listarContas(mes_input);
+  }
+}
+
+
+export const Listar = {
+  listarContas,
+  criarNovaLinha,
+  buscarDadosContas,
+  mesAnt,
+  mesProx, 
+  listarInputMes
 }

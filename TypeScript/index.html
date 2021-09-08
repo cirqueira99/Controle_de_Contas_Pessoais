@@ -26,14 +26,15 @@
         <form class="form fs-12" action="#">
             <input class="form__nome" type="text" data-form-name placeholder="nome da conta" required>
             <select name="categorie" id="categorie" class="form__select" data-form-select> 
-              <option value="0">Selecione um tipo...</option>
+              <option selected value="0">Selecione uma categoria...</option>
               <option value="Conta de Luz">Conta de Luz</option>
               <option value="Conta de Água">Conta de Água</option>
               <option value="Moradia">Moradia</option>
               <option value="Educação">Educação</option>
               <option value="Transporte">Transporte</option>
+              <option value="Transporte">Lazer</option>
             </select>
-            <input type="number" class="form__money" data-form-money placeholder="exemplo: 44.50" required>
+            <input type="number" class="form__money" data-form-money placeholder="Somente numeros" required>
             <input type="date" class="form__date" data-form-date required>
           <div class="butt text-center"><button id="form__button" class="btn btn-success" data-form-button> Adicionar </button></div>
         </form>

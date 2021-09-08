@@ -24,8 +24,11 @@
         </div>
 
         <form class="form fs-12" action="#">
-            <input class="form__nome" type="text" data-form-name placeholder="nome da conta" required>
-            <select name="categorie" id="categorie" class="form__select" data-form-select> 
+          <div class="form__nome">
+            <input class="form-control form__inputs" type="text" data-form-name placeholder="Nome da conta" required>
+          </div>
+          <div class="form__select">
+            <select class="form-control form__inputs" name="categorie" id="categorie" data-form-select> 
               <option value="0">Selecione um tipo...</option>
               <option value="Conta de Luz">Conta de Luz</option>
               <option value="Conta de Água">Conta de Água</option>
@@ -33,9 +36,16 @@
               <option value="Educação">Educação</option>
               <option value="Transporte">Transporte</option>
             </select>
-            <input type="number" class="form__money" data-form-money placeholder="exemplo: 44.50" required>
-            <input type="date" class="form__date" data-form-date required>
-          <div class="butt text-center"><button id="form__button" class="btn btn-success" data-form-button> Adicionar </button></div>
+          </div>
+          <div class="form__money">
+            <input class="form-control form__inputs" type="number" data-form-money placeholder="Somente números: 00.00" required>
+          </div>
+          <div class="form__date">
+            <input class="form-control form__inputs" type="date" data-form-date required>
+          </div>
+          <div class="butt text-center">
+            <button type="submit" id="form__button" class="btn btn-success" data-form-button onclick="criarConta()"> Adicionar</button>
+          </div>
         </form>
 
         <div class="corpo__list">
@@ -67,8 +77,8 @@
                 <td>Nome</td>
                 <td>Tipo</td>
                 <td class="text-center">Valor</td>
-                <td></td>
-                <td></td>
+                <td>Situação</td>
+                <td>Excluir</td>
               </tr>                    
             </thead>
             <tbody data-table-list></tbody>
@@ -88,5 +98,6 @@
   <script src="./node_modules/bootstrap/dist/js/bootstrap.js"></script>
 
   <script type="module" src="main.js"></script>
+  <script src="./componentes/form_controller.js"></script>
 </body>
 </html>

@@ -1,22 +1,22 @@
 import { Conta } from "../models/accounts.js";
 export class Botao {
-    static BotaoDeleta() {
+    static BotaoDeleta(id) {
         const botaoDeleta = document.createElement('button');
         botaoDeleta.setAttribute('type', 'button');
+        botaoDeleta.setAttribute('id', id);
         botaoDeleta.classList.add('btn');
         botaoDeleta.classList.add('table_butpagar');
         const but_span = document.createElement('span');
         but_span.innerHTML = `<i class="fas fa-trash-alt"></i>`;
         botaoDeleta.appendChild(but_span);
         botaoDeleta.classList.add('btn-secondary');
-        //botaoDeleta.addEventListener('click', deletarConta);
+        botaoDeleta.addEventListener('click', Conta.deletarConta);
         return botaoDeleta;
     }
     static PagarConta(evento) {
         const botao = evento.target;
         const id = botao.id;
         Conta.atualizarConta(id);
-        window.location.reload();
     }
     static BotaoPagarConta(id) {
         const botaoPagar = document.createElement('button');

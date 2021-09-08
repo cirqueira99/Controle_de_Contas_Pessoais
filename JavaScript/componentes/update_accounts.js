@@ -1,10 +1,10 @@
 import { Conta } from "./Account.js"
-import { buscarDadosContas } from "./list_accounts.js"
+import { Listar } from "./list_accounts.js";
 
 
 export const atualizarConta = async (id) => {
   try { 
-    const lista_contas = await buscarDadosContas();
+    const lista_contas = await Listar.buscarDadosContas();
     
     lista_contas.forEach(elemento => {
       if(elemento.id == id){

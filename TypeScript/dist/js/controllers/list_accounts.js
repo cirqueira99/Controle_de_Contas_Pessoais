@@ -11,7 +11,7 @@ import { Conta } from "../models/accounts.js";
 import { Data } from "../functionalities/datas.js";
 import { Botao } from "../functionalities/create_buttons.js";
 export class ListarContas {
-    criarNovaLinha(id, data, nome, tipo, valor, pagamento) {
+    static criarNovaLinha(id, data, nome, categoria, valor, pagamento) {
         const id_string = id.toString();
         const money = valor.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
         const table_tr = document.createElement('tr');
@@ -22,16 +22,16 @@ export class ListarContas {
         const conteudo = `
                     <th class="text-center" scope="row">${data}</th>
                     <td>${nome}</td>
-                    <td>${tipo}</td>
+                    <td>${categoria}</td>
                     <td class="text-right">${money}</td>`;
         table_tr.innerHTML = conteudo;
         pagamento == true ? td_pagar.appendChild(Botao.BotaoContaPaga()) : td_pagar.appendChild(Botao.BotaoPagarConta(id_string));
         table_tr.appendChild(td_pagar);
-        td_excluir.appendChild(Botao.BotaoDeleta());
+        td_excluir.appendChild(Botao.BotaoDeleta(id_string));
         table_tr.appendChild(td_excluir);
         return table_tr;
     }
-    listar(data_mes) {
+    static listar(data_mes) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
                 const table_list = document.querySelector('[data-table-list]');
@@ -50,7 +50,7 @@ export class ListarContas {
                 datasUnicas.forEach((dia) => {
                     for (var [key, value] of Object.entries(lista_contas)) {
                         if (value.data === dia) {
-                            table_list.appendChild(this.criarNovaLinha(value.id, value.data, value.nome, value.tipo, value.valor, value.pagamento));
+                            table_list.appendChild(this.criarNovaLinha(value.id, value.data, value.nome, value.categoria, value.valor, value.pagamento));
                             value.pagamento == true ? pago += value.valor : pend += value.valor;
                         }
                     }
@@ -67,5 +67,30 @@ export class ListarContas {
                 console.log(erro);
             }
         });
+    }
+    static mesAnt(envent) {
+        envent.preventDefault();
+        const mes_input = document.querySelector('[data-mes]');
+        var mes = parseInt((mes_input.value).split("-")[1]);
+        mes -= 1;
+        const mes_ant = (mes_input.value).split("-")[0] + "-" + ("0" + mes.toString()).slice(-2);
+        ListarContas.listar(mes_ant);
+    }
+    static mesProx(envent) {
+        envent.preventDefault();
+        const mes_input = document.querySelector('[data-mes]');
+        var mes = parseInt((mes_input.value).split("-")[1]);
+        mes += 1;
+        const mes_prox = (mes_input.value).split("-")[0] + "-" + ("0" + mes.toString()).slice(-2);
+        ListarContas.listar(mes_prox);
+    }
+    static listarImputMes(envent) {
+        envent.preventDefault();
+        const mes_input = document.querySelector('[data-mes]');
+        const mes_input_value = mes_input.value;
+        const mes_storage = sessionStorage.getItem("mes_string");
+        if (mes_input.value != mes_storage) {
+            ListarContas.listar(mes_input_value);
+        }
     }
 }

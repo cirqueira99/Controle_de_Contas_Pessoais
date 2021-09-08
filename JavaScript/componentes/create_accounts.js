@@ -1,4 +1,4 @@
-import { listarContas } from "./list_accounts.js";
+import { Listar } from "./list_accounts.js";
 import { Conta } from "./Account.js";
 
 export const criarConta = (evento) => {
@@ -16,13 +16,12 @@ export const criarConta = (evento) => {
   const data_criacao = moment(element_data.value);
   const data = data_criacao.format('DD/MM/YYYY');
   
-  const dados_conta = new Conta(nome, tipo, valor, data);
-    
+  const dados_conta = new Conta(nome, tipo, valor, data);    
  
   dados_conta.cadastrarConta();
   
-  listarContas();
-
+  const mes_atual = moment().format('YYYY-MM');
+  Listar.listarContas(mes_atual);
 
   element_nome.value = "";
   element_tipo.value = "Selecione um tipo...";

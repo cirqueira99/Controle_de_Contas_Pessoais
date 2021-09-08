@@ -1,9 +1,10 @@
 import { Conta } from "../models/accounts.js"; 
 
 export class Botao{
-  public static BotaoDeleta(): HTMLButtonElement { 
+  public static BotaoDeleta(id: string): HTMLButtonElement { 
     const botaoDeleta: HTMLButtonElement = document.createElement('button');
     botaoDeleta.setAttribute('type', 'button')
+    botaoDeleta.setAttribute('id', id);
     botaoDeleta.classList.add('btn');
     botaoDeleta.classList.add('table_butpagar');
   
@@ -14,7 +15,7 @@ export class Botao{
     botaoDeleta.classList.add('btn-secondary');
    
     
-    //botaoDeleta.addEventListener('click', deletarConta);
+    botaoDeleta.addEventListener('click', Conta.deletarConta);
   
     return botaoDeleta;
   }
@@ -24,7 +25,6 @@ export class Botao{
     const id: string = botao.id
     
     Conta.atualizarConta(id); 
-    window.location.reload();     
   }
   
   
