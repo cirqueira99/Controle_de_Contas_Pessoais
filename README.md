@@ -1,7 +1,7 @@
 GITHUB
 
 
-Para ambos os projetos em susas respectivas pastas fazer:
+Para ambos os projetos em suas respectivas pastas (Javascript e Typescript) rodar o seguinte comando:
 - Após baixar as dependências rodar o comando:  *sass --watch node_modules/bootstrap/scss:node_modules/bootstrap/compiler*
 
 Após o comando será criado uma pasta compiler no caminho node_modules/bootstrap que irá conter a compilação dos arquivos da pasta node_modules/bootstrap/scss.
