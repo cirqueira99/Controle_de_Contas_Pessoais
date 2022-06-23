@@ -5,12 +5,12 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./assets/css/reset.css">
-  <link rel="stylesheet" href="./node_modules/bootstrap/compiler/bootstrap.css">
+  <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="./assets/css/style.css">
   <link rel="stylesheet" href="./assets/css/util.css">
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=BioRhyme&amp;family=Space+Mono&amp;display=swap">
-  <script src="https://kit.fontawesome.com/8e068191b4.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="./node_modules/font-awesome/css/font-awesome.css">
 
   <title>Controle de Contas</title>
 </head>
@@ -20,16 +20,19 @@
       <div class="corpo">
 
         <div class="corpo__title">
-          <h1 class="title">Controle de Contas</h1>      
+          <h1 class="title mb-0">Controle de Contas</h1>      
         </div>
 
         <form class="form fs-12" action="#">
-          <div class="form__nome">
-            <input class="form-control form__inputs" type="text" data-form-name placeholder="Nome da conta" required>
+          <div class="input__container form__nome">
+            <input class="input" name="nome" id="nome" type="text" placeholder="Descrição" data-tipo="nome" required>
+            <label class="form__label" for="nome">Descrição</label>
+            <!--<span class="input-mensagem-erro">Este campo não está válido</span>-->
           </div>
-          <div class="form__select">
-            <select class="form-control form__inputs" name="categorie" id="categorie" data-form-select> 
-              <option value="0">Selecione um tipo...</option>
+
+          <div class="input__container form__select">
+            <select class=" input" name="categorie" id="categorie" data-form-select> 
+              <option value="0" class="select-first">Selecione um tipo...</option>
               <option value="Conta de Luz">Conta de Luz</option>
               <option value="Conta de Água">Conta de Água</option>
               <option value="Moradia">Moradia</option>
@@ -37,57 +40,65 @@
               <option value="Transporte">Transporte</option>
             </select>
           </div>
-          <div class="form__money">
-            <input class="form-control form__inputs" type="number" data-form-money placeholder="Somente números: 00.00" required>
+
+          <div class="input__container form__money">
+            <input class="input" id="valor" type="number" data-form-money placeholder="Somente números: R$ 00.00" required>
+            <label class="form__label" for="valor">Valor R$ 0,00</label>
           </div>
-          <div class="form__date">
-            <input class="form-control form__inputs" type="date" data-form-date required>
+
+          <div class="input__container form__date">
+            <input class="input" type="date" data-form-date required>
           </div>
-          <div class="butt text-center">
-            <button type="submit" id="form__button" class="btn btn-success" data-form-button onclick="criarConta()"> Adicionar</button>
+
+          <div class="form__button text-center">
+            <button type="submit" id="" class="btn btn-success " data-form-button onclick="criarConta()"> Adicionar</button>
           </div>
         </form>
 
         <div class="corpo__list">
-          <div class="all-money p-2 d-flex justify-content-around">
+          <div class="all-money p-2">
             <div class="all-money__box d-flex flex-column align-items-center justify-content-center">
-              <div class="box__text"><p class="mb-1 mt-1">Valor Total</p></div>
-              <div class="box__valor"><p id="v_total" class="mb-0 mt-2">teste</p></div>
+              <div class="box__text"><p class="mb-1 mt-1">Soma Total</p></div>
+              <div class="box__valor"><p id="v_total" class="text-primary mb-0 mt-2"></p></div>
             </div>
             <div class="all-money__box d-flex flex-column align-items-center justify-content-center">
               <div class="box__text"><p class="mb-1 mt-1">Total Pago</p></div>
-              <div class="box__valor"><p id="v_pago" class="mb-0 mt-2"></p></div>
+              <div class="box__valor"><p id="v_pago" class="text-success mb-0 mt-2"></p></div>
             </div>
             <div class="all-money__box d-flex flex-column align-items-center justify-content-center">
               <div class="box__text"><p class="mb-1 mt-1">Total Pendente</p></div>
-              <div class="box__valor"><p id="v_pend" class="mb-0 mt-2"></p></div>
+              <div class="box__valor"><p id="v_pend" class="text-danger mb-0 mt-2"></p></div>
             </div>
           </div>
 
-          <div class="corpo__mes mt-4 mb-4 text-white d-flex justify-content-center align-items-center">
-            <span class="mt-1 m-r-50 pointer seta"  data-seta-ant><i class="fas fa-chevron-left"></i></span>
-            <input type="month" class="mes__input fs-18" id="bday" name="mes" value="2017-01" data-mes>
-            <span class="mt-1 m-l-50 pointer seta"  data-seta-prox><i class="fas fa-chevron-right"></i></span>
-          </div>         
-
-          <table id="corpo__table" class="table table-striped table-hover">
-            <thead class="corpo__table__thead text-light">  
-              <tr>
-                <td class="text-center">Data</td>
-                <td>Nome</td>
-                <td>Tipo</td>
-                <td class="text-center">Valor</td>
-                <td>Situação</td>
-                <td>Excluir</td>
-              </tr>                    
-            </thead>
-            <tbody data-table-list></tbody>
-          </table>
+          <div class="corpo__mes">
+            <div class="month-search">
+              <span class="mt-1 m-r-50 pointer seta"  data-seta-ant><i class="fa fa-arrow-circle-left" aria-hidden="true"></i></span>
+              <input type="month" class="mes__input fs-24" id="bday" name="mes" value="2017-01" data-mes>
+              <span class="mt-1 m-l-50 pointer seta"  data-seta-prox><i class="fa fa-arrow-circle-right" aria-hidden="true"></i></span>
+            </div>
+            <button type="submit" id="" class="btn btn-secondary " data-monthsearch-button>Pesquisar</button>
+          </div>
+           
         </div>
-
       </div>
 
-       
+      <div class="conteudo__list">
+        <table id="corpo__table" class="table table-striped table-hover">
+          <thead class="corpo__table__thead text-light">  
+            <tr>
+              <td style="width: 15%;" class="text-center">Data</td>
+              <td style="width: 25%;">Descrição</td>
+              <td style="width: 20%;">Tipo</td>
+              <td style="width: 20%;" class="text-center">Valor</td>
+              <td style="width: 10%;"></td>
+              <td style="width: 10%;"></td>
+            </tr>                    
+          </thead>
+          <tbody data-table-list></tbody>
+        </table>
+      </div>
+
     </div>   
   </div>
 
@@ -98,6 +109,5 @@
   <script src="./node_modules/bootstrap/dist/js/bootstrap.js"></script>
 
   <script type="module" src="main.js"></script>
-  <script src="./componentes/form_controller.js"></script>
 </body>
 </html>

@@ -71,6 +71,7 @@ export class ListarContas {
     static mesAnt(envent) {
         envent.preventDefault();
         const mes_input = document.querySelector('[data-mes]');
+        console.log(typeof (mes_input.value));
         var mes = parseInt((mes_input.value).split("-")[1]);
         mes -= 1;
         const mes_ant = (mes_input.value).split("-")[0] + "-" + ("0" + mes.toString()).slice(-2);

@@ -3,29 +3,34 @@ import { Datas } from './datas.js';
 
 
 
-const criarNovaLinha = (id, data, nome, tipo, valor, pagamento) => {   
+const criarNovaLinha = (id, data, nome, categoria, valor, pagamento) => {   
   const table_tr = document.createElement('tr');
   table_tr.setAttribute('id', id)
-  table_tr.classList.add('pointer')
+
   const td_pagar = document.createElement('td');
   td_pagar.classList.add('text-center');
+  td_pagar.classList.add('table-buttons');
+
   const td_excluir = document.createElement('td');
+  td_excluir.classList.add('text-center');
+  td_excluir.classList.add('table-buttons');
 
   const money = valor.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
   
-  const conteudo = `
-                    <th class="text-center" scope="row">${data}</th>
-                    <td>${nome}</td>
-                    <td>${tipo}</td>
-                    <td class="text-right">${money}</td>`;
+  const conteudo = 
+  `
+    <th class="text-center" scope="row">${data}</th>
+    <td>${nome}</td>
+    <td>${categoria}</td>
+    <td class="text-center">${money}</td>
+  `;
 
   table_tr.innerHTML = conteudo;
 
   pagamento==true ? td_pagar.appendChild(Botao.BotaoContaPaga()) : td_pagar.appendChild(Botao.BotaoPagarConta());
+  table_tr.appendChild(td_pagar);
 
   td_excluir.appendChild(Botao.BotaoDeleta());
-
-  table_tr.appendChild(td_pagar);
   table_tr.appendChild(td_excluir);
 
   return table_tr;
@@ -70,7 +75,7 @@ const listarContas = async (data_mes) =>  {
         const diff = dataMoment.diff(dia);
 
         if(diff === 0){
-          table_list.appendChild(criarNovaLinha(elemento.id, elemento.data, elemento.nome, elemento.tipo, elemento.valor, elemento.pagamento));
+          table_list.appendChild(criarNovaLinha(elemento.id, elemento.data, elemento.nome, elemento.categoria, elemento.valor, elemento.pagamento));
           
           elemento.pagamento == true? pago += elemento.valor : pend += elemento.valor; 
         }        
@@ -109,7 +114,8 @@ const mesProx = () => {
 
 const listarInputMes = () => {
   var mes_storage = sessionStorage.getItem('mes_storage');
-  const mes_input = document.querySelector('[data-mes]').value; console.log(mes_input)  
+  const mes_input = document.querySelector('[data-mes]').value;
+  console.log(mes_input)  
 
   if( mes_input != mes_storage ){
     sessionStorage.removeItem('mes_storage');

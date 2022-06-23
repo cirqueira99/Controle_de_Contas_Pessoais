@@ -5,15 +5,21 @@
   "main": "main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "concurrently \"npm run server\" \"npm run open ",
+    "open": "live-server",
     "server": "json-server --watch ./database/db.json"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "bootstrap": "^5.0.2",
+    "concurrently": "^7.2.2",
+    "font-awesome": "^4.7.0",
     "jquery": "^3.6.0",
     "json-server": "^0.16.3",
-    "popper.js": "^1.16.1",
-    "sass": "^1.35.2"
+    "live-server": "^1.2.2",
+    "popper.js": "^1.16.1"
+  },
+  "devDependencies": {
+    "bootstrap": "^5.1.3"
   }
 }

@@ -82,6 +82,7 @@ export class ListarContas {
   public static mesAnt(envent: Event): void{
     envent.preventDefault()
     const mes_input: HTMLInputElement = <HTMLInputElement>document.querySelector('[data-mes]');
+    console.log(typeof(mes_input.value))
     var mes: number = parseInt( (mes_input.value).split("-")[1] );
     mes -= 1;
     

@@ -4,7 +4,7 @@
       "nome": "cpfl",
       "categoria": "Conta de Luz",
       "valor": 50,
-      "data": "15/07/2021",
+      "data": "15/01/2022",
       "pagamento": true,
       "id": 6
     },
@@ -12,7 +12,7 @@
       "nome": "Alura",
       "categoria": "Educação",
       "valor": 905,
-      "data": "14/08/2021",
+      "data": "14/01/2022",
       "pagamento": false,
       "id": 7
     },
@@ -20,7 +20,7 @@
       "nome": "Times Idiomas",
       "categoria": "Educação",
       "valor": 300,
-      "data": "15/09/2021",
+      "data": "15/12/2021",
       "pagamento": true,
       "id": 8
     },
@@ -28,7 +28,7 @@
       "nome": "Aluguel",
       "categoria": "Moradia",
       "valor": 300,
-      "data": "24/09/2021",
+      "data": "24/02/2022",
       "pagamento": false,
       "id": 9
     },
@@ -36,7 +36,7 @@
       "nome": "Gás",
       "categoria": "Moradia",
       "valor": 80.5,
-      "data": "28/07/2021",
+      "data": "28/11/2021",
       "pagamento": true,
       "id": 10
     },
@@ -44,7 +44,7 @@
       "nome": "Alura",
       "categoria": "Educação",
       "valor": 905,
-      "data": "01/08/2021",
+      "data": "01/12/2021",
       "pagamento": false,
       "id": 11
     },
@@ -52,7 +52,7 @@
       "nome": "Times Idiomas",
       "categoria": "Educação",
       "valor": 300,
-      "data": "15/09/2021",
+      "data": "15/01/2022",
       "pagamento": true,
       "id": 12
     },
@@ -60,7 +60,7 @@
       "nome": "Aluguel",
       "categoria": "Moradia",
       "valor": 300,
-      "data": "24/08/2021",
+      "data": "24/11/2021",
       "pagamento": false,
       "id": 13
     },
@@ -68,7 +68,7 @@
       "nome": "Supermercado ",
       "categoria": "Moradia",
       "valor": 250.53,
-      "data": "02/09/2021",
+      "data": "02/02/2022",
       "pagamento": false,
       "id": 15
     },
@@ -76,15 +76,15 @@
       "nome": "Restaurante",
       "categoria": "Transporte",
       "valor": 44.6,
-      "data": "20/09/2021",
+      "data": "20/02/2022",
       "pagamento": false,
       "id": 16
     },
     {
       "nome": "",
       "categoria": "0",
-      "valor": 5656,
-      "data": "undefined/undefined/",
+      "valor": 56.56,
+      "data": "13/12/2021",
       "pagamento": false,
       "id": 17
     }
