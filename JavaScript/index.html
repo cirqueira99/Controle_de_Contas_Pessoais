@@ -20,7 +20,7 @@
       <div class="corpo">
 
         <div class="corpo__title">
-          <h1 class="title mb-0">Controle de Contas</h1>      
+          <h1 class="title">Controle de Contas</h1>      
         </div>
 
         <form class="form fs-12" action="#">
@@ -56,16 +56,16 @@
         </form>
 
         <div class="corpo__list">
-          <div class="all-money p-2">
-            <div class="all-money__box d-flex flex-column align-items-center justify-content-center">
+          <div class="all-money">
+            <div class="all-money__box">
               <div class="box__text"><p class="mb-1 mt-1">Soma Total</p></div>
               <div class="box__valor"><p id="v_total" class="text-primary mb-0 mt-2"></p></div>
             </div>
-            <div class="all-money__box d-flex flex-column align-items-center justify-content-center">
+            <div class="all-money__box">
               <div class="box__text"><p class="mb-1 mt-1">Total Pago</p></div>
               <div class="box__valor"><p id="v_pago" class="text-success mb-0 mt-2"></p></div>
             </div>
-            <div class="all-money__box d-flex flex-column align-items-center justify-content-center">
+            <div class="all-money__box">
               <div class="box__text"><p class="mb-1 mt-1">Total Pendente</p></div>
               <div class="box__valor"><p id="v_pend" class="text-danger mb-0 mt-2"></p></div>
             </div>
@@ -77,7 +77,7 @@
               <input type="month" class="mes__input fs-24" id="bday" name="mes" value="2017-01" data-mes>
               <span class="mt-1 m-l-50 pointer seta"  data-seta-prox><i class="fa fa-arrow-circle-right" aria-hidden="true"></i></span>
             </div>
-            <button type="submit" id="" class="btn btn-secondary " data-monthsearch-button>Pesquisar</button>
+            <button type="submit" class="btn btn-secondary" data-monthsearch-button><i class="fa fa-search me-2" aria-hidden="true"></i>Pesquisar</button>
           </div>
            
         </div>
@@ -98,6 +98,8 @@
           <tbody data-table-list></tbody>
         </table>
       </div>
+
+      <button id="bak-to-top" class="btn btn-warning btnscroll"><i class="fa fa-arrow-up me me-2" aria-hidden="true"></i>Voltar ao topo</button>
 
     </div>   
   </div>

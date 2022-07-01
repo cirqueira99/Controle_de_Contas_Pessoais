@@ -19,10 +19,10 @@ const criarNovaLinha = (id, data, nome, categoria, valor, pagamento) => {
   
   const conteudo = 
   `
-    <th class="text-center" scope="row">${data}</th>
-    <td>${nome}</td>
-    <td>${categoria}</td>
-    <td class="text-center">${money}</td>
+    <th style="with: 15%;" class="text-center" scope="row">${data}</th>
+    <td style="with: 25%;">${nome}</td>
+    <td style="with: 20%;">${categoria}</td>
+    <td style="with: 20%;" class="text-center">${money}</td>
   `;
 
   table_tr.innerHTML = conteudo;
@@ -50,7 +50,7 @@ const listarContas = async (data_mes) =>  {
   try {
     const table_list = document.querySelector('[data-table-list]');
     table_list.classList.add('border-light');
-    table_list.innerHTML = "";
+    // table_list.innerHTML = "";
 
     const v_total = document.getElementById('v_total');
     const v_pago = document.getElementById('v_pago');
@@ -77,7 +77,7 @@ const listarContas = async (data_mes) =>  {
         if(diff === 0){
           table_list.appendChild(criarNovaLinha(elemento.id, elemento.data, elemento.nome, elemento.categoria, elemento.valor, elemento.pagamento));
           
-          elemento.pagamento == true? pago += elemento.valor : pend += elemento.valor; 
+          elemento.pagamento == true ? pago += elemento.valor : pend += elemento.valor; 
         }        
       })
 

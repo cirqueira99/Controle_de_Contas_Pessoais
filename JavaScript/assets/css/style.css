@@ -10,6 +10,7 @@
 
 body{
   background-color: var(--fundo-page);
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 .p {
@@ -39,7 +40,6 @@ body{
     "list";
   grid-template-columns: 100%;
   grid-template-rows: 70px 120px auto;
-  font-family: "Space Mono", monospace;
   padding: 0.1rem 2rem 0rem 2rem;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
@@ -52,7 +52,7 @@ body{
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 60px;  
+  height: 65px;  
   grid-area: titulo;
   grid-row: 1 / 2;
 }
@@ -62,6 +62,7 @@ body{
   font-size: 1.5rem;
   font-weight: bold;
   text-align: center;
+  margin: 10px;
 }
 
 .form {
@@ -72,7 +73,7 @@ body{
   grid-template-rows: 50% 50%;
   grid-row: 2 / 3;
   padding: 0.5rem;
-  height: 120px;
+  height: 125px;
   align-items: center;
   
 }
@@ -87,7 +88,7 @@ body{
   display: flex;
   align-items: center;
   box-sizing: border-box;
-  height: 50px;  
+  height: 70px;  
 }
 
 .input {
@@ -112,15 +113,17 @@ body{
 
 .form__label {
   position: absolute;
-  top: 0.7rem;
+  top: 0.8rem;
   left: 0.5rem;
-  font-size: 1rem;
+  font-size: 16px;
+  font-weight: 600;;
   transition: all 0.3s;
   color: var(--blue-light);
 }
 
 .input:not(:placeholder-shown) + .form__label, .input:focus + .form__label {
   font-size: 0.6rem;
+  font-weight: 400;
   top: 0rem;
 }
 
@@ -175,13 +178,16 @@ body{
 
 .all-money{
   height: 120px;
-  margin-top: 5px;
   display: flex;
   justify-content: space-between;
   width: 100%;
 }
 
 .all-money__box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   opacity: 0.98;
   width: 28%;
 }
@@ -193,6 +199,10 @@ body{
   color: #f8f9fa;
   text-align: center;
   width: 100%;
+}
+
+.box__text p {
+  font-size: 20px;
 }
 
 .box__valor {
@@ -209,6 +219,9 @@ body{
 }
 
 .box__valor p {
+  font-size: 18px;
+  font-family: "Space Mono", monospace;
+  margin: 0px;
   width: 100%;
 }
 
@@ -222,10 +235,11 @@ body{
   height: 75px;
 }
 .corpo__mes button {
-  margin-top: 17px;
   height: 25px;
+  font-size: 18px;
+  margin-top: 17px;
+  padding: 0px;
   width: 152px;
-  padding-top: 0px;
 }
 
 .mes__input{
@@ -253,7 +267,7 @@ body{
 
 .seta {
   border-radius: 50px;
-  font-size: 16px;  
+  font-size: 20px;  
   text-align: center; 
   width: 30px;
 }
@@ -287,3 +301,14 @@ body{
   width: 55px;
 }
 
+#back-to-top {
+}
+
+.btnscroll {
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
+  display: none;
+  font-size: 15px;
+  color: #383838;
+}

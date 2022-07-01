@@ -18,6 +18,7 @@ const BotaoPagarConta = () => {
   botaoPagar.setAttribute('id', 'table_butpagar')
   botaoPagar.classList.add('btn');  
   botaoPagar.innerText = 'pagar';
+  botaoPagar.style.fontSize = "15px";
   botaoPagar.classList.add('btn-success');
   botaoPagar.addEventListener('click', PagarConta);
   
@@ -48,8 +49,9 @@ const BotaoDeleta = () => {
   botaoDeleta.setAttribute('id', 'table_butdelete')
   botaoDeleta.classList.add('btn');
   botaoDeleta.classList.add('btn-danger');
-  botaoDeleta.style.backgroundColor = "rgb(205 86 97)"
+  botaoDeleta.style.backgroundColor = "rgb(207 121 129)"
   botaoDeleta.style.color = "white"
+  botaoDeleta.style.fontSize = "15px"
   botaoDeleta.innerText = 'excluir';
   botaoDeleta.addEventListener('click', deletarConta);
 
