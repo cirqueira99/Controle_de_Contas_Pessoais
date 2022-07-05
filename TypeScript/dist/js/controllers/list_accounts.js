@@ -11,23 +11,25 @@ import { Conta } from "../models/accounts.js";
 import { Data } from "../functionalities/datas.js";
 import { Botao } from "../functionalities/create_buttons.js";
 export class ListarContas {
-    static criarNovaLinha(id, data, nome, categoria, valor, pagamento) {
-        const id_string = id.toString();
+    static criarNovaLinha(id, data, descricao, tipo, valor, pagamento) {
         const money = valor.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
         const table_tr = document.createElement('tr');
-        table_tr.classList.add('pointer');
         const td_pagar = document.createElement('td');
         td_pagar.classList.add('text-center');
+        td_pagar.classList.add('table-buttons');
         const td_excluir = document.createElement('td');
+        td_excluir.classList.add('text-center');
+        td_excluir.classList.add('table-buttons');
         const conteudo = `
-                    <th class="text-center" scope="row">${data}</th>
-                    <td>${nome}</td>
-                    <td>${categoria}</td>
-                    <td class="text-right">${money}</td>`;
+      <th style="with: 15%;" class="text-center" scope="row">${data}</th>
+      <td style="with: 25%;">${descricao}</td>
+      <td style="with: 20%;">${tipo}</td>
+      <td style="with: 20%;" class="text-center">${money}</td>
+    `;
         table_tr.innerHTML = conteudo;
-        pagamento == true ? td_pagar.appendChild(Botao.BotaoContaPaga()) : td_pagar.appendChild(Botao.BotaoPagarConta(id_string));
+        pagamento == true ? td_pagar.appendChild(Botao.BotaoContaPaga()) : td_pagar.appendChild(Botao.BotaoPagarConta(id));
         table_tr.appendChild(td_pagar);
-        td_excluir.appendChild(Botao.BotaoDeleta(id_string));
+        td_excluir.appendChild(Botao.BotaoDeleta(id));
         table_tr.appendChild(td_excluir);
         return table_tr;
     }
@@ -50,7 +52,7 @@ export class ListarContas {
                 datasUnicas.forEach((dia) => {
                     for (var [key, value] of Object.entries(lista_contas)) {
                         if (value.data === dia) {
-                            table_list.appendChild(this.criarNovaLinha(value.id, value.data, value.nome, value.categoria, value.valor, value.pagamento));
+                            table_list.appendChild(this.criarNovaLinha(value.id, value.data, value.descricao, value.tipo, value.valor, value.pagamento));
                             value.pagamento == true ? pago += value.valor : pend += value.valor;
                         }
                     }

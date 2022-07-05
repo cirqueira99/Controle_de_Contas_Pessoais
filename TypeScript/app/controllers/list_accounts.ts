@@ -3,30 +3,33 @@ import { Data } from "../functionalities/datas.js";
 import { Botao } from "../functionalities/create_buttons.js";
 
 export class ListarContas {
-  private static criarNovaLinha(id: number, data: Date, nome: string, categoria: string, valor: number, pagamento: boolean ): HTMLElement{ // mudar para "HTMLTableElement.rows"
-    const id_string: string = id.toString()
+  private static criarNovaLinha(id: number, data: Date, descricao: string, tipo: string, valor: number, pagamento: boolean ): HTMLElement{ // mudar para "HTMLTableElement.rows"
     const money: string = valor.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
     
     const table_tr: HTMLTableRowElement = document.createElement('tr');
-    table_tr.classList.add('pointer');
     
     const td_pagar: HTMLElement = document.createElement('td');
     td_pagar.classList.add('text-center');
+    td_pagar.classList.add('table-buttons');
     
     const td_excluir: HTMLElement = document.createElement('td');
+    td_excluir.classList.add('text-center');
+    td_excluir.classList.add('table-buttons');
     
-    const conteudo = `
-                    <th class="text-center" scope="row">${data}</th>
-                    <td>${nome}</td>
-                    <td>${categoria}</td>
-                    <td class="text-right">${money}</td>`;
+    const conteudo = 
+    `
+      <th style="with: 15%;" class="text-center" scope="row">${data}</th>
+      <td style="with: 25%;">${descricao}</td>
+      <td style="with: 20%;">${tipo}</td>
+      <td style="with: 20%;" class="text-center">${money}</td>
+    `;
 
     table_tr.innerHTML = conteudo;
 
-    pagamento==true ? td_pagar.appendChild(Botao.BotaoContaPaga()) : td_pagar.appendChild(Botao.BotaoPagarConta(id_string));
+    pagamento==true ? td_pagar.appendChild(Botao.BotaoContaPaga()) : td_pagar.appendChild(Botao.BotaoPagarConta(id));
     table_tr.appendChild(td_pagar);
 
-    td_excluir.appendChild(Botao.BotaoDeleta(id_string));
+    td_excluir.appendChild(Botao.BotaoDeleta(id));
     table_tr.appendChild(td_excluir);
 
     return table_tr;
@@ -56,8 +59,8 @@ export class ListarContas {
           
       datasUnicas.forEach( (dia: string)=>{
         for( var [key, value] of Object.entries(lista_contas) ){
-          if( value.data === dia ){            
-            table_list.appendChild(this.criarNovaLinha(value.id, value.data, value.nome, value.categoria, value.valor, value.pagamento));
+          if( value.data === dia ){          
+            table_list.appendChild(this.criarNovaLinha(value.id, value.data, value.descricao, value.tipo, value.valor, value.pagamento));
             
             value.pagamento == true? pago += value.valor : pend += value.valor;
           }          

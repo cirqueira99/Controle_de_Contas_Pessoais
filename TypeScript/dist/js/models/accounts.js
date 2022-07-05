@@ -8,25 +8,25 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 export class Conta {
-    constructor(nome, tipo, valor, data) {
-        this.nome = nome;
+    constructor(descricao, tipo, valor, data) {
+        this.descricao = descricao;
         this.tipo = tipo;
         this.valor = valor;
         this.data = data;
         this.pagamento = false;
     }
     get dadosConta() {
-        var dados = [this.nome, this.tipo, this.tipo, this.data, this.pagamento];
+        var dados = [this.descricao, this.tipo, this.tipo, this.data, this.pagamento];
         return dados;
     }
     cadastrarConta() {
-        return fetch(`http://localhost:3000/contas`, {
+        return fetch(`http://localhost:3005/contas`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                nome: this.nome,
+                descricao: this.descricao,
                 tipo: this.tipo,
                 valor: this.valor,
                 data: this.data,
@@ -48,13 +48,13 @@ export class Conta {
             for (var [key, value] of Object.entries(conta)) {
                 dados.push(value);
             }
-            return fetch(`http://localhost:3000/contas/${id}`, {
+            return fetch(`http://localhost:3005/contas/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-type': 'application/json'
                 },
                 body: JSON.stringify({
-                    nome: dados[0],
+                    descricao: dados[0],
                     tipo: dados[1],
                     valor: dados[2],
                     data: dados[3],
@@ -85,7 +85,7 @@ export class Conta {
         });
     }
     static buscarDadosContas() {
-        return fetch(`http://localhost:3000/contas`)
+        return fetch(`http://localhost:3005/contas`)
             .then(resposta => {
             if (resposta.ok) {
                 return resposta.json();
@@ -96,11 +96,14 @@ export class Conta {
     static deletarConta(evento) {
         const botao = evento.target;
         const id = botao.id;
-        return fetch(`http://localhost:3000/contas/${id}`, {
+        return fetch(`http://localhost:3005/contas/${id.substring(1)}`, {
             method: 'DELETE'
         })
             .then(resposta => {
-            if (!resposta.ok) {
+            if (resposta.ok) {
+                location.reload();
+            }
+            else {
                 throw new Error('Não foi possível deletar a conta');
             }
         });

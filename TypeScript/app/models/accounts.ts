@@ -1,12 +1,12 @@
 export class Conta{
-  nome: string;
+  descricao: string;
   tipo: string;
   valor: number;
   data: string;
   pagamento: Boolean;
 
-  constructor(nome: string, tipo: string, valor: number, data: string){
-    this.nome = nome;
+  constructor(descricao: string, tipo: string, valor: number, data: string){
+    this.descricao = descricao;
     this.tipo = tipo;
     this.valor = valor;
     this.data = data;
@@ -14,20 +14,20 @@ export class Conta{
   }
 
   get dadosConta(){
-    var dados = [ this.nome, this.tipo, this.tipo, this.data, this.pagamento ];
+    var dados = [ this.descricao, this.tipo, this.tipo, this.data, this.pagamento ];
     
     
     return dados;  
   }
 
   cadastrarConta() {
-    return fetch(`http://localhost:3000/contas`, {
+    return fetch(`http://localhost:3005/contas`, {
       method: 'POST', 
       headers: {
           'Content-Type' : 'application/json'
       },
       body: JSON.stringify({
-          nome: this.nome,
+          descricao: this.descricao,
           tipo: this.tipo,
           valor: this.valor,
           data: this.data,
@@ -49,13 +49,13 @@ export class Conta{
 
     for( var [key, value] of Object.entries(conta) ) { dados.push(value) }
     
-    return fetch(`http://localhost:3000/contas/${id}`, {
+    return fetch(`http://localhost:3005/contas/${id}`, {
       method: 'PUT',
       headers: { 
           'Content-type' : 'application/json'
       },
       body: JSON.stringify({
-        nome:  dados[0],
+        descricao:  dados[0],
         tipo:  dados[1],
         valor: dados[2],
         data:  dados[3],
@@ -86,7 +86,7 @@ export class Conta{
   }
 
   public static buscarDadosContas(): Object{
-    return fetch(`http://localhost:3000/contas`)
+    return fetch(`http://localhost:3005/contas`)
     .then(resposta => {
         if(resposta.ok){
             return resposta.json()
@@ -99,12 +99,14 @@ export class Conta{
     const botao: HTMLButtonElement = <HTMLButtonElement>evento.target;
     const id: string = botao.id
     
-    return fetch(`http://localhost:3000/contas/${id}`, {
+    return fetch(`http://localhost:3005/contas/${id.substring(1)}`, {
         method: 'DELETE'
     })
     .then( resposta => { 
-        if(!resposta.ok){
-        throw new Error('Não foi possível deletar a conta')
+        if(resposta.ok){
+          location.reload();
+        }else{
+          throw new Error('Não foi possível deletar a conta');
         }
     });
   }

@@ -9,10 +9,10 @@ export class Data {
       const ano = lista[conta].data.split("/")[2]
       const mes = lista[conta].data.split("/")[1]
       const mes_lista: string = ano + "-" + mes;  
-      
+
       if( (datasUnicas.indexOf(lista[conta].data) === -1) && (mes_lista == data_mes) ){ datasUnicas.push(lista[conta].data) }
     } 
-
+        
     this.ordenaDatas(datasUnicas);  
 
     return datasUnicas;

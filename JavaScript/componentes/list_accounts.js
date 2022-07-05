@@ -3,34 +3,30 @@ import { Datas } from './datas.js';
 
 
 
-const criarNovaLinha = (id, data, nome, categoria, valor, pagamento) => {   
+const criarNovaLinha = (id, data, descricao, tipo, valor, pagamento) => {   
   const table_tr = document.createElement('tr');
-  table_tr.setAttribute('id', id)
-
   const td_pagar = document.createElement('td');
   td_pagar.classList.add('text-center');
   td_pagar.classList.add('table-buttons');
-
   const td_excluir = document.createElement('td');
   td_excluir.classList.add('text-center');
   td_excluir.classList.add('table-buttons');
-
   const money = valor.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
   
   const conteudo = 
   `
     <th style="with: 15%;" class="text-center" scope="row">${data}</th>
-    <td style="with: 25%;">${nome}</td>
-    <td style="with: 20%;">${categoria}</td>
+    <td style="with: 25%;">${descricao}</td>
+    <td style="with: 20%;">${tipo}</td>
     <td style="with: 20%;" class="text-center">${money}</td>
   `;
 
   table_tr.innerHTML = conteudo;
 
-  pagamento==true ? td_pagar.appendChild(Botao.BotaoContaPaga()) : td_pagar.appendChild(Botao.BotaoPagarConta());
+  pagamento==true ? td_pagar.appendChild(Botao.BotaoContaPaga()) : td_pagar.appendChild(Botao.BotaoPagarConta(id));
   table_tr.appendChild(td_pagar);
 
-  td_excluir.appendChild(Botao.BotaoDeleta());
+  td_excluir.appendChild(Botao.BotaoDeleta(id));
   table_tr.appendChild(td_excluir);
 
   return table_tr;
@@ -48,9 +44,14 @@ const buscarDadosContas = () => {
 
 const listarContas = async (data_mes) =>  {
   try {
+    const mes_input = document.querySelector('[data-mes]');
+    mes_input.value = data_mes;
+    sessionStorage.setItem('mes_storage', data_mes)
+    console.log(sessionStorage.getItem('mes_storage'))
+
     const table_list = document.querySelector('[data-table-list]');
     table_list.classList.add('border-light');
-    // table_list.innerHTML = "";
+    table_list.innerHTML = "";
 
     const v_total = document.getElementById('v_total');
     const v_pago = document.getElementById('v_pago');
@@ -62,8 +63,6 @@ const listarContas = async (data_mes) =>  {
 
     const lista = await buscarDadosContas();  
     
-    const mes_input = document.querySelector('[data-mes]');
-    mes_input.value = data_mes;
 
     const datasUnicas = Datas.removeDatasRepetidas(lista, data_mes);
     
@@ -73,9 +72,8 @@ const listarContas = async (data_mes) =>  {
       lista.forEach(elemento => {
         const dia = moment(elemento.data, 'DD/MM/YYYY');
         const diff = dataMoment.diff(dia);
-
         if(diff === 0){
-          table_list.appendChild(criarNovaLinha(elemento.id, elemento.data, elemento.nome, elemento.categoria, elemento.valor, elemento.pagamento));
+          table_list.appendChild(criarNovaLinha(elemento.id, elemento.data, elemento.descricao, elemento.tipo, elemento.valor, elemento.pagamento));
           
           elemento.pagamento == true ? pago += elemento.valor : pend += elemento.valor; 
         }        
@@ -131,6 +129,5 @@ export const Listar = {
   criarNovaLinha,
   buscarDadosContas,
   mesAnt,
-  mesProx, 
-  listarInputMes
+  mesProx
 }

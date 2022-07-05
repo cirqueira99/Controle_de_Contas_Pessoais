@@ -1,36 +1,26 @@
 import { deletarConta } from "./delet_accounts.js"
-import { atualizarConta } from "./update_accounts.js";
+import {PagarConta} from "./pay_account.js"
 
-
-
-const PagarConta = (evento) => {
-  const botao = evento.target;
-  const id = botao.parentElement.parentElement.id;
-  const table_td = botao.parentElement;
-  
-  atualizarConta(id);
-}
-
-
-const BotaoPagarConta = () => {
+const BotaoPagarConta = (id) => {
   const botaoPagar = document.createElement('button');
   botaoPagar.setAttribute('type', 'button')
-  botaoPagar.setAttribute('id', 'table_butpagar')
+  botaoPagar.setAttribute('id', 'p'+id)
   botaoPagar.classList.add('btn');  
   botaoPagar.innerText = 'pagar';
   botaoPagar.style.fontSize = "15px";
   botaoPagar.classList.add('btn-success');
+  botaoPagar.classList.add('table_butpagar');
   botaoPagar.addEventListener('click', PagarConta);
   
   return botaoPagar;  
 }
 
-const BotaoContaPaga = () => {
+const BotaoContaPaga = (id) => {
   const botaoPago = document.createElement('button');
   botaoPago.setAttribute('type', 'button')
-  botaoPago.setAttribute('id', 'table_butpago')
   botaoPago.classList.add('btn');
   botaoPago.classList.add('btn-info');
+  botaoPago.classList.add('table_butpago');
   botaoPago.style.backgroundColor = "transparent"
   botaoPago.style.border = "transparent"
   botaoPago.disabled = "true"
@@ -43,12 +33,13 @@ const BotaoContaPaga = () => {
   return botaoPago;
 }
 
-const BotaoDeleta = () => { 
+const BotaoDeleta = (id) => { 
   const botaoDeleta = document.createElement('button');
   botaoDeleta.setAttribute('type', 'button')
-  botaoDeleta.setAttribute('id', 'table_butdelete')
+  botaoDeleta.setAttribute('id', 'd'+id)
   botaoDeleta.classList.add('btn');
   botaoDeleta.classList.add('btn-danger');
+  botaoDeleta.classList.add('table_butdelete');
   botaoDeleta.style.backgroundColor = "rgb(207 121 129)"
   botaoDeleta.style.color = "white"
   botaoDeleta.style.fontSize = "15px"

@@ -30,14 +30,14 @@ export class Conta{
     })
   }
   
-  atualizaConta(id, data, nome, tipo, valor, pagamento) {
+  atualizaConta(id, data, descricao, tipo, valor, pagamento) {
     return fetch(`http://localhost:3000/contas/${id}`, {
         method: 'PUT',
         headers: { 
             'Content-type' : 'application/json'
         },
         body: JSON.stringify({
-          nome: nome,
+          descricao: descricao,
           tipo: tipo,
           valor: valor,
           data: data,
@@ -51,7 +51,5 @@ export class Conta{
         throw new Error('Não foi possível detalhar um cliente')
     })
   }
-  // get dados(){
-  //   return this._cpf;
-  // }
+
 }

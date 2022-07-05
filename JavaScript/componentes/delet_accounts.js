@@ -1,9 +1,9 @@
 
 export const deletarConta = (evento) => { 
-    const elemento_td = evento.target;
-    const table_tr_id = elemento_td.parentElement.parentElement.id
+    const botao = evento.target;
+    const id = botao.id;
     
-    return fetch(`http://localhost:3000/contas/${table_tr_id}`, {
+    return fetch(`http://localhost:3000/contas/${id.substring(1)}`, {
         method: 'DELETE'
     })
     .then( resposta => { 

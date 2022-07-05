@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=BioRhyme&amp;family=Space+Mono&amp;display=swap">
   <link rel="stylesheet" href="./node_modules/font-awesome/css/font-awesome.css">
 
-  <title>Controle de Contas</title>
+  <title>Controle de Contas | JS</title>
 </head>
 <body>
   <div class="container">
@@ -25,9 +25,8 @@
 
         <form class="form fs-12" action="#">
           <div class="input__container form__nome">
-            <input class="input" name="nome" id="nome" type="text" placeholder="Descrição" data-tipo="nome" required>
+            <input class="input" name="nome" id="nome" type="text" placeholder="Descrição" data-form-description required>
             <label class="form__label" for="nome">Descrição</label>
-            <!--<span class="input-mensagem-erro">Este campo não está válido</span>-->
           </div>
 
           <div class="input__container form__select">
@@ -42,7 +41,7 @@
           </div>
 
           <div class="input__container form__money">
-            <input class="input" id="valor" type="number" data-form-money placeholder="Somente números: R$ 00.00" required>
+            <input class="input" id="valor" type="number" data-form-money placeholder="00.00" required>
             <label class="form__label" for="valor">Valor R$ 0,00</label>
           </div>
 
@@ -51,31 +50,32 @@
           </div>
 
           <div class="form__button text-center">
-            <button type="submit" id="" class="btn btn-success " data-form-button onclick="criarConta()"> Adicionar</button>
+            <button type="submit" id="" class="btn btn-success " data-form-button> Adicionar</button>
           </div>
         </form>
 
         <div class="corpo__list">
-          <div class="all-money">
+
+          <div class="all-money mt-4">
             <div class="all-money__box">
               <div class="box__text"><p class="mb-1 mt-1">Soma Total</p></div>
-              <div class="box__valor"><p id="v_total" class="text-primary mb-0 mt-2"></p></div>
+              <div class="box__valor"><p id="v_total" class="text-primary"></p></div>
             </div>
             <div class="all-money__box">
               <div class="box__text"><p class="mb-1 mt-1">Total Pago</p></div>
-              <div class="box__valor"><p id="v_pago" class="text-success mb-0 mt-2"></p></div>
+              <div class="box__valor"><p id="v_pago" class="text-success"></p></div>
             </div>
             <div class="all-money__box">
               <div class="box__text"><p class="mb-1 mt-1">Total Pendente</p></div>
-              <div class="box__valor"><p id="v_pend" class="text-danger mb-0 mt-2"></p></div>
+              <div class="box__valor"><p id="v_pend" class="text-danger"></p></div>
             </div>
           </div>
 
           <div class="corpo__mes">
             <div class="month-search">
-              <span class="mt-1 m-r-50 pointer seta"  data-seta-ant><i class="fa fa-arrow-circle-left" aria-hidden="true"></i></span>
+              <span class="seta"  data-seta-ant><i class="fa fa-arrow-circle-left" aria-hidden="true"></i></span>
               <input type="month" class="mes__input fs-24" id="bday" name="mes" value="2017-01" data-mes>
-              <span class="mt-1 m-l-50 pointer seta"  data-seta-prox><i class="fa fa-arrow-circle-right" aria-hidden="true"></i></span>
+              <span class="seta"  data-seta-prox><i class="fa fa-arrow-circle-right" aria-hidden="true"></i></span>
             </div>
             <button type="submit" class="btn btn-secondary" data-monthsearch-button><i class="fa fa-search me-2" aria-hidden="true"></i>Pesquisar</button>
           </div>
@@ -83,7 +83,7 @@
         </div>
       </div>
 
-      <div class="conteudo__list">
+      <div class="table__list">
         <table id="corpo__table" class="table table-striped table-hover">
           <thead class="corpo__table__thead text-light">  
             <tr>
@@ -107,7 +107,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
   
   <script src="./node_modules/jquery/dist/jquery.js"></script>
-  <!-- <script src="./node_modules/popper.js/dist/popper.js"></script> -->
   <script src="./node_modules/bootstrap/dist/js/bootstrap.js"></script>
 
   <script type="module" src="main.js"></script>

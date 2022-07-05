@@ -113,16 +113,15 @@ body{
 
 .form__label {
   position: absolute;
-  top: 0.8rem;
+  top: 1.5rem;
   left: 0.5rem;
   font-size: 16px;
-  font-weight: 600;;
   transition: all 0.3s;
   color: var(--blue-light);
 }
 
 .input:not(:placeholder-shown) + .form__label, .input:focus + .form__label {
-  font-size: 0.6rem;
+  font-size: 0.8rem;
   font-weight: 400;
   top: 0rem;
 }
@@ -170,10 +169,11 @@ body{
   width: 90%;
 }
 
-.corpo__list{
-  grid-area: list;
-  grid-row: 3 / 4;
-  margin-top: 20px;
+.corpo__list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 
 .all-money{
@@ -202,7 +202,8 @@ body{
 }
 
 .box__text p {
-  font-size: 20px;
+  font-size: 18px;
+  color: var(--blue-light);
 }
 
 .box__valor {
@@ -233,12 +234,17 @@ body{
   align-items: center;
   margin: 45px 0px 30px 0px;
   height: 75px;
+  width: 85%;
 }
+
 .corpo__mes button {
   height: 25px;
-  font-size: 18px;
+  font-size: 15px;
   margin-top: 17px;
-  padding: 0px;
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 152px;
 }
 
@@ -257,24 +263,31 @@ body{
 
 .month-search {
   display: flex;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
+  width: 100%;
 }
 
 .month-search button{
-
+  
 }
 
 .seta {
   border-radius: 50px;
   font-size: 20px;  
   text-align: center; 
+  cursor: pointer;
   width: 30px;
 }
 
 .seta:hover {
   background-color: var(--blue-dark);
   font-size: 20px;
+}
+
+.table__list{
+  grid-area: list;
+  grid-row: 3 / 4;
 }
 
 #corpo__table {
@@ -286,15 +299,11 @@ body{
   background: var(--blue-dark);
 }
 
-.pointer{
-  cursor: pointer;
-}
-
 .table-buttons {
   width: 55px;
 }
 
-#table_butpagar, #table_butpago, #table_butdelete {
+.table_butpagar, .table_butpago, .table_butdelete {
   height: 30px;
   padding: 0;
   font-size: 0.8rem;
@@ -307,7 +316,7 @@ body{
 .btnscroll {
   position: fixed;
   bottom: 50px;
-  right: 50px;
+  right: 280px;
   display: none;
   font-size: 15px;
   color: #383838;

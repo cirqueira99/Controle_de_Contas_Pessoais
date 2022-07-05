@@ -1,61 +1,63 @@
 import { Conta } from "../models/accounts.js"; 
 
 export class Botao{
-  public static BotaoDeleta(id: string): HTMLButtonElement { 
-    const botaoDeleta: HTMLButtonElement = document.createElement('button');
-    botaoDeleta.setAttribute('type', 'button')
-    botaoDeleta.setAttribute('id', id);
-    botaoDeleta.classList.add('btn');
-    botaoDeleta.classList.add('table_butpagar');
-  
-    const but_span: HTMLSpanElement = document.createElement('span');
-    but_span.innerHTML = `<i class="fas fa-trash-alt"></i>`;
-  
-    botaoDeleta.appendChild(but_span);
-    botaoDeleta.classList.add('btn-secondary');
-   
-    
-    botaoDeleta.addEventListener('click', Conta.deletarConta);
-  
-    return botaoDeleta;
-  }
   
   public static PagarConta(evento: Event): void{
     const botao: HTMLButtonElement = <HTMLButtonElement>evento.target;
     const id: string = botao.id
     
-    Conta.atualizarConta(id); 
+    Conta.atualizarConta(id.substring(1)); 
+    location.reload();
   }
   
   
-  public static BotaoPagarConta(id: string): HTMLButtonElement{
+  public static BotaoPagarConta(id: number): HTMLButtonElement{
     const botaoPagar: HTMLButtonElement = document.createElement('button');
     botaoPagar.setAttribute('type', 'button')
-    botaoPagar.setAttribute('id', id)
-    botaoPagar.classList.add('btn');
-  
+    botaoPagar.setAttribute('id', 'p'+id)
+    botaoPagar.classList.add('btn');    
     botaoPagar.innerText = 'pagar';
+    botaoPagar.style.fontSize = "15px";
     botaoPagar.classList.add('btn-success');
     botaoPagar.classList.add('table_butpagar');
     botaoPagar.addEventListener('click', this.PagarConta);
-  
-      
+    
     return botaoPagar;  
   }
   
   public static BotaoContaPaga(): HTMLButtonElement{
+    
     const botaoPago: HTMLButtonElement = document.createElement('button');
     botaoPago.setAttribute('type', 'button')
     botaoPago.classList.add('btn');
-    botaoPago.classList.add('table_butpagar');
-  
-    const but_span: HTMLSpanElement = document.createElement('span');
-    but_span.innerHTML = `<i class='fas fa-check'>`;
-  
-    botaoPago.appendChild(but_span);
     botaoPago.classList.add('btn-info');
-    botaoPago.disabled = true
-  
+    botaoPago.classList.add('table_butpago');
+    botaoPago.style.backgroundColor = "transparent";
+    botaoPago.style.border = "transparent";
+    botaoPago.disabled = true;
+     
+    const but_span: HTMLSpanElement = document.createElement('span');
+    but_span.innerHTML = `<i class="fa fa-check" aria-hidden="true"></i>`;
+    
+    botaoPago.appendChild(but_span);
+
     return botaoPago;
+  }
+  
+  public static BotaoDeleta(id: number): HTMLButtonElement { 
+
+    const botaoDeleta = document.createElement('button');
+    botaoDeleta.setAttribute('type', 'button')
+    botaoDeleta.setAttribute('id', 'd'+id)
+    botaoDeleta.classList.add('btn');
+    botaoDeleta.classList.add('btn-danger');
+    botaoDeleta.classList.add('table_butdelete');
+    botaoDeleta.style.backgroundColor = "rgb(207 121 129)"
+    botaoDeleta.style.color = "white"
+    botaoDeleta.style.fontSize = "15px"
+    botaoDeleta.innerText = 'excluir';      
+    botaoDeleta.addEventListener('click', Conta.deletarConta);
+  
+    return botaoDeleta;
   }
 }

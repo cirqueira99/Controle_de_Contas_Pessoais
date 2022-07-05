@@ -8,7 +8,7 @@
     "start": "concurrently \"npm run watch\" \"npm run database\" \"npm run server\" ",
     "compile": "tsc",
     "watch": "tsc -w",
-    "database": "json-server --watch ./dist/database/db.json",
+    "database": "json-server --watch ./dist/database/db.json --port 3005",
     "server": "lite-server --baseDir=../TypeScript"
   },
   "author": "",

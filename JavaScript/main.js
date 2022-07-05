@@ -28,5 +28,5 @@ Listar.listarContas(mes_valor);
 window.addEventListener("scroll", (event) => {
   var scroll_y = window.scrollY;
 
-  scroll_y < 499 ? document.getElementById('bak-to-top').style.display = 'none': document.getElementById('bak-to-top').style.display = 'block';
+  scroll_y < 399 ? document.getElementById('bak-to-top').style.display = 'none': document.getElementById('bak-to-top').style.display = 'block';
 })
