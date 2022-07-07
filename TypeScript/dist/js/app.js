@@ -13,9 +13,18 @@ seta_ant.addEventListener('click', ListarContas.mesAnt);
 seta_prox.addEventListener('click', ListarContas.mesProx);
 input_mes.addEventListener('blur', ListarContas.listarImputMes);
 const form_select = document.querySelector('[data-form-select]');
-form_select.addEventListener('blur', function (event) {
+form_select.addEventListener('focus', function (event) {
     const element = event.target;
-    element.style.color = 'white';
+    element.style.color = 'rgb(0, 238, 255)';
+    const label_select = document.getElementById('label_tipo');
+    label_select.style.display = 'block';
+});
+const form_date = document.querySelector('[data-form-date]');
+form_date.addEventListener('focus', function (event) {
+    const element = event.target;
+    element.style.color = 'rgb(0, 238, 255)';
+    const label_date = document.getElementById('label_date');
+    label_date.style.display = 'block';
 });
 var mes_storage = sessionStorage.getItem('mes_storage');
 console.log(mes_storage);
