@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="./assets/css/reset.css">
   <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="./assets/css/style.css">
-  <link rel="stylesheet" href="./assets/css/util.css">
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=BioRhyme&amp;family=Space+Mono&amp;display=swap">
   <link rel="stylesheet" href="./node_modules/font-awesome/css/font-awesome.css">
@@ -23,14 +22,14 @@
           <h1 class="title">Controle de Contas</h1>      
         </div>
 
-        <form class="form fs-12" action="#">
+        <form class="form" action="#">
           <div class="input__container form__nome">
             <input class="input" name="nome" id="nome" type="text" placeholder="Descrição" data-form-description required>
             <label class="form__label" for="nome">Descrição</label>
           </div>
 
           <div class="input__container form__select">
-            <select class=" input" name="categorie" id="categorie" data-form-select> 
+            <select class="input" name="tipo" id="tipo" data-form-select> 
               <option value="0" class="select-first">Selecione um tipo...</option>
               <option value="Conta de Luz">Conta de Luz</option>
               <option value="Conta de Água">Conta de Água</option>
@@ -38,6 +37,7 @@
               <option value="Educação">Educação</option>
               <option value="Transporte">Transporte</option>
             </select>
+            <label id="label_tipo" class="form__label" for="tipo">Tipo</label>
           </div>
 
           <div class="input__container form__money">
@@ -46,7 +46,8 @@
           </div>
 
           <div class="input__container form__date">
-            <input class="input" type="date" data-form-date required>
+            <input id="form-date" class="input" type="date" data-form-date required>
+            <label id="label_date" class="form__label" for="form-date">Data</label>
           </div>
 
           <div class="form__button text-center">

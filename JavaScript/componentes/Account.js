@@ -1,7 +1,7 @@
 export class Conta{
   
-  constructor(nome="", tipo="", valor=0, data="0"){
-    this.nome = nome;
+  constructor(descricao="", tipo="", valor=0, data="0"){
+    this.descricao = descricao;
     this.tipo = tipo;
     this.valor = parseFloat(valor);
     this.data = data;
@@ -15,7 +15,7 @@ export class Conta{
           'Content-Type' : 'application/json'
       },
       body: JSON.stringify({
-          nome: this.nome,
+          descricao: this.descricao,
           tipo: this.tipo,
           valor: this.valor,
           data: this.data,

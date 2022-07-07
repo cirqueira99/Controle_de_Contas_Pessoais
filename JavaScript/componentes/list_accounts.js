@@ -4,7 +4,7 @@ import { Conta } from './Account.js';
 
 
 
-const criarNovaLinha = (id, data, descricao, tipo, valor, pagamento) => {   
+const criarNovaLinha = (id, data, descricao, tipo, valor, pagamento) => {  
   const table_tr = document.createElement('tr');
   const td_pagar = document.createElement('td');
   td_pagar.classList.add('text-center');
@@ -40,7 +40,6 @@ const listarContas = async (data_mes) =>  {
     const mes_input = document.querySelector('[data-mes]');
     mes_input.value = data_mes;
     sessionStorage.setItem('mes_storage', data_mes)
-    console.log(sessionStorage.getItem('mes_storage'))
 
     const table_list = document.querySelector('[data-table-list]');
     table_list.classList.add('border-light');

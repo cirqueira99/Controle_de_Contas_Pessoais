@@ -1,4 +1,4 @@
-import { Conta } from "./account.js";
+import { Conta } from "./Account.js";
 
 export const confirmDeleteAccout = (evento) => {
     const botao = evento.target;

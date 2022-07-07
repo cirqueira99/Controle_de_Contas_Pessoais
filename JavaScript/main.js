@@ -13,7 +13,10 @@ seta_prox.addEventListener('click', Listar.mesProx);
 input_mes.addEventListener('click', Listar.listarInputMes)
 
 const form_select = document.querySelector('[data-form-select]');
-form_select.addEventListener('blur', Form.changeStyle)
+form_select.addEventListener('focus', Form.changeStyleSelect);
+
+const form_date = document.querySelector('[data-form-date]');
+form_date.addEventListener('focus', Form.changeStyleDate)
 
 
 var mes_storage = sessionStorage.getItem('mes_storage');
