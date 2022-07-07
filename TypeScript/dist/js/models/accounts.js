@@ -19,6 +19,30 @@ export class Conta {
         var dados = [this.descricao, this.tipo, this.tipo, this.data, this.pagamento];
         return dados;
     }
+    static buscarDadosContas() {
+        return fetch(`http://localhost:3005/contas`)
+            .then(resposta => {
+            if (resposta.ok) {
+                return resposta.json();
+            }
+            throw new Error('Não foi possível listar as contas');
+        });
+    }
+    static buscarDadosContaUni(id) {
+        return __awaiter(this, void 0, void 0, function* () {
+            try {
+                const lista_contas = yield this.buscarDadosContas();
+                for (var [key, value] of Object.entries(lista_contas)) {
+                    if (value.id == id) {
+                        return value;
+                    }
+                }
+            }
+            catch (erro) {
+                console.log(erro);
+            }
+        });
+    }
     cadastrarConta() {
         return fetch(`http://localhost:3005/contas`, {
             method: 'POST',
@@ -63,40 +87,15 @@ export class Conta {
             })
                 .then(resposta => {
                 if (resposta.ok) {
+                    location.reload();
                     return resposta.json();
                 }
                 throw new Error('Não foi possível detalhar um cliente');
             });
         });
     }
-    static buscarDadosContaUni(id) {
-        return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const lista_contas = yield this.buscarDadosContas();
-                for (var [key, value] of Object.entries(lista_contas)) {
-                    if (value.id == id) {
-                        return value;
-                    }
-                }
-            }
-            catch (erro) {
-                console.log(erro);
-            }
-        });
-    }
-    static buscarDadosContas() {
-        return fetch(`http://localhost:3005/contas`)
-            .then(resposta => {
-            if (resposta.ok) {
-                return resposta.json();
-            }
-            throw new Error('Não foi possível listar as contas');
-        });
-    }
-    static deletarConta(evento) {
-        const botao = evento.target;
-        const id = botao.id;
-        return fetch(`http://localhost:3005/contas/${id.substring(1)}`, {
+    static deletarConta(id) {
+        return fetch(`http://localhost:3005/contas/${id}`, {
             method: 'DELETE'
         })
             .then(resposta => {
@@ -107,5 +106,21 @@ export class Conta {
                 throw new Error('Não foi possível deletar a conta');
             }
         });
+    }
+    static confirmPayAccout(evento) {
+        const botao = evento.target;
+        const id = botao.id;
+        var result = confirm("Você realmente deseja PAGAR essa conta?");
+        if (result == true) {
+            Conta.atualizarConta(id.substring(1));
+        }
+    }
+    static confirmDeleteAccout(evento) {
+        const botao = evento.target;
+        const id = botao.id;
+        var result = confirm("Você realmente deseja EXCLUIR essa conta?");
+        if (result == true) {
+            Conta.deletarConta(id.substring(1));
+        }
     }
 }

@@ -1,26 +1,17 @@
 import { Conta } from "../models/accounts.js"; 
 
-export class Botao{
-  
-  public static PagarConta(evento: Event): void{
-    const botao: HTMLButtonElement = <HTMLButtonElement>evento.target;
-    const id: string = botao.id
-    
-    Conta.atualizarConta(id.substring(1)); 
-    location.reload();
-  }
-  
+export class Botao{  
   
   public static BotaoPagarConta(id: number): HTMLButtonElement{
     const botaoPagar: HTMLButtonElement = document.createElement('button');
     botaoPagar.setAttribute('type', 'button')
     botaoPagar.setAttribute('id', 'p'+id)
     botaoPagar.classList.add('btn');    
-    botaoPagar.innerText = 'pagar';
-    botaoPagar.style.fontSize = "15px";
     botaoPagar.classList.add('btn-success');
     botaoPagar.classList.add('table_butpagar');
-    botaoPagar.addEventListener('click', this.PagarConta);
+    botaoPagar.innerText = 'pagar';
+    botaoPagar.style.fontSize = "15px";
+    botaoPagar.addEventListener('click', Conta.confirmPayAccout);
     
     return botaoPagar;  
   }
@@ -56,7 +47,7 @@ export class Botao{
     botaoDeleta.style.color = "white"
     botaoDeleta.style.fontSize = "15px"
     botaoDeleta.innerText = 'excluir';      
-    botaoDeleta.addEventListener('click', Conta.deletarConta);
+    botaoDeleta.addEventListener('click', Conta.confirmDeleteAccout);
   
     return botaoDeleta;
   }

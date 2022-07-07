@@ -1,5 +1,6 @@
 import { Botao } from './create_buttons.js'
 import { Datas } from './datas.js';
+import { Conta } from './Account.js';
 
 
 
@@ -32,15 +33,7 @@ const criarNovaLinha = (id, data, descricao, tipo, valor, pagamento) => {
   return table_tr;
 };
 
-const buscarDadosContas = () => {
-  return fetch(`http://localhost:3000/contas`)
-  .then(resposta => {
-      if(resposta.ok){
-          return resposta.json()
-      }
-      throw new Error('Não foi possível listar as contas')
-  })
-}
+
 
 const listarContas = async (data_mes) =>  {
   try {
@@ -61,7 +54,8 @@ const listarContas = async (data_mes) =>  {
     var pago = 0.0;
     var pend = 0.0;
 
-    const lista = await buscarDadosContas();  
+    const conta = new Conta();
+    const lista = await conta.buscaDadosContas();  
     
 
     const datasUnicas = Datas.removeDatasRepetidas(lista, data_mes);
@@ -127,7 +121,6 @@ const listarInputMes = () => {
 export const Listar = {
   listarContas,
   criarNovaLinha,
-  buscarDadosContas,
   mesAnt,
   mesProx
 }

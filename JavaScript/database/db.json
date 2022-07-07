@@ -1,18 +1,17 @@
 {
   "contas": [
     {
-      "descricao": "cpfl",
       "tipo": "Conta de Luz",
       "valor": 50,
       "data": "15/05/2022",
-      "pagamento": false,
+      "pagamento": true,
       "id": 6
     },
     {
       "tipo": "Educação",
       "valor": 905,
-      "data": "14/05/2022",
-      "pagamento": true,
+      "data": "13/05/2022",
+      "pagamento": false,
       "id": 7
     },
     {
@@ -24,7 +23,6 @@
       "id": 8
     },
     {
-      "descricao": "Aluguel",
       "valor": 300,
       "data": "24/06/2022",
       "pagamento": false,
@@ -39,27 +37,11 @@
       "id": 10
     },
     {
-      "descricao": "Times Idiomas",
-      "tipo": "Educação",
-      "valor": 300,
-      "data": "15/05/2022",
-      "pagamento": false,
-      "id": 12
-    },
-    {
-      "descricao": "Aluguel",
       "tipo": "Moradia",
       "valor": 300,
       "data": "24/06/2022",
       "pagamento": false,
       "id": 13
-    },
-    {
-      "tipo": "Transporte",
-      "valor": 44.6,
-      "data": "20/05/2022",
-      "pagamento": true,
-      "id": 16
     },
     {
       "descricao": "Gás",
@@ -73,7 +55,7 @@
       "tipo": "Conta de Água",
       "valor": 50,
       "data": "05/07/2022",
-      "pagamento": true,
+      "pagamento": false,
       "id": 19
     }
   ]

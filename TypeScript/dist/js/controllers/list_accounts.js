@@ -22,7 +22,7 @@ export class ListarContas {
         td_excluir.classList.add('table-buttons');
         const conteudo = `
       <th style="with: 15%;" class="text-center" scope="row">${data}</th>
-      <td style="with: 25%;">${descricao}</td>
+      <td style="with: 25%; class="description">${descricao}</td>
       <td style="with: 20%;">${tipo}</td>
       <td style="with: 20%;" class="text-center">${money}</td>
     `;
@@ -36,6 +36,10 @@ export class ListarContas {
     static listar(data_mes) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
+                const mes_input = document.querySelector('[data-mes]');
+                mes_input.value = data_mes;
+                sessionStorage.setItem('mes_storage', data_mes);
+                console.log(sessionStorage.getItem('mes_storage'));
                 const table_list = document.querySelector('[data-table-list]');
                 table_list.classList.add('border-light');
                 table_list.innerHTML = "";
@@ -45,8 +49,6 @@ export class ListarContas {
                 var total = 0.0;
                 var pago = 0.0;
                 var pend = 0.0;
-                const mes_input = document.querySelector('[data-mes]');
-                mes_input.value = data_mes;
                 const lista_contas = yield Conta.buscarDadosContas();
                 const datasUnicas = Data.removeDatasRepetidas(lista_contas, data_mes);
                 datasUnicas.forEach((dia) => {
@@ -73,7 +75,6 @@ export class ListarContas {
     static mesAnt(envent) {
         envent.preventDefault();
         const mes_input = document.querySelector('[data-mes]');
-        console.log(typeof (mes_input.value));
         var mes = parseInt((mes_input.value).split("-")[1]);
         mes -= 1;
         const mes_ant = (mes_input.value).split("-")[0] + "-" + ("0" + mes.toString()).slice(-2);

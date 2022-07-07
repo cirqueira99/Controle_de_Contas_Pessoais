@@ -1,5 +1,5 @@
-import { deletarConta } from "./delet_accounts.js"
-import {PagarConta} from "./pay_account.js"
+import { confirmPayAccout } from "./pay_account.js"
+import { confirmDeleteAccout } from "./delete_accounts.js"
 
 const BotaoPagarConta = (id) => {
   const botaoPagar = document.createElement('button');
@@ -10,7 +10,7 @@ const BotaoPagarConta = (id) => {
   botaoPagar.style.fontSize = "15px";
   botaoPagar.classList.add('btn-success');
   botaoPagar.classList.add('table_butpagar');
-  botaoPagar.addEventListener('click', PagarConta);
+  botaoPagar.addEventListener('click', confirmPayAccout);
   
   return botaoPagar;  
 }
@@ -44,7 +44,7 @@ const BotaoDeleta = (id) => {
   botaoDeleta.style.color = "white"
   botaoDeleta.style.fontSize = "15px"
   botaoDeleta.innerText = 'excluir';
-  botaoDeleta.addEventListener('click', deletarConta);
+  botaoDeleta.addEventListener('click', confirmDeleteAccout);
 
   return botaoDeleta;
 }

@@ -1,3 +1,6 @@
+import { Botao } from './../functionalities/create_buttons';
+import { locale } from "moment";
+
 export class Conta{
   descricao: string;
   tipo: string;
@@ -16,8 +19,32 @@ export class Conta{
   get dadosConta(){
     var dados = [ this.descricao, this.tipo, this.tipo, this.data, this.pagamento ];
     
-    
     return dados;  
+  }
+
+  public static buscarDadosContas(): Object{
+    return fetch(`http://localhost:3005/contas`)
+    .then(resposta => {
+        if(resposta.ok){
+            return resposta.json()
+        }
+        throw new Error('Não foi possível listar as contas')
+    })
+  }
+
+  public static async buscarDadosContaUni(id: number): Promise<Object>{
+    try { 
+      const lista_contas: object = await this.buscarDadosContas();
+      
+      for( var [key, value] of Object.entries(lista_contas) ){
+        if(value.id == id){
+          return value;
+        }
+      }
+    }
+    catch(erro){
+      console.log(erro)
+    }  
   }
 
   cadastrarConta() {
@@ -61,45 +88,21 @@ export class Conta{
         data:  dados[3],
         pagamento: true
       })
-  })
-  .then( resposta => {
-      if(resposta.ok){ return resposta.json() }
-
-      throw new Error('Não foi possível detalhar um cliente')
-  })
-}
-
-  public static async buscarDadosContaUni(id: number): Promise<Object>{
-    try { 
-      const lista_contas: object = await this.buscarDadosContas();
-      
-      for( var [key, value] of Object.entries(lista_contas) ){
-        if(value.id == id){
-          return value;
+    })
+    .then( resposta => {
+        if(resposta.ok){ 
+          location.reload();
+          return resposta.json() 
         }
-      }
-    }
-    catch(erro){
-      console.log(erro)
-    }
-  
-  }
 
-  public static buscarDadosContas(): Object{
-    return fetch(`http://localhost:3005/contas`)
-    .then(resposta => {
-        if(resposta.ok){
-            return resposta.json()
-        }
-        throw new Error('Não foi possível listar as contas')
+        throw new Error('Não foi possível detalhar um cliente')
     })
   }
 
-  public static deletarConta(evento: Event){
-    const botao: HTMLButtonElement = <HTMLButtonElement>evento.target;
-    const id: string = botao.id
+  public static deletarConta(id: string){
+   
     
-    return fetch(`http://localhost:3005/contas/${id.substring(1)}`, {
+    return fetch(`http://localhost:3005/contas/${id}`, {
         method: 'DELETE'
     })
     .then( resposta => { 
@@ -110,5 +113,26 @@ export class Conta{
         }
     });
   }
+
+  public static confirmPayAccout(evento: Event): void{
+    const botao: HTMLButtonElement = <HTMLButtonElement>evento.target;
+    const id: string = botao.id;
+
+    var result = confirm("Você realmente deseja PAGAR essa conta?");
+    
+    if(result == true){ Conta.atualizarConta(id.substring(1)); }        
+  }
+
+  public static confirmDeleteAccout(evento: Event){
+    const botao: HTMLButtonElement = <HTMLButtonElement>evento.target;
+    const id: string = botao.id;
+
+    var result = confirm("Você realmente deseja EXCLUIR essa conta?");
+
+    if(result == true){
+      Conta.deletarConta(id.substring(1));
+    }
+  }
+
 }
 

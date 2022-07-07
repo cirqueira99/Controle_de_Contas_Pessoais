@@ -15,15 +15,21 @@ input_mes.addEventListener('click', Listar.listarInputMes)
 const form_select = document.querySelector('[data-form-select]');
 form_select.addEventListener('blur', Form.changeStyle)
 
-const mes_valor = moment().format('YYYY-MM');
-sessionStorage.setItem('mes_storage', mes_valor);
+
+var mes_storage = sessionStorage.getItem('mes_storage');
+
+if(mes_storage == null){
+  mes_storage = moment().format('YYYY-MM');
+  sessionStorage.setItem('mes_storage', mes_storage);
+}
+
 
 const button_scroll = document.getElementById('bak-to-top');
 button_scroll.addEventListener('click', function(){
   window.scrollTo(0,0)
 })
 
-Listar.listarContas(mes_valor);
+Listar.listarContas(mes_storage);
 
 window.addEventListener("scroll", (event) => {
   var scroll_y = window.scrollY;

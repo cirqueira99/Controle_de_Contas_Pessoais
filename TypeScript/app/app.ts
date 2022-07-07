@@ -22,8 +22,14 @@ form_select.addEventListener('blur', function(event: any){
   element.style.color = 'white';
 })
 
-const mes_string: string = Data.retornaMesAtual();
-sessionStorage.setItem('mes_storage', mes_string);
+
+var mes_storage: string | null = sessionStorage.getItem('mes_storage');
+console.log(mes_storage)
+
+if(mes_storage == null){
+  mes_storage = Data.retornaMesAtual();
+  sessionStorage.setItem('mes_storage', mes_storage);
+}
 
 const button_scroll: HTMLElement = <HTMLButtonElement>document.getElementById('bak-to-top');
 button_scroll.addEventListener('click', function(){
@@ -31,7 +37,7 @@ button_scroll.addEventListener('click', function(){
 })
 
 
-ListarContas.listar(mes_string);
+ListarContas.listar(mes_storage);
 
 window.addEventListener("scroll", (event) => {
   var scroll_y: number = window.scrollY;

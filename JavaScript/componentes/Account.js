@@ -52,4 +52,27 @@ export class Conta{
     })
   }
 
+  deletaConta = (id) => { 
+    
+    return fetch(`http://localhost:3000/contas/${id}`, {
+        method: 'DELETE'
+    })
+    .then( resposta => { 
+        if(!resposta.ok){
+        throw new Error('Não foi possível deletar a conta')
+        }
+    })
+  }
+  
+
+  buscaDadosContas = () => {
+    return fetch(`http://localhost:3000/contas`)
+    .then(resposta => {
+        if(resposta.ok){
+            return resposta.json()
+        }
+        throw new Error('Não foi possível listar as contas')
+    })
+  }
+
 }

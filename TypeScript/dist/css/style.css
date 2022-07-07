@@ -268,9 +268,6 @@ body{
   width: 100%;
 }
 
-.month-search button{
-  
-}
 
 .seta {
   border-radius: 50px;
@@ -282,7 +279,7 @@ body{
 
 .seta:hover {
   background-color: var(--blue-dark);
-  font-size: 20px;
+  font-size: 22px;
 }
 
 .table__list{
@@ -308,9 +305,6 @@ body{
   padding: 0;
   font-size: 0.8rem;
   width: 55px;
-}
-
-#back-to-top {
 }
 
 .btnscroll {

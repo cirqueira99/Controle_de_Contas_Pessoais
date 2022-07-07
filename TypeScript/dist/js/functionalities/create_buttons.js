@@ -1,21 +1,15 @@
 import { Conta } from "../models/accounts.js";
 export class Botao {
-    static PagarConta(evento) {
-        const botao = evento.target;
-        const id = botao.id;
-        Conta.atualizarConta(id.substring(1));
-        location.reload();
-    }
     static BotaoPagarConta(id) {
         const botaoPagar = document.createElement('button');
         botaoPagar.setAttribute('type', 'button');
         botaoPagar.setAttribute('id', 'p' + id);
         botaoPagar.classList.add('btn');
-        botaoPagar.innerText = 'pagar';
-        botaoPagar.style.fontSize = "15px";
         botaoPagar.classList.add('btn-success');
         botaoPagar.classList.add('table_butpagar');
-        botaoPagar.addEventListener('click', this.PagarConta);
+        botaoPagar.innerText = 'pagar';
+        botaoPagar.style.fontSize = "15px";
+        botaoPagar.addEventListener('click', Conta.confirmPayAccout);
         return botaoPagar;
     }
     static BotaoContaPaga() {
@@ -43,7 +37,7 @@ export class Botao {
         botaoDeleta.style.color = "white";
         botaoDeleta.style.fontSize = "15px";
         botaoDeleta.innerText = 'excluir';
-        botaoDeleta.addEventListener('click', Conta.deletarConta);
+        botaoDeleta.addEventListener('click', Conta.confirmDeleteAccout);
         return botaoDeleta;
     }
 }

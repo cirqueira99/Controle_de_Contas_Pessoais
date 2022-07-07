@@ -3,6 +3,7 @@ import { Data } from "../functionalities/datas.js";
 import { Botao } from "../functionalities/create_buttons.js";
 
 export class ListarContas {
+
   private static criarNovaLinha(id: number, data: Date, descricao: string, tipo: string, valor: number, pagamento: boolean ): HTMLElement{ // mudar para "HTMLTableElement.rows"
     const money: string = valor.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
     
@@ -19,7 +20,7 @@ export class ListarContas {
     const conteudo = 
     `
       <th style="with: 15%;" class="text-center" scope="row">${data}</th>
-      <td style="with: 25%;">${descricao}</td>
+      <td style="with: 25%; class="description">${descricao}</td>
       <td style="with: 20%;">${tipo}</td>
       <td style="with: 20%;" class="text-center">${money}</td>
     `;
@@ -38,6 +39,12 @@ export class ListarContas {
   public static async listar(data_mes: string){
     try {
 
+      const mes_input: HTMLInputElement = document.querySelector('[data-mes]');
+      mes_input.value = data_mes;
+      sessionStorage.setItem('mes_storage', data_mes);
+      console.log(sessionStorage.getItem('mes_storage'))
+
+
       const table_list: HTMLTableElement = document.querySelector('[data-table-list]');
       table_list.classList.add('border-light');
       table_list.innerHTML = "";
@@ -50,8 +57,6 @@ export class ListarContas {
       var pago: number | string = 0.0;
       var pend: number | string = 0.0;
 
-      const mes_input: HTMLInputElement = document.querySelector('[data-mes]');
-      mes_input.value = data_mes;
 
       const lista_contas: Object = await Conta.buscarDadosContas(); 
     
@@ -85,7 +90,7 @@ export class ListarContas {
   public static mesAnt(envent: Event): void{
     envent.preventDefault()
     const mes_input: HTMLInputElement = <HTMLInputElement>document.querySelector('[data-mes]');
-    console.log(typeof(mes_input.value))
+    
     var mes: number = parseInt( (mes_input.value).split("-")[1] );
     mes -= 1;
     
