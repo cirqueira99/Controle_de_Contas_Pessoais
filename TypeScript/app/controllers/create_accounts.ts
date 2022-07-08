@@ -15,14 +15,12 @@ export class ContaController {
     const valor = parseFloat(valor_string);
     const data: string = element_data.value
     const data_convertida: string = data.split("-")[2]+"/"+data.split("-")[1]+"/"+data.split("-")[0];
-    //const data_criacao = moment(element_data.value);
-    //const data = data_criacao.format('DD/MM/YYYY');
 
     const conta: Conta = new Conta(descricao, tipo, valor, data_convertida)
     conta.cadastrarConta();    
     
     
-    ListarContas.listar( Data.retornaMesAtual() );
+    ListarContas.listar( element_data.value.substr(0, 7) );
 
     element_descricao.value = "";
     element_tipo.value = "Selecione uma categoria...";

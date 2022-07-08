@@ -19,41 +19,50 @@
       <div class="corpo">
 
         <div class="corpo__title">
-          <h1 class="title">Controle de Contas</h1>      
+          <span></span>
+          <h1 class="title">Controle de Contas</h1> 
+          <button class="btn btn-secondary btn-register">nova conta</button>           
         </div>
-
-        <form class="form" action="#">
-          <div class="input__container form__nome">
-            <input class="input" name="nome" id="nome" type="text" placeholder="Descrição" data-form-description required>
-            <label class="form__label" for="nome">Descrição</label>
+        
+        <div class="corpo__form">
+          <div class="div__form">
+            <div class="card_form">
+              <span class="close__form">&times;</span>
+              <form class="form" action="#">
+                <div class="input__container form__nome">
+                  <input class="input" name="nome" id="nome" type="text" placeholder="Descrição" data-form-description required>
+                  <label class="form__label" for="nome">Descrição</label>
+                </div>
+      
+                <div class="input__container form__select">
+                  <select class="input" name="tipo" id="tipo" data-form-select> 
+                    <option value="0" class="select-first">Selecione um tipo...</option>
+                    <option value="Conta de Luz">Conta de Luz</option>
+                    <option value="Conta de Água">Conta de Água</option>
+                    <option value="Moradia">Moradia</option>
+                    <option value="Educação">Educação</option>
+                    <option value="Transporte">Transporte</option>
+                  </select>
+                  <label id="label_tipo" class="form__label" for="tipo">Tipo</label>
+                </div>
+      
+                <div class="input__container form__money">
+                  <input class="input" id="valor" type="number" data-form-money placeholder="00.00" required>
+                  <label class="form__label" for="valor">Valor R$ 0,00</label>
+                </div>
+      
+                <div class="input__container form__date">
+                  <input id="form-date" class="input" type="date" data-form-date required>
+                  <label id="label_date" class="form__label" for="form-date">Data</label>
+                </div>
+      
+                <div class="form__button text-center">
+                  <button type="submit" id="" class="btn btn-success" data-form-button> Adicionar</button>
+                </div>
+              </form>
+            </div>
           </div>
-
-          <div class="input__container form__select">
-            <select class="input" name="tipo" id="tipo" data-form-select> 
-              <option value="0" class="select-first">Selecione um tipo...</option>
-              <option value="Conta de Luz">Conta de Luz</option>
-              <option value="Conta de Água">Conta de Água</option>
-              <option value="Moradia">Moradia</option>
-              <option value="Educação">Educação</option>
-              <option value="Transporte">Transporte</option>
-            </select>
-            <label id="label_tipo" class="form__label" for="tipo">Tipo</label>
-          </div>
-
-          <div class="input__container form__money">
-            <input class="input" id="valor" type="number" data-form-money placeholder="00.00" required>
-            <label class="form__label" for="valor">Valor R$ 0,00</label>
-          </div>
-
-          <div class="input__container form__date">
-            <input id="form-date" class="input" type="date" data-form-date required>
-            <label id="label_date" class="form__label" for="form-date">Data</label>
-          </div>
-
-          <div class="form__button text-center">
-            <button type="submit" id="" class="btn btn-success " data-form-button> Adicionar</button>
-          </div>
-        </form>
+        </div>
 
         <div class="corpo__list">
 

@@ -6,12 +6,15 @@ import { Conta } from './Account.js';
 
 const criarNovaLinha = (id, data, descricao, tipo, valor, pagamento) => {  
   const table_tr = document.createElement('tr');
+  
   const td_pagar = document.createElement('td');
   td_pagar.classList.add('text-center');
   td_pagar.classList.add('table-buttons');
+  
   const td_excluir = document.createElement('td');
   td_excluir.classList.add('text-center');
   td_excluir.classList.add('table-buttons');
+  
   const money = valor.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
   
   const conteudo = 
@@ -37,6 +40,7 @@ const criarNovaLinha = (id, data, descricao, tipo, valor, pagamento) => {
 
 const listarContas = async (data_mes) =>  {
   try {
+    console.log(data_mes)
     const mes_input = document.querySelector('[data-mes]');
     mes_input.value = data_mes;
     sessionStorage.setItem('mes_storage', data_mes)
@@ -106,7 +110,6 @@ const mesProx = () => {
 const listarInputMes = () => {
   var mes_storage = sessionStorage.getItem('mes_storage');
   const mes_input = document.querySelector('[data-mes]').value;
-  console.log(mes_input)  
 
   if( mes_input != mes_storage ){
     sessionStorage.removeItem('mes_storage');
@@ -121,5 +124,6 @@ export const Listar = {
   listarContas,
   criarNovaLinha,
   mesAnt,
-  mesProx
+  mesProx,
+  listarInputMes
 }

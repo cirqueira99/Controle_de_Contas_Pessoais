@@ -1,71 +1,52 @@
 {
   "contas": [
     {
+      "descricao": "Times",
+      "tipo": "Educação",
+      "valor": 200.99,
+      "data": "05/07/2022",
+      "pagamento": false,
+      "id": 1
+    },
+    {
+      "descricao": "cpfl",
       "tipo": "Conta de Luz",
-      "valor": 50,
-      "data": "15/05/2022",
-      "pagamento": true,
-      "id": 6
+      "valor": 56,
+      "data": "08/07/2022",
+      "pagamento": false,
+      "id": 2
     },
     {
+      "descricao": "SAEE",
+      "tipo": "Conta de Luz",
+      "valor": 89,
+      "data": "08/07/2022",
+      "pagamento": false,
+      "id": 3
+    },
+    {
+      "descricao": "FESTEA",
       "tipo": "Educação",
-      "valor": 905,
-      "data": "13/05/2022",
+      "valor": 78,
+      "data": "08/07/2022",
       "pagamento": false,
-      "id": 7
+      "id": 4
     },
     {
-      "descricao": "Times Idiomas",
-      "tipo": "Educação",
-      "valor": 300,
-      "data": "15/06/2022",
+      "descricao": "CPFL",
+      "tipo": "Conta de Luz",
+      "valor": 88,
+      "data": "08/06/2022",
       "pagamento": false,
-      "id": 8
-    },
-    {
-      "valor": 300,
-      "data": "24/06/2022",
-      "pagamento": false,
-      "id": 9
-    },
-    {
-      "descricao": "Gás",
-      "tipo": "Moradia",
-      "valor": 80.5,
-      "data": "28/07/2027",
-      "pagamento": false,
-      "id": 10
-    },
-    {
-      "tipo": "Moradia",
-      "valor": 300,
-      "data": "24/06/2022",
-      "pagamento": false,
-      "id": 13
-    },
-    {
-      "descricao": "Gás",
-      "tipo": "Moradia",
-      "valor": 100,
-      "data": "01/07/2022",
-      "pagamento": false,
-      "id": 18
+      "id": 5
     },
     {
       "descricao": "SAEE",
       "tipo": "Conta de Água",
-      "valor": 50,
-      "data": "05/07/2022",
+      "valor": 77,
+      "data": "13/05/2022",
       "pagamento": false,
-      "id": 19
-    },
-    {
-      "descricao": "Times",
-      "tipo": "Educação",
-      "valor": 199,
-      "data": "06/07/2022",
-      "pagamento": false,
-      "id": 20
+      "id": 6
     }
   ]
 }

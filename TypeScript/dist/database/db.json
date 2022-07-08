@@ -1,68 +1,12 @@
 {
   "contas": [
     {
-      "descricao": "CPFL",
-      "tipo": "Conta de Luz",
-      "valor": 50,
-      "data": "15/05/2022",
-      "pagamento": false,
-      "id": 6
-    },
-    {
-      "descricao": "Times Idiomas",
+      "descricao": "Times",
       "tipo": "Educação",
-      "valor": 905,
-      "data": "13/05/2022",
+      "valor": 200,
+      "data": "08/05/2022",
       "pagamento": false,
-      "id": 7
-    },
-    {
-      "descricao": "Times Idiomas",
-      "tipo": "Educação",
-      "valor": 300,
-      "data": "15/06/2022",
-      "pagamento": false,
-      "id": 8
-    },
-    {
-      "descricao": "Gás",
-      "tipo": "Moradia",
-      "valor": 80.5,
-      "data": "28/07/2027",
-      "pagamento": false,
-      "id": 10
-    },
-    {
-      "descricao": "Educação",
-      "tipo": 300,
-      "valor": 198,
-      "data": "15/05/2022",
-      "pagamento": false,
-      "id": 12
-    },
-    {
-      "descricao": "Aluguel",
-      "tipo": "Moradia",
-      "valor": 300,
-      "data": "24/06/2022",
-      "pagamento": false,
-      "id": 13
-    },
-    {
-      "descricao": "Gás",
-      "tipo": "Moradia",
-      "valor": 100,
-      "data": "01/07/2022",
-      "pagamento": false,
-      "id": 18
-    },
-    {
-      "descricao": "SAEE",
-      "tipo": "Conta de Água",
-      "valor": 88.9,
-      "data": "05/07/2022",
-      "pagamento": true,
-      "id": 19
+      "id": 1
     }
   ]
 }
