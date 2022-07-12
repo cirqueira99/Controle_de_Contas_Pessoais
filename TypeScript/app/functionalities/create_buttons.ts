@@ -1,54 +1,54 @@
-import { Conta } from "../models/accounts.js"; 
+import { AccountController } from "../controllers/account_controller.js";
 
-export class Botao{  
+export class ButtonsController{  
   
-  public static BotaoPagarConta(id: number): HTMLButtonElement{
-    const botaoPagar: HTMLButtonElement = document.createElement('button');
-    botaoPagar.setAttribute('type', 'button')
-    botaoPagar.setAttribute('id', 'p'+id)
-    botaoPagar.classList.add('btn');    
-    botaoPagar.classList.add('btn-success');
-    botaoPagar.classList.add('table_butpagar');
-    botaoPagar.innerText = 'pagar';
-    botaoPagar.style.fontSize = "15px";
-    botaoPagar.addEventListener('click', Conta.confirmPayAccout);
+  public static ButtonPayAccount(id: number): HTMLButtonElement{
+    const btnPay: HTMLButtonElement = document.createElement('button');
+    btnPay.setAttribute('type', 'button')
+    btnPay.setAttribute('id', 'p'+id)
+    btnPay.classList.add('btn');    
+    btnPay.classList.add('btn-success');
+    btnPay.classList.add('table_butpagar');
+    btnPay.innerText = 'Pagar';
+    btnPay.style.fontSize = "15px";
+    btnPay.addEventListener('click', AccountController.confirmPayAccount);
     
-    return botaoPagar;  
+    return btnPay;  
   }
   
-  public static BotaoContaPaga(): HTMLButtonElement{
+  public static ButtonPaidAccount(): HTMLButtonElement{
     
-    const botaoPago: HTMLButtonElement = document.createElement('button');
-    botaoPago.setAttribute('type', 'button')
-    botaoPago.classList.add('btn');
-    botaoPago.classList.add('btn-info');
-    botaoPago.classList.add('table_butpago');
-    botaoPago.style.backgroundColor = "transparent";
-    botaoPago.style.border = "transparent";
-    botaoPago.disabled = true;
+    const btnPaid: HTMLButtonElement = document.createElement('button');
+    btnPaid.setAttribute('type', 'button')
+    btnPaid.classList.add('btn');
+    btnPaid.classList.add('btn-info');
+    btnPaid.classList.add('table_butpago');
+    btnPaid.style.backgroundColor = "transparent";
+    btnPaid.style.border = "transparent";
+    btnPaid.disabled = true;
      
-    const but_span: HTMLSpanElement = document.createElement('span');
-    but_span.innerHTML = `<i class="fa fa-check" aria-hidden="true"></i>`;
+    const btn_span: HTMLSpanElement = document.createElement('span');
+    btn_span.innerHTML = `<i class="fa fa-check" aria-hidden="true"></i>`;
     
-    botaoPago.appendChild(but_span);
+    btnPaid.appendChild(btn_span);
 
-    return botaoPago;
+    return btnPaid;
   }
   
-  public static BotaoDeleta(id: number): HTMLButtonElement { 
+  public static ButtonDeleteAccount(id: number): HTMLButtonElement { 
 
-    const botaoDeleta = document.createElement('button');
-    botaoDeleta.setAttribute('type', 'button')
-    botaoDeleta.setAttribute('id', 'd'+id)
-    botaoDeleta.classList.add('btn');
-    botaoDeleta.classList.add('btn-danger');
-    botaoDeleta.classList.add('table_butdelete');
-    botaoDeleta.style.backgroundColor = "rgb(207 121 129)"
-    botaoDeleta.style.color = "white"
-    botaoDeleta.style.fontSize = "15px"
-    botaoDeleta.innerText = 'excluir';      
-    botaoDeleta.addEventListener('click', Conta.confirmDeleteAccout);
+    const btnDelete = document.createElement('button');
+    btnDelete.setAttribute('type', 'button')
+    btnDelete.setAttribute('id', 'd'+id)
+    btnDelete.classList.add('btn');
+    btnDelete.classList.add('btn-danger');
+    btnDelete.classList.add('table_butdelete');
+    btnDelete.style.backgroundColor = "rgb(207 121 129)"
+    btnDelete.style.color = "white"
+    btnDelete.style.fontSize = "15px"
+    btnDelete.innerText = 'excluir';      
+    btnDelete.addEventListener('click', AccountController.confirmDeleteAccout);
   
-    return botaoDeleta;
+    return btnDelete;
   }
 }

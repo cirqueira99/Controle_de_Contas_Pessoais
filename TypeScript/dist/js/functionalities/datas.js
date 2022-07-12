@@ -1,33 +1,33 @@
-export class Data {
-    static removeDatasRepetidas(lista, data_mes) {
-        const datasUnicas = [];
-        for (var conta in lista) {
-            const ano = lista[conta].data.split("/")[2];
-            const mes = lista[conta].data.split("/")[1];
-            const mes_lista = ano + "-" + mes;
-            if ((datasUnicas.indexOf(lista[conta].data) === -1) && (mes_lista == data_mes)) {
-                datasUnicas.push(lista[conta].data);
+export class DateClass {
+    static removesRepeatedDates(list, month_date) {
+        const dates_unrepeated = [];
+        for (var account in list) {
+            const year = list[account].date_account.split("/")[2];
+            const month = list[account].date_account.split("/")[1];
+            const month_list = year + "-" + month;
+            if ((dates_unrepeated.indexOf(list[account].date_account) === -1) && (month_list == month_date)) {
+                dates_unrepeated.push(list[account].date_account);
             }
         }
-        this.ordenaDatas(datasUnicas);
-        return datasUnicas;
+        this.sortDates(dates_unrepeated);
+        return dates_unrepeated;
     }
-    static ordenaDatas(datas) {
-        var datas_ordenadas = datas;
-        datas_ordenadas.sort((a, b) => {
-            const primeiraData = new Date(parseInt(a.split("/")[2]), parseInt(a.split("/")[1]), parseInt(a.split("/")[0]));
-            const segundaData = new Date(parseInt(b.split("/")[2]), parseInt(b.split("/")[1]), parseInt(b.split("/")[0]));
-            const data1 = primeiraData.getTime();
-            const data2 = segundaData.getTime();
-            return data2 - data1;
+    static sortDates(datas) {
+        var sort_dates = datas;
+        sort_dates.sort((a, b) => {
+            const firsDate = new Date(parseInt(a.split("/")[2]), parseInt(a.split("/")[1]), parseInt(a.split("/")[0]));
+            const secondDate = new Date(parseInt(b.split("/")[2]), parseInt(b.split("/")[1]), parseInt(b.split("/")[0]));
+            const date1 = firsDate.getTime();
+            const date2 = secondDate.getTime();
+            return date2 - date1;
         });
-        return datas_ordenadas;
+        return sort_dates;
     }
-    static retornaMesAtual() {
+    static retornCurrentMonth() {
         const data = new Date();
-        var mes = data.getMonth() + 1;
-        var ano = data.getFullYear();
-        const data_atual = ano + '-' + ("0" + mes).slice(-2);
-        return data_atual;
+        var month = data.getMonth() + 1;
+        var year = data.getFullYear();
+        const currently_date = year + '-' + ("0" + month).slice(-2);
+        return currently_date;
     }
 }

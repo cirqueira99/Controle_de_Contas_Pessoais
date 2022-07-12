@@ -1,30 +1,34 @@
-import { ContaController } from './../controllers/create_accounts.js';
-import { ListarContas } from "../controllers/list_accounts.js";
+import { AccountController } from '../controllers/account_controller.js';
+import { ListController } from "../controllers/list_accounts.js";
 
 
 
 export function startElementsPage() {
   
-  const botao_adiciona: HTMLButtonElement = document.querySelector('[data-form-button]');
-  const seta_ant: HTMLSpanElement = document.querySelector('[data-seta-ant]');
-  const seta_prox: HTMLSpanElement = document.querySelector('[data-seta-prox]');
-  const input_mes: HTMLInputElement = document.querySelector('[data-mes]');
+  const btn_add_NewAccount: HTMLElement = <HTMLButtonElement>document.querySelector('[data-form-add]');
+  btn_add_NewAccount.addEventListener('click', AccountController.createNewAccount);
+  
+  const arrow_previus: HTMLElement = <HTMLSpanElement>document.querySelector('[data-seta-ant]');
+  arrow_previus.addEventListener('click', ListController.monthPrevious);
+  
+  const arrow_next: HTMLSpanElement = document.querySelector('[data-seta-prox]');
+  arrow_next.addEventListener('click', ListController.monthNext);
+  
+  
+  const btn_search_month: HTMLElement = <HTMLInputElement>document.querySelector('[data-monthsearch-button]');
+  btn_search_month.addEventListener('click', ListController.listInputMonth)
+
   const form_select = document.querySelector('[data-form-select]');
-  const form_date = document.querySelector('[data-form-date]');
-
-  botao_adiciona.addEventListener('click', ContaController.criarConta);
-  seta_ant.addEventListener('click', ListarContas.mesAnt);
-  seta_prox.addEventListener('click', ListarContas.mesProx);
-  input_mes.addEventListener('blur', ListarContas.listarImputMes);
-
   form_select.addEventListener('focus', function(event: any){
-    const element: HTMLInputElement = event.target;
+    const element: HTMLElement = <HTMLInputElement>event.target;
     element.style.color = 'rgb(0, 238, 255)';
 
-    const label_select:HTMLElement = document.getElementById('label_tipo'); 
+    const label_select:HTMLElement = <HTMLLabelElement>document.getElementById('label_tipo'); 
     label_select.style.display = 'block'
   })
-
+  
+  
+  const form_date = document.querySelector('[data-form-date]');
   form_date.addEventListener('focus', function(event: any){
     const element: HTMLInputElement = event.target;
     element.style.color = 'rgb(0, 238, 255)';

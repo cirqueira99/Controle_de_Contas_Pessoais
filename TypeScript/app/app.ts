@@ -1,18 +1,18 @@
 import { startElementsPage } from './functionalities/load_components.js';
-import { Data } from './functionalities/datas.js';
-import { ListarContas } from './controllers/list_accounts.js';
+import { DateClass } from './functionalities/datas.js';
+import { ListController } from './controllers/list_accounts.js';
 
 
 startElementsPage();
 
-var mes_storage: string | null = sessionStorage.getItem('mes_storage');
+var month_storage: string | null = sessionStorage.getItem('month_storage');
 
-if(mes_storage == null){
-  mes_storage = Data.retornaMesAtual();
-  sessionStorage.setItem('mes_storage', mes_storage);
+if(month_storage == null){
+  month_storage = DateClass.retornCurrentMonth();
+  sessionStorage.setItem('month_storage', month_storage);
 }
 
-ListarContas.listar(mes_storage);
+ListController.listAccounts(month_storage);
 
 window.addEventListener("scroll", (event) => {
   var scroll_y: number = window.scrollY;

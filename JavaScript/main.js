@@ -1,19 +1,19 @@
 
-import { carregaElemtosPagina } from "./componentes/load_components.js";
-import { Listar } from "./componentes/list_accounts.js";
+import { startElementsPage } from "./componentes/load_components.js";
+import { ListController } from "./componentes/list_accounts.js";
 
 
 
-carregaElemtosPagina();
+startElementsPage();
 
-var mes_storage = sessionStorage.getItem('mes_storage');
+var month_storage = sessionStorage.getItem('month_storage');
 
-if(mes_storage == null){
-  mes_storage = moment().format('YYYY-MM');
-  sessionStorage.setItem('mes_storage', mes_storage);
+if(month_storage == null){
+  month_storage = moment().format('YYYY-MM');
+  sessionStorage.setItem('month_storage', month_storage);
 }
 
-Listar.listarContas(mes_storage);
+ListController.listAccounts(month_storage);
 
 window.addEventListener("scroll", (event) => {
   var scroll_y = window.scrollY;

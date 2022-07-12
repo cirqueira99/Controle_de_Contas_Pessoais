@@ -1,25 +1,25 @@
-export class Conta{
+export class Account{
   
-  constructor(descricao="", tipo="", valor=0, data="0"){
-    this.descricao = descricao;
-    this.tipo = tipo;
-    this.valor = parseFloat(valor);
-    this.data = data;
-    this.pagamento = false;
+  constructor(description = "", type_account = "", cost = 0.00, date_account = ""){
+    this.description = description;
+    this.type_account = type_account;
+    this.cost = parseFloat(cost);
+    this.date_account = date_account;
+    this.payment = false;
   }
 
-  cadastrarConta(){
+  registerAccount(){
     return fetch(`http://localhost:3000/contas`, {
       method: 'POST', 
       headers: {
           'Content-Type' : 'application/json'
       },
       body: JSON.stringify({
-          descricao: this.descricao,
-          tipo: this.tipo,
-          valor: this.valor,
-          data: this.data,
-          pagamento: this.pagamento
+          description: this.description,
+          type_account: this.type_account,
+          cost: this.cost,
+          date_account: this.date_account,
+          payment: this.payment
       })
     })
     .then( resposta => {
@@ -30,18 +30,18 @@ export class Conta{
     })
   }
   
-  atualizaConta(id, data, descricao, tipo, valor, pagamento) {
+  updateAccount(id, date_account, description, type_account, cost, payment) {
     return fetch(`http://localhost:3000/contas/${id}`, {
         method: 'PUT',
         headers: { 
             'Content-type' : 'application/json'
         },
         body: JSON.stringify({
-          descricao: descricao,
-          tipo: tipo,
-          valor: valor,
-          data: data,
-          pagamento: pagamento
+          description: description,
+          type_account: type_account,
+          cost: cost,
+          date_account: date_account,
+          payment: payment
         })
     })
     .then( resposta => {
@@ -52,7 +52,7 @@ export class Conta{
     })
   }
 
-  deletaConta = (id) => { 
+  deleteAccount = (id) => { 
     
     return fetch(`http://localhost:3000/contas/${id}`, {
         method: 'DELETE'
@@ -65,7 +65,7 @@ export class Conta{
   }
   
 
-  buscaDadosContas = () => {
+  searchAccounts = () => {
     return fetch(`http://localhost:3000/contas`)
     .then(resposta => {
         if(resposta.ok){

@@ -7,31 +7,33 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-export class Conta {
-    constructor(descricao, tipo, valor, data) {
-        this.descricao = descricao;
-        this.tipo = tipo;
-        this.valor = valor;
-        this.data = data;
-        this.pagamento = false;
+export class Account {
+    constructor(description = "", type_account = "", cost = 0.00, date_account = "") {
+        this.description = description;
+        this.type_account = type_account;
+        this.cost = cost;
+        this.date_account = date_account;
+        this.payment = false;
     }
-    get dadosConta() {
-        var dados = [this.descricao, this.tipo, this.tipo, this.data, this.pagamento];
+    get infoAccount() {
+        var dados = [this.description, this.type_account, this.type_account, this.date_account, this.payment];
         return dados;
     }
-    static buscarDadosContas() {
-        return fetch(`http://localhost:3005/contas`)
-            .then(resposta => {
-            if (resposta.ok) {
-                return resposta.json();
-            }
-            throw new Error('Não foi possível listar as contas');
+    static searchAccounts() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return fetch(`http://localhost:3005/contas`)
+                .then((resposta) => __awaiter(this, void 0, void 0, function* () {
+                if (resposta.ok) {
+                    return yield resposta.json();
+                }
+                throw new Error('Não foi possível listar as contas');
+            }));
         });
     }
-    static buscarDadosContaUni(id) {
+    static searchAccountUni(id) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                const lista_contas = yield this.buscarDadosContas();
+                const lista_contas = yield this.searchAccounts();
                 for (var [key, value] of Object.entries(lista_contas)) {
                     if (value.id == id) {
                         return value;
@@ -43,18 +45,18 @@ export class Conta {
             }
         });
     }
-    cadastrarConta() {
+    registerAccount() {
         return fetch(`http://localhost:3005/contas`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                descricao: this.descricao,
-                tipo: this.tipo,
-                valor: this.valor,
-                data: this.data,
-                pagamento: this.pagamento
+                description: this.description,
+                type_account: this.type_account,
+                cost: this.cost,
+                date_account: this.date_account,
+                payment: this.payment
             })
         })
             .then(resposta => {
@@ -64,10 +66,10 @@ export class Conta {
             throw new Error('Não foi possível criar uma conta');
         });
     }
-    static atualizarConta(id) {
+    static updateAccount(id) {
         return __awaiter(this, void 0, void 0, function* () {
             const id_int = parseInt(id);
-            const conta = yield this.buscarDadosContaUni(id_int);
+            const conta = yield this.searchAccountUni(id_int);
             const dados = [];
             for (var [key, value] of Object.entries(conta)) {
                 dados.push(value);
@@ -78,11 +80,11 @@ export class Conta {
                     'Content-type': 'application/json'
                 },
                 body: JSON.stringify({
-                    descricao: dados[0],
-                    tipo: dados[1],
-                    valor: dados[2],
-                    data: dados[3],
-                    pagamento: true
+                    description: dados[0],
+                    type_account: dados[1],
+                    cost: dados[2],
+                    date_account: dados[3],
+                    payment: true
                 })
             })
                 .then(resposta => {
@@ -94,7 +96,7 @@ export class Conta {
             });
         });
     }
-    static deletarConta(id) {
+    static deleteAccount(id) {
         return fetch(`http://localhost:3005/contas/${id}`, {
             method: 'DELETE'
         })
@@ -106,21 +108,5 @@ export class Conta {
                 throw new Error('Não foi possível deletar a conta');
             }
         });
-    }
-    static confirmPayAccout(evento) {
-        const botao = evento.target;
-        const id = botao.id;
-        var result = confirm("Você realmente deseja PAGAR essa conta?");
-        if (result == true) {
-            Conta.atualizarConta(id.substring(1));
-        }
-    }
-    static confirmDeleteAccout(evento) {
-        const botao = evento.target;
-        const id = botao.id;
-        var result = confirm("Você realmente deseja EXCLUIR essa conta?");
-        if (result == true) {
-            Conta.deletarConta(id.substring(1));
-        }
     }
 }

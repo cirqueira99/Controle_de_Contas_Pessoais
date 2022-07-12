@@ -1,28 +1,42 @@
-import { Listar } from "./list_accounts.js";
-import { createAccout } from "./create_accounts.js"
-import { Form } from "./form_controller.js"
+import { ListController} from "./list_accounts.js";
+import { AccountController } from "./account_controller.js"
 
 
-export const carregaElemtosPagina = () => { 
-  const botao_adiciona = document.querySelector('[data-form-button]'); 
-  botao_adiciona.addEventListener('click', createAccout);
+export const startElementsPage = () => { 
+  const btn_add_NewAccount = document.querySelector('[data-form-add]'); 
+  btn_add_NewAccount.addEventListener('click', AccountController.createAccount);
   
-  const seta_ant = document.querySelector('[data-seta-ant]');
-  seta_ant.addEventListener('click', Listar.mesAnt);
+  const arrow_previus = document.querySelector('[data-seta-ant]');
+  arrow_previus.addEventListener('click', ListController.monthPrevious);
   
-  const seta_prox = document.querySelector('[data-seta-prox]');
-  seta_prox.addEventListener('click', Listar.mesProx);
+  const arrow_next = document.querySelector('[data-seta-prox]');
+  arrow_next.addEventListener('click', ListController.monthNext);
   
 
-  const input_mes = document.querySelector('[data-monthsearch-button]');
-  input_mes.addEventListener('click', Listar.listarInputMes)
+  const btn_search_month = document.querySelector('[data-monthsearch-button]');
+  btn_search_month.addEventListener('click', ListController.listInputMonth)
 
 
   const form_select = document.querySelector('[data-form-select]');
-  form_select.addEventListener('focus', Form.changeStyleSelect);
+    form_select.addEventListener('focus', function(evento){
+      const element = evento.target;
+      element.style.color = 'rgb(0, 238, 255)';
+    
+      const label_select = document.getElementById('label_tipo'); 
+      label_select.style.display = 'block'
+    }
+  );
   
   const form_date = document.querySelector('[data-form-date]');
-  form_date.addEventListener('focus', Form.changeStyleDate)
+    form_date.addEventListener('focus', function(evento){
+      const element = evento.target;
+      element.style.color = 'rgb(0, 238, 255)';
+  
+      const label_date = document.getElementById('label_date');
+      label_date.style.display = 'block'
+    }  
+  );
+  
   
   
   const button_scroll = document.getElementById('bak-to-top');

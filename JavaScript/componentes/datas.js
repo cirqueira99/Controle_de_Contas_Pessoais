@@ -1,35 +1,35 @@
-const removeDatasRepetidas = (lista, data_mes) => { 
+const removesRepeatedDates = (list, date_month) => { 
 
-  const datasUnicas = []
-  lista.forEach((elemento => { 
-    const mes_lista = moment(elemento.data, 'DD/MM/YYYY').format('YYYY-MM')
+  const dates_unrepeated = []
+  list.forEach((element => { 
+    const month_list = moment(element.date_account, 'DD/MM/YYYY').format('YYYY-MM')
     
-    if( (datasUnicas.indexOf(elemento.data) === -1) && (mes_lista == data_mes) ){
-        datasUnicas.push(elemento.data)
+    if( (dates_unrepeated.indexOf(element.date_account) === -1) && (month_list == date_month) ){
+      dates_unrepeated.push(element.date_account)
     }
   }))
 
-  ordenaDatas(datasUnicas)
+  sortDates(dates_unrepeated)
 
-  return datasUnicas
+  return dates_unrepeated
 }
 
-const ordenaDatas = (data) => { 
+const sortDates = (data) => { 
   data.sort((a, b) => {
-      const primeiraData = moment(a, 'DD/MM/YYYY').format('YYYYMMDD');
-      const segundaData = moment(b, 'DD/MM/YYYY').format('YYYYMMDD');
-     return segundaData - primeiraData
+      const firstDate = moment(a, 'DD/MM/YYYY').format('YYYYMMDD');
+      const secondDate = moment(b, 'DD/MM/YYYY').format('YYYYMMDD');
+     return secondDate - firstDate;
   })
 }
 
-const pegaMesInput = () => {
-  const mes_input = document.querySelector('[data-mes]').value;
-  const mes = moment(mes_input, 'YYYY-MM').format('YYYY-MM');
+const getInputMonth = () => {
+  const month_input = document.querySelector('[data-month]').value;
+  const month = moment(month_input, 'YYYY-MM').format('YYYY-MM');
 
-  return mes;
+  return month;
 }
 
-export const Datas = {
-  removeDatasRepetidas,
-  ordenaDatas
+export const DatesClass = {
+  removesRepeatedDates,
+  sortDates
 }

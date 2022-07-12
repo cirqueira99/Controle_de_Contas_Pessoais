@@ -1,40 +1,40 @@
-import { Botao } from './../functionalities/create_buttons';
+import { ButtonsController } from './../functionalities/create_buttons';
 import { locale } from "moment";
 
-export class Conta{
-  descricao: string;
-  tipo: string;
-  valor: number;
-  data: string;
-  pagamento: Boolean;
+export class Account{
+  description: string;
+  type_account: string;
+  cost: number;
+  date_account: string;
+  payment: Boolean;
 
-  constructor(descricao: string, tipo: string, valor: number, data: string){
-    this.descricao = descricao;
-    this.tipo = tipo;
-    this.valor = valor;
-    this.data = data;
-    this.pagamento = false;
+  constructor(description: string = "", type_account: string = "", cost: number = 0.00, date_account: string = ""){
+    this.description = description;
+    this.type_account = type_account;
+    this.cost = cost;
+    this.date_account = date_account;
+    this.payment = false;
   }
 
-  get dadosConta(){
-    var dados = [ this.descricao, this.tipo, this.tipo, this.data, this.pagamento ];
+  get infoAccount(){
+    var dados = [ this.description, this.type_account, this.type_account, this.date_account, this.payment ];
     
     return dados;  
   }
 
-  public static buscarDadosContas(): Object{
+  static async searchAccounts(): Promise<Object>{
     return fetch(`http://localhost:3005/contas`)
-    .then(resposta => {
+    .then(async resposta => {
         if(resposta.ok){
-            return resposta.json()
+            return await resposta.json()
         }
         throw new Error('Não foi possível listar as contas')
     })
   }
 
-  public static async buscarDadosContaUni(id: number): Promise<Object>{
+  public static async searchAccountUni(id: number): Promise<Object>{
     try { 
-      const lista_contas: object = await this.buscarDadosContas();
+      const lista_contas: object = await this.searchAccounts();
       
       for( var [key, value] of Object.entries(lista_contas) ){
         if(value.id == id){
@@ -47,18 +47,18 @@ export class Conta{
     }  
   }
 
-  cadastrarConta() {
+  registerAccount() {
     return fetch(`http://localhost:3005/contas`, {
       method: 'POST', 
       headers: {
           'Content-Type' : 'application/json'
       },
       body: JSON.stringify({
-          descricao: this.descricao,
-          tipo: this.tipo,
-          valor: this.valor,
-          data: this.data,
-          pagamento: this.pagamento
+          description: this.description,
+          type_account: this.type_account,
+          cost: this.cost,
+          date_account: this.date_account,
+          payment: this.payment
       })
     })
     .then( resposta => {
@@ -69,9 +69,9 @@ export class Conta{
     })
   }
 
-  public static async atualizarConta(id: string){
+  public static async updateAccount(id: string){
     const id_int: number = parseInt(id);    
-    const conta: object = await this.buscarDadosContaUni(id_int); 
+    const conta: object = await this.searchAccountUni(id_int); 
     const dados: Array<string | number | boolean> = [];
 
     for( var [key, value] of Object.entries(conta) ) { dados.push(value) }
@@ -82,11 +82,11 @@ export class Conta{
           'Content-type' : 'application/json'
       },
       body: JSON.stringify({
-        descricao:  dados[0],
-        tipo:  dados[1],
-        valor: dados[2],
-        data:  dados[3],
-        pagamento: true
+        description:  dados[0],
+        type_account:  dados[1],
+        cost: dados[2],
+        date_account:  dados[3],
+        payment: true
       })
     })
     .then( resposta => {
@@ -99,7 +99,7 @@ export class Conta{
     })
   }
 
-  public static deletarConta(id: string){
+  public static deleteAccount(id: string){
    
     
     return fetch(`http://localhost:3005/contas/${id}`, {
@@ -112,26 +112,6 @@ export class Conta{
           throw new Error('Não foi possível deletar a conta');
         }
     });
-  }
-
-  public static confirmPayAccout(evento: Event): void{
-    const botao: HTMLButtonElement = <HTMLButtonElement>evento.target;
-    const id: string = botao.id;
-
-    var result = confirm("Você realmente deseja PAGAR essa conta?");
-    
-    if(result == true){ Conta.atualizarConta(id.substring(1)); }        
-  }
-
-  public static confirmDeleteAccout(evento: Event){
-    const botao: HTMLButtonElement = <HTMLButtonElement>evento.target;
-    const id: string = botao.id;
-
-    var result = confirm("Você realmente deseja EXCLUIR essa conta?");
-
-    if(result == true){
-      Conta.deletarConta(id.substring(1));
-    }
   }
 
 }

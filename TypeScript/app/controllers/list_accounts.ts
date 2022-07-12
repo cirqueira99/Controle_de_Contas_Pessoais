@@ -1,85 +1,82 @@
-import { Conta } from "../models/accounts.js";
-import { Data } from "../functionalities/datas.js";
-import { Botao } from "../functionalities/create_buttons.js";
+import { Account } from "../models/accounts.js";
+import { DateClass } from "../functionalities/datas.js";
+import { ButtonsController } from "../functionalities/create_buttons.js";
 
-export class ListarContas {
+export class ListController {
 
-  private static criarNovaLinha(id: number, data: Date, descricao: string, tipo: string, valor: number, pagamento: boolean ): HTMLElement{ // mudar para "HTMLTableElement.rows"
-    const money: string = valor.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+  private static   createsNewLine(id: number, date_account: Date, description: string, type_account: string, cost: number, payment: boolean ): HTMLElement{ // mudar para "HTMLTableElement.rows"
+    const money: string = cost.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
     
     const table_tr: HTMLTableRowElement = document.createElement('tr');
     
-    const td_pagar: HTMLElement = document.createElement('td');
-    td_pagar.classList.add('text-center');
-    td_pagar.classList.add('table-buttons');
+    const td_pay: HTMLElement = document.createElement('td');
+    td_pay.classList.add('text-center');
+    td_pay.classList.add('table-buttons');
     
-    const td_excluir: HTMLElement = document.createElement('td');
-    td_excluir.classList.add('text-center');
-    td_excluir.classList.add('table-buttons');
+    const td_delete: HTMLElement = document.createElement('td');
+    td_delete.classList.add('text-center');
+    td_delete.classList.add('table-buttons');
     
     const conteudo = 
     `
-      <th style="with: 15%;" class="text-center" scope="row">${data}</th>
-      <td style="with: 25%; class="description">${descricao}</td>
-      <td style="with: 20%;">${tipo}</td>
-      <td style="with: 20%;" class="text-center">${money}</td>
+      <th style="with: 15%;" class="text-center" scope="row">${date_account}</th>
+      <td style="with: 25%; class="description">${description}</td>
+      <td style="with: 20%;">${type_account}</td>
+      <td style="wpayment: 20%;" class="text-center">${money}</td>
     `;
 
     table_tr.innerHTML = conteudo;
 
-    pagamento==true ? td_pagar.appendChild(Botao.BotaoContaPaga()) : td_pagar.appendChild(Botao.BotaoPagarConta(id));
-    table_tr.appendChild(td_pagar);
+    payment==true ? td_pay.appendChild(ButtonsController.ButtonPaidAccount()) : td_pay.appendChild(ButtonsController.ButtonPayAccount(id));
+    table_tr.appendChild(td_pay);
 
-    td_excluir.appendChild(Botao.BotaoDeleta(id));
-    table_tr.appendChild(td_excluir);
+    td_delete.appendChild(ButtonsController.ButtonDeleteAccount(id));
+    table_tr.appendChild(td_delete);
 
     return table_tr;
   }  
 
-  public static async listar(data_mes: string){
+  public static async listAccounts(data_month: string){
     try {
-      console.log(data_mes)
-      const mes_input: HTMLInputElement = document.querySelector('[data-mes]');
-      mes_input.value = data_mes;
-      sessionStorage.setItem('mes_storage', data_mes);
-      
-
+      console.log(data_month)
+      const month_input: HTMLInputElement = document.querySelector('[data-month]');
+      month_input.value = data_month;
+      sessionStorage.setItem('month_storage', data_month);
 
       const table_list: HTMLTableElement = document.querySelector('[data-table-list]');
       table_list.classList.add('border-light');
       table_list.innerHTML = "";
 
       const element_total: HTMLElement  = document.getElementById('v_total');
-      const element_pago: HTMLElement = document.getElementById('v_pago');
-      const element_pend: HTMLElement = document.getElementById('v_pend');
+      const element_paid: HTMLElement = document.getElementById('v_pago');
+      const element_pendant: HTMLElement = document.getElementById('v_pend');
 
       var total: number | string = 0.0;
-      var pago: number | string = 0.0;
-      var pend: number | string = 0.0;
+      var paid: number | string = 0.0;
+      var pendant: number | string = 0.0;
 
-
-      const lista_contas: Object = await Conta.buscarDadosContas(); 
+      const list_accounts: Object = await Account.searchAccounts();
     
-      const datasUnicas: Array<string> = Data.removeDatasRepetidas(lista_contas, data_mes);   
-          
-      datasUnicas.forEach( (dia: string)=>{
-        for( var [key, value] of Object.entries(lista_contas) ){
-          if( value.data === dia ){          
-            table_list.appendChild(this.criarNovaLinha(value.id, value.data, value.descricao, value.tipo, value.valor, value.pagamento));
+      const dates_unrepeated: Array<string> = DateClass.removesRepeatedDates(list_accounts, data_month);   
+      
+      dates_unrepeated.forEach( (dia: string)=>{  
+        for( var [key, value] of Object.entries(list_accounts) ){
+          if( value.date_account === dia ){ 
+            table_list.appendChild(this.createsNewLine(value.id, value.data_account, value.description, value.type_account, value.cost, value.payment));
             
-            value.pagamento == true? pago += value.valor : pend += value.valor;
+            value.payment == true? paid += value.cost : pendant += value.cost;
           }          
         }
       }) 
       
-      total = pago + pend;
+      total = paid + pendant;
       total = total.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
-      pago = pago.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
-      pend = pend.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+      paid = paid.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+      pendant = pendant.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
       
       element_total.innerText = total;
-      element_pago.innerText = pago;
-      element_pend.innerText = pend;
+      element_paid.innerText = paid;
+      element_pendant.innerText = pendant;
         
       }
     catch(erro){
@@ -87,37 +84,37 @@ export class ListarContas {
     }  
   }
 
-  public static mesAnt(envent: Event): void{
+  public static monthPrevious(envent: Event): void{
     envent.preventDefault()
-    const mes_input: HTMLInputElement = <HTMLInputElement>document.querySelector('[data-mes]');
+    const month_input: HTMLInputElement = <HTMLInputElement>document.querySelector('[data-month]');
     
-    var mes: number = parseInt( (mes_input.value).split("-")[1] );
-    mes -= 1;
+    var month: number = parseInt( (month_input.value).split("-")[1] );
+    month -= 1;
     
-    const mes_ant: string = (mes_input.value).split("-")[0] + "-" + ("0"+mes.toString()).slice(-2)
+    const month_ant: string = (month_input.value).split("-")[0] + "-" + ("0"+month.toString()).slice(-2)
     
-    ListarContas.listar(mes_ant)
+    ListController.listAccounts(month_ant)
   }
 
-  public static mesProx(envent: Event): void{
+  public static monthNext(envent: Event): void{
     envent.preventDefault()
-    const mes_input: HTMLInputElement = <HTMLInputElement>document.querySelector('[data-mes]');
-    var mes: number = parseInt( (mes_input.value).split("-")[1] );
-    mes += 1;
+    const month_input: HTMLInputElement = <HTMLInputElement>document.querySelector('[data-month]');
+    var month: number = parseInt( (month_input.value).split("-")[1] );
+    month += 1;
     
-    const mes_prox: string = (mes_input.value).split("-")[0] + "-" + ("0"+mes.toString()).slice(-2)
+    const month_prox: string = (month_input.value).split("-")[0] + "-" + ("0"+month.toString()).slice(-2)
   
-    ListarContas.listar(mes_prox)
+    ListController.listAccounts(month_prox)
   }
 
-  public static listarImputMes(envent: Event){
+  public static listInputMonth(envent: Event){
     envent.preventDefault()
-    const mes_input: HTMLInputElement = <HTMLInputElement>document.querySelector('[data-mes]');
-    const mes_input_value: string = mes_input.value;
-    const mes_storage: string = sessionStorage.getItem("mes_string");
+    const month_input: HTMLInputElement = <HTMLInputElement>document.querySelector('[data-month]');
+    const month_input_value: string = month_input.value;
+    const month_storage: string = sessionStorage.getItem("month_string");
     
-    if( mes_input.value != mes_storage ){
-      ListarContas.listar(mes_input_value);
+    if( month_input.value != month_storage ){
+      ListController.listAccounts(month_input_value);
     }
   }
 }

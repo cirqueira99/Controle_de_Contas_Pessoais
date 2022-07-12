@@ -7,94 +7,94 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
-import { Conta } from "../models/accounts.js";
-import { Data } from "../functionalities/datas.js";
-import { Botao } from "../functionalities/create_buttons.js";
-export class ListarContas {
-    static criarNovaLinha(id, data, descricao, tipo, valor, pagamento) {
-        const money = valor.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
+import { Account } from "../models/accounts.js";
+import { DateClass } from "../functionalities/datas.js";
+import { ButtonsController } from "../functionalities/create_buttons.js";
+export class ListController {
+    static createsNewLine(id, date_account, description, type_account, cost, payment) {
+        const money = cost.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
         const table_tr = document.createElement('tr');
-        const td_pagar = document.createElement('td');
-        td_pagar.classList.add('text-center');
-        td_pagar.classList.add('table-buttons');
-        const td_excluir = document.createElement('td');
-        td_excluir.classList.add('text-center');
-        td_excluir.classList.add('table-buttons');
+        const td_pay = document.createElement('td');
+        td_pay.classList.add('text-center');
+        td_pay.classList.add('table-buttons');
+        const td_delete = document.createElement('td');
+        td_delete.classList.add('text-center');
+        td_delete.classList.add('table-buttons');
         const conteudo = `
-      <th style="with: 15%;" class="text-center" scope="row">${data}</th>
-      <td style="with: 25%; class="description">${descricao}</td>
-      <td style="with: 20%;">${tipo}</td>
-      <td style="with: 20%;" class="text-center">${money}</td>
+      <th style="with: 15%;" class="text-center" scope="row">${date_account}</th>
+      <td style="with: 25%; class="description">${description}</td>
+      <td style="with: 20%;">${type_account}</td>
+      <td style="wpayment: 20%;" class="text-center">${money}</td>
     `;
         table_tr.innerHTML = conteudo;
-        pagamento == true ? td_pagar.appendChild(Botao.BotaoContaPaga()) : td_pagar.appendChild(Botao.BotaoPagarConta(id));
-        table_tr.appendChild(td_pagar);
-        td_excluir.appendChild(Botao.BotaoDeleta(id));
-        table_tr.appendChild(td_excluir);
+        payment == true ? td_pay.appendChild(ButtonsController.ButtonPaidAccount()) : td_pay.appendChild(ButtonsController.ButtonPayAccount(id));
+        table_tr.appendChild(td_pay);
+        td_delete.appendChild(ButtonsController.ButtonDeleteAccount(id));
+        table_tr.appendChild(td_delete);
         return table_tr;
     }
-    static listar(data_mes) {
+    static listAccounts(data_month) {
         return __awaiter(this, void 0, void 0, function* () {
             try {
-                console.log(data_mes);
-                const mes_input = document.querySelector('[data-mes]');
-                mes_input.value = data_mes;
-                sessionStorage.setItem('mes_storage', data_mes);
+                console.log(data_month);
+                const month_input = document.querySelector('[data-month]');
+                month_input.value = data_month;
+                sessionStorage.setItem('month_storage', data_month);
                 const table_list = document.querySelector('[data-table-list]');
                 table_list.classList.add('border-light');
                 table_list.innerHTML = "";
                 const element_total = document.getElementById('v_total');
-                const element_pago = document.getElementById('v_pago');
-                const element_pend = document.getElementById('v_pend');
+                const element_paid = document.getElementById('v_pago');
+                const element_pendant = document.getElementById('v_pend');
                 var total = 0.0;
-                var pago = 0.0;
-                var pend = 0.0;
-                const lista_contas = yield Conta.buscarDadosContas();
-                const datasUnicas = Data.removeDatasRepetidas(lista_contas, data_mes);
-                datasUnicas.forEach((dia) => {
-                    for (var [key, value] of Object.entries(lista_contas)) {
-                        if (value.data === dia) {
-                            table_list.appendChild(this.criarNovaLinha(value.id, value.data, value.descricao, value.tipo, value.valor, value.pagamento));
-                            value.pagamento == true ? pago += value.valor : pend += value.valor;
+                var paid = 0.0;
+                var pendant = 0.0;
+                const list_accounts = yield Account.searchAccounts();
+                const dates_unrepeated = DateClass.removesRepeatedDates(list_accounts, data_month);
+                dates_unrepeated.forEach((dia) => {
+                    for (var [key, value] of Object.entries(list_accounts)) {
+                        if (value.date_account === dia) {
+                            table_list.appendChild(this.createsNewLine(value.id, value.data_account, value.description, value.type_account, value.cost, value.payment));
+                            value.payment == true ? paid += value.cost : pendant += value.cost;
                         }
                     }
                 });
-                total = pago + pend;
+                total = paid + pendant;
                 total = total.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
-                pago = pago.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
-                pend = pend.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
+                paid = paid.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
+                pendant = pendant.toLocaleString('pt-br', { style: 'currency', currency: 'BRL' });
                 element_total.innerText = total;
-                element_pago.innerText = pago;
-                element_pend.innerText = pend;
+                element_paid.innerText = paid;
+                element_pendant.innerText = pendant;
             }
             catch (erro) {
                 console.log(erro);
             }
         });
     }
-    static mesAnt(envent) {
+    static monthPrevious(envent) {
         envent.preventDefault();
-        const mes_input = document.querySelector('[data-mes]');
-        var mes = parseInt((mes_input.value).split("-")[1]);
-        mes -= 1;
-        const mes_ant = (mes_input.value).split("-")[0] + "-" + ("0" + mes.toString()).slice(-2);
-        ListarContas.listar(mes_ant);
+        const month_input = document.querySelector('[data-month]');
+        var month = parseInt((month_input.value).split("-")[1]);
+        month -= 1;
+        const month_ant = (month_input.value).split("-")[0] + "-" + ("0" + month.toString()).slice(-2);
+        ListController.listAccounts(month_ant);
     }
-    static mesProx(envent) {
+    static monthNext(envent) {
         envent.preventDefault();
-        const mes_input = document.querySelector('[data-mes]');
-        var mes = parseInt((mes_input.value).split("-")[1]);
-        mes += 1;
-        const mes_prox = (mes_input.value).split("-")[0] + "-" + ("0" + mes.toString()).slice(-2);
-        ListarContas.listar(mes_prox);
+        const month_input = document.querySelector('[data-month]');
+        var month = parseInt((month_input.value).split("-")[1]);
+        month += 1;
+        const month_prox = (month_input.value).split("-")[0] + "-" + ("0" + month.toString()).slice(-2);
+        ListController.listAccounts(month_prox);
     }
-    static listarImputMes(envent) {
+    static listInputMonth(envent) {
         envent.preventDefault();
-        const mes_input = document.querySelector('[data-mes]');
-        const mes_input_value = mes_input.value;
-        const mes_storage = sessionStorage.getItem("mes_string");
-        if (mes_input.value != mes_storage) {
-            ListarContas.listar(mes_input_value);
+        const month_input = document.querySelector('[data-month]');
+        const month_input_value = month_input.value;
+        const month_storage = sessionStorage.getItem("month_string");
+        if (month_input.value != month_storage) {
+            ListController.listAccounts(month_input_value);
         }
     }
 }

@@ -1,91 +1,92 @@
-import { Botao } from './create_buttons.js'
-import { Datas } from './datas.js';
-import { Conta } from './Account.js';
+import { ButtonsController } from './create_buttons.js'
+import { DatesClass } from './datas.js';
+import { Account } from './Account.js';
 
 
 
-const criarNovaLinha = (id, data, descricao, tipo, valor, pagamento) => {  
+const createsNewLine = (id, date_account, description, type_account, cost, payment) => {  
   const table_tr = document.createElement('tr');
   
-  const td_pagar = document.createElement('td');
-  td_pagar.classList.add('text-center');
-  td_pagar.classList.add('table-buttons');
+  const td_pay = document.createElement('td');
+  td_pay.classList.add('text-center');
+  td_pay.classList.add('table-buttons');
   
-  const td_excluir = document.createElement('td');
-  td_excluir.classList.add('text-center');
-  td_excluir.classList.add('table-buttons');
+  const td_delete = document.createElement('td');
+  td_delete.classList.add('text-center');
+  td_delete.classList.add('table-buttons');
   
-  const money = valor.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+  const money = cost.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
   
   const conteudo = 
   `
-    <th style="with: 15%;" class="text-center" scope="row">${data}</th>
-    <td style="with: 25%;">${descricao}</td>
-    <td style="with: 20%;">${tipo}</td>
+    <th style="with: 15%;" class="text-center" scope="row">${date_account}</th>
+    <td style="with: 25%;">${description}</td>
+    <td style="with: 20%;">${type_account}</td>
     <td style="with: 20%;" class="text-center">${money}</td>
   `;
 
   table_tr.innerHTML = conteudo;
 
-  pagamento==true ? td_pagar.appendChild(Botao.BotaoContaPaga()) : td_pagar.appendChild(Botao.BotaoPagarConta(id));
-  table_tr.appendChild(td_pagar);
+  payment==true ? td_pay.appendChild(ButtonsController.ButtonPaidAccount()) : td_pay.appendChild(ButtonsController.ButtonPayAccount(id));
 
-  td_excluir.appendChild(Botao.BotaoDeleta(id));
-  table_tr.appendChild(td_excluir);
+  table_tr.appendChild(td_pay);
+
+  td_delete.appendChild(ButtonsController.ButtonDeleteAccount(id));
+  table_tr.appendChild(td_delete);
 
   return table_tr;
 };
 
 
 
-const listarContas = async (data_mes) =>  {
+const listAccounts = async (date_month) =>  {
   try {
-    console.log(data_mes)
-    const mes_input = document.querySelector('[data-mes]');
-    mes_input.value = data_mes;
-    sessionStorage.setItem('mes_storage', data_mes)
+    console.log(date_month)
+    
+    const month_input = document.querySelector('[data-month]');
+    month_input.value = date_month;
+    sessionStorage.setItem('month_storage', date_month)
 
     const table_list = document.querySelector('[data-table-list]');
     table_list.classList.add('border-light');
     table_list.innerHTML = "";
 
     const v_total = document.getElementById('v_total');
-    const v_pago = document.getElementById('v_pago');
-    const v_pend = document.getElementById('v_pend');
+    const v_paid = document.getElementById('v_pago');
+    const v_pendant = document.getElementById('v_pend');
 
     var total = 0.0;
-    var pago = 0.0;
-    var pend = 0.0;
+    var paid = 0.0;
+    var pendant = 0.0;
 
-    const conta = new Conta();
-    const lista = await conta.buscaDadosContas();  
+    const account = new Account();
+    const list = await account.searchAccounts();   
+
+    const dates_unrepeated = DatesClass.removesRepeatedDates(list, date_month);
     
+    dates_unrepeated.forEach( (day)=>{
+      const dataMoment = moment(day, 'DD/MM/YYYY');
 
-    const datasUnicas = Datas.removeDatasRepetidas(lista, data_mes);
-    
-    datasUnicas.forEach( (dia)=>{
-      const dataMoment = moment(dia, 'DD/MM/YYYY');
-
-      lista.forEach(elemento => {
-        const dia = moment(elemento.data, 'DD/MM/YYYY');
+      list.forEach(element => {
+        const dia = moment(element.date_account, 'DD/MM/YYYY');
         const diff = dataMoment.diff(dia);
         if(diff === 0){
-          table_list.appendChild(criarNovaLinha(elemento.id, elemento.data, elemento.descricao, elemento.tipo, elemento.valor, elemento.pagamento));
+          table_list.appendChild(  createsNewLine(element.id, element.date_account, element.description, element.type_account, element.cost, element.payment));
           
-          elemento.pagamento == true ? pago += elemento.valor : pend += elemento.valor; 
+          element.payment == true ? paid += element.cost : pendant += element.cost; 
         }        
       })
 
     } )
     
-    total = pago + pend;
+    total = paid + pendant;
     total = total.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
-    pago = pago.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
-    pend = pend.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+    paid = paid.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
+    pendant = pendant.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
     
     v_total.innerText = total;
-    v_pago.innerText = pago;
-    v_pend.innerText = pend;
+    v_paid.innerText = paid;
+    v_pendant.innerText = pendant;
       
   }
   catch(erro){
@@ -93,37 +94,37 @@ const listarContas = async (data_mes) =>  {
   }  
 }
 
-const mesAnt = () => {
-  const mes_input = document.querySelector('[data-mes]').value;
-  const mes_subtract = moment(mes_input).subtract(1, 'month').format('YYYY-MM'); 
+const monthPrevious = () => {
+  const month_input = document.querySelector('[data-month]').value;
+  const month_subtract = moment(month_input).subtract(1, 'month').format('YYYY-MM'); 
 
-  Listar.listarContas(mes_subtract);
+  ListController.listAccounts(month_subtract);
 }
 
-const mesProx = () => {
-  const mes_input = document.querySelector('[data-mes]').value;   
-  const mes_add = moment(mes_input).add(1, 'month').format('YYYY-MM');
+const monthNext = () => {
+  const month_input = document.querySelector('[data-month]').value;   
+  const month_add = moment(month_input).add(1, 'month').format('YYYY-MM');
 
-  Listar.listarContas(mes_add);
+  ListController.listAccounts(month_add);
 }
 
-const listarInputMes = () => {
-  var mes_storage = sessionStorage.getItem('mes_storage');
-  const mes_input = document.querySelector('[data-mes]').value;
+const listInputMonth = () => {
+  var month_storage = sessionStorage.getItem('month_storage');
+  const month_input = document.querySelector('[data-month]').value;
 
-  if( mes_input != mes_storage ){
-    sessionStorage.removeItem('mes_storage');
-    mes_storage = mes_input;
-    sessionStorage.setItem('mes_storage', mes_storage);
-    Listar.listarContas(mes_input);
+  if( month_input != month_storage ){
+    sessionStorage.removeItem('month_storage');
+    month_storage = month_input;
+    sessionStorage.setItem('month_storage', month_storage);
+    ListController.listAccounts(month_input);
   }
 }
 
 
-export const Listar = {
-  listarContas,
-  criarNovaLinha,
-  mesAnt,
-  mesProx,
-  listarInputMes
+export const ListController = {
+  listAccounts,
+  createsNewLine,
+  monthPrevious,
+  monthNext,
+  listInputMonth
 }

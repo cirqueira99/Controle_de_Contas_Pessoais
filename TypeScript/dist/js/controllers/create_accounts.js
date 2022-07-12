@@ -15,7 +15,8 @@ export class ContaController {
         const data_convertida = data.split("-")[2] + "/" + data.split("-")[1] + "/" + data.split("-")[0];
         const conta = new Conta(descricao, tipo, valor, data_convertida);
         conta.cadastrarConta();
-        ListarContas.listar(element_data.value.substr(0, 7));
+        ListarContas.listar(element_data.value.substring(0, 7));
+        location.reload();
         element_descricao.value = "";
         element_tipo.value = "Selecione uma categoria...";
         element_valor.value = "";
