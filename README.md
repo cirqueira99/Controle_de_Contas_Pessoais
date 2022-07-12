@@ -1,4 +1,9 @@
 GITHUB
+<h3>Dependencias</h3>
+
+https://img.shields.io/badge/font--awesome-%5E4.7.0-brightgreen
+
+
 
 <h2 aling="center">Projeto Controle de Contas</h2>
 <h1 aling="center">JavaScript e TypeScript</h1>
@@ -12,10 +17,10 @@ GITHUB
 <p>Para ambos os projetos, em suas respectivas - sendo a pasta do Javascript e Typescript, rodar o seguinte comando:</p>
 <p><b><i>"npm install"</i></b> - para instalar todas as dependências do projeto.</p>
 
-<h3># Para o projeto em JavaScript #</h3>
+<h3># Projeto em JavaScript #</h3>
 <p>Para subir o projeto rodar o comando:</p>
-<p><b><i>“npm run start”</b></i> – isso irá rodar os comandos “npm run server” e “npm run open”. </p>
-
+<p><b><i>“npm run start”</b></i> – isso irá rodar os comandos <b><i>“npm run server”</b></i> e <b><i>“npm run open”</b></i>. </p>
+<br>
 <p>*Obs:</p>
 <p>Caso ocorra algum erro no comando “npm run open”, fazer os seguintes passos:</p>
 <ul>
@@ -25,12 +30,12 @@ GITHUB
 </ul>
 
 <p>Caso ocorra erro com o <i>“concurrently”</i>, rodar os comandos <b><i>“npm server”</i></b> e <b><i>“npm open”</i></b> em terminais diferentes.</p>
-
-
-
-<h3># Para o projeto em TypeScript #</h3>
-<b><i>“npm run start”</i></b> – isso irá rodar os comandos <b><i>“npm run watch”</i></b>, <b><i>“npm run database”</i></b> e <b><i>“npm run server”</i></b>. 
-
+<br>
+<br>
+<h3># Projeto em TypeScript #</h3>
+<p>Para subir o projeto rodar o comando:</p>
+<p><b><i>“npm run start”</i></b> – isso irá rodar os comandos <b><i>“npm run watch”</i></b>, <b><i>“npm run database”</i></b> e <b><i>“npm run server”</i></b>.</p> 
+<br>
 <p>*Obs:</p>
 <p>Caso ocorra erro com o <i>“concurrently”</i>, rodar os comandos <b><i>“npm run watch”</i></b>, <b><i>“npm run database”</i></b> e <b><i>“npm run server”</i></b> em terminais diferentes.</p>
 
