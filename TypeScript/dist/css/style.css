@@ -227,6 +227,7 @@ body{
 .form__select select{
   color: var(--blue-light);
   background-color: #005084;
+  height: 30px;
 }
 
 .form__date input{
