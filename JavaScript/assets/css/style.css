@@ -180,6 +180,10 @@ body{
  border-bottom: 1px solid var(--blue-light-medium);
 }
 
+/* .input:invalid {
+  border: 1px solid red;
+} */
+
 .form__label {
   position: absolute;
   top: 22px;
@@ -227,6 +231,7 @@ body{
 .form__select select{
   color: var(--blue-light);
   background-color: #005084;
+  height: 30px;
 }
 
 .form__date input{

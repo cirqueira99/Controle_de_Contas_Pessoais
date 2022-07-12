@@ -1,3 +1,20 @@
 {
-  "contas": []
+  "contas": [
+    {
+      "description": "Times",
+      "type_account": "Conta de Luz",
+      "cost": 50,
+      "date_account": "11/07/2022",
+      "payment": false,
+      "id": 1
+    },
+    {
+      "description": "Times",
+      "type_account": "Educação",
+      "cost": 200,
+      "date_account": "11/05/2022",
+      "payment": false,
+      "id": 2
+    }
+  ]
 }

@@ -1,29 +1,12 @@
 import { ListController } from "./list_accounts.js";
 import { Account } from "./Account.js";
 
-const createAccount = (evento) => {
-    
-  evento.preventDefault();
+const createAccount = (description, type_account, cost, date_account, date_list) => {
   
-  const element_description = document.querySelector('[data-form-description]');
-  const element_type_account = document.querySelector('[data-form-select]');
-  const element_cost = document.querySelector('[data-form-money]');
-  const element_date_account = document.querySelector('[data-form-date]');
-  
-  const description = element_description.value;
-  const type_account = element_type_account.value;
-  const cost = element_cost.value;
-  const date_account = moment(element_date_account.value).format('DD/MM/YYYY');
-
   const account = new Account(description, type_account, cost, date_account);    
   account.registerAccount();  
 
-  ListController.listAccounts( element_date_account.value.substr(0, 7) );
-
-  element_description.value = "";
-  element_type_account.value = "Selecione um tipo de conta...";
-  element_cost.value = "";
-  element_date_account.value = "";
+  ListController.listAccounts( date_list.substr(0, 7) );
 }
 
 const confirmDeleteAccout = (evento) => {
@@ -62,8 +45,10 @@ const confirmPayAccout = (event) => {
   
 }
 
+
+
 export const AccountController = {
   createAccount,
   confirmDeleteAccout,
-  confirmPayAccout
+  confirmPayAccout,
 }

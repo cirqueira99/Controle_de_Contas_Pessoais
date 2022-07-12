@@ -1,3 +1,12 @@
 {
-  "contas": []
+  "contas": [
+    {
+      "description": "de",
+      "type_account": "Conta de Água",
+      "cost": 22,
+      "date_account": "13/07/2022",
+      "payment": false,
+      "id": 1
+    }
+  ]
 }
