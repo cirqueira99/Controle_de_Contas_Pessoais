@@ -39,7 +39,7 @@
 <br>
 <br>
 
-<h3># Projeto em TypeScript #</h3>
+<h3># Projeto TypeScript #</h3>
 <p>Para subir o projeto rodar o comando:</p>
 <p><b><i>“npm run start”</i></b> – isso irá rodar os comandos <b><i>“npm run watch”</i></b>, <b><i>“npm run database”</i></b> e <b><i>“npm run server”</i></b>.</p> 
 <br>
