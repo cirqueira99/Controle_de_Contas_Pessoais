@@ -1,12 +1,28 @@
 {
   "contas": [
     {
-      "description": "de",
-      "type_account": "Conta de Água",
-      "cost": 22,
+      "description": "Conta de Água",
+      "type_account": "Moradia",
+      "cost": 58.8,
       "date_account": "13/07/2022",
       "payment": false,
       "id": 1
+    },
+    {
+      "description": "Aluguel",
+      "type_account": "Moradia",
+      "cost": 500,
+      "date_account": "14/07/2022",
+      "payment": false,
+      "id": 2
+    },
+    {
+      "description": "inglês",
+      "type_account": "Educação",
+      "cost": 200,
+      "date_account": "12/08/2022",
+      "payment": false,
+      "id": 3
     }
   ]
 }

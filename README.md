@@ -2,6 +2,9 @@
 <h2 align="center">Projeto Controle de Contas</h2>
 <h1 align="center">JavaScript e TypeScript</h1>
 
+<img src="./images_project/01.png"></img>
+<br>
+
 <br>
 <div align="center">
   <p>Dependencias</p>
@@ -23,6 +26,7 @@
 <p><b><i>"npm install"</i></b> - para instalar todas as dependências do projeto.</p>
 
 <br>
+<img src="./images_project/javascript.svg"></img>
 <h3># Projeto JavaScript #</h3>
 <p>Para subir o projeto rodar o comando:</p>
 <p><b><i>“npm run start”</b></i> – isso irá rodar os comandos <b><i>“npm run server”</b></i> e <b><i>“npm run open”</b></i>. </p>
@@ -39,6 +43,7 @@
 <br>
 <br>
 
+<img src="./images_project/typecript.svg"></img>
 <h3># Projeto TypeScript #</h3>
 <p>Para subir o projeto rodar o comando:</p>
 <p><b><i>“npm run start”</i></b> – isso irá rodar os comandos <b><i>“npm run watch”</i></b>, <b><i>“npm run database”</i></b> e <b><i>“npm run server”</i></b>.</p> 
@@ -47,5 +52,17 @@
 <p>:eyes: Observação:</p>
 <p>Caso ocorra erro com o <i>“concurrently”</i>, rodar os comandos <b><i>“npm run watch”</i></b>, <b><i>“npm run database”</i></b> e <b><i>“npm run server”</i></b> em terminais diferentes.</p>
 
-
+<h2>:hammer: Funcionalidades</h2>
+<br>
+- `Funcionalidade 1`: Criação de uma nova conta clicando em <b><i>“nova conta”</i></b>
+<img src="./images_project/02.1.png"></img>
+<br>
+<img src="./images_project/02.2.png"></img>
+<br>
+- `Funcionalidade 2`: Navegação entre os meses utilizando as <b><i>“setas”</i></b> e pesquisa de um mês específico atavés do botão <b><i>“pesquisar”</i></b>
+<img src="./images_project/03.png"></img>
+<br>
+- `Funcionalidade 3`: pagamento e excluisão de conta desejada através dos botôes <b><i>“pagar”</i></b> e <b><i>“excluir”</i></b>
+<img src="./images_project/04.png"></img>
+<br>
 
