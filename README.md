@@ -2,7 +2,7 @@
 <h2 align="center">Projeto Controle de Contas</h2>
 <h1 align="center">JavaScript e TypeScript</h1>
 
-<img src="./images_project/01.png"></img>
+<div align="center"><img src="./images_project/01.PNG" width="400" height="300"></img></div>
 <br>
 
 <br>
@@ -26,8 +26,12 @@
 <p><b><i>"npm install"</i></b> - para instalar todas as dependências do projeto.</p>
 
 <br>
-<img src="./images_project/javascript.svg"></img>
-<h3># Projeto JavaScript #</h3>
+
+<div style="display: flex;>
+  <div><img align=top src="./images_project/javascript.svg" width="50" height="50"></img></td></div>
+  <h3 align=top># Projeto JavaScript #</h3></td>
+ </div>
+
 <p>Para subir o projeto rodar o comando:</p>
 <p><b><i>“npm run start”</b></i> – isso irá rodar os comandos <b><i>“npm run server”</b></i> e <b><i>“npm run open”</b></i>. </p>
 <br>
@@ -43,26 +47,50 @@
 <br>
 <br>
 
-<img src="./images_project/typecript.svg"></img>
-<h3># Projeto TypeScript #</h3>
+<div style="display: flex;>
+  <img align=top src="./images_project/typecript.svg" width="50" height="50"></img></td>
+  <h3># Projeto TypeScript #</h3></td>
+</div>
+
 <p>Para subir o projeto rodar o comando:</p>
 <p><b><i>“npm run start”</i></b> – isso irá rodar os comandos <b><i>“npm run watch”</i></b>, <b><i>“npm run database”</i></b> e <b><i>“npm run server”</i></b>.</p> 
 <br>
 
 <p>:eyes: Observação:</p>
 <p>Caso ocorra erro com o <i>“concurrently”</i>, rodar os comandos <b><i>“npm run watch”</i></b>, <b><i>“npm run database”</i></b> e <b><i>“npm run server”</i></b> em terminais diferentes.</p>
+<br>
 
 <h2>:hammer: Funcionalidades</h2>
 <br>
-- `Funcionalidade 1`: Criação de uma nova conta clicando em <b><i>“nova conta”</i></b>
-<img src="./images_project/02.1.png"></img>
+<p align="center">- Funcionalidade 1: Criação de uma nova conta clicando em <b><i>“nova conta”</i></b>.</p>
+
+<table align="center">
+  <tr>
+    <td><img align=top src="./images_project/02.1.png" width="400" height="300"></img></td>
+    <td><img align=top src="./images_project/02.2.PNG" width="400" height="300"></img></td>
+  <tr>
+<table>
 <br>
-<img src="./images_project/02.2.png"></img>
+
+<p align="center">- Funcionalidade 2: Navegação entre os meses utilizando as <b><i>“setas”</i></b> e pesquisa de um mês específico atavés do botão <b><i>“pesquisar”</i></b>.</p>
+<div align="center"><img src="./images_project/03.png" width="400" height="300"></img></div>
 <br>
-- `Funcionalidade 2`: Navegação entre os meses utilizando as <b><i>“setas”</i></b> e pesquisa de um mês específico atavés do botão <b><i>“pesquisar”</i></b>
-<img src="./images_project/03.png"></img>
+
+<p align="center">- Funcionalidade 3: pagamento e exclusão de conta desejada através dos botões <b><i>“pagar”</i></b> e <b><i>“excluir”</i></b>.</p>
+<div align="center"><img src="./images_project/04.png" width="400" height="300" align="center"></img></div>
 <br>
-- `Funcionalidade 3`: pagamento e excluisão de conta desejada através dos botôes <b><i>“pagar”</i></b> e <b><i>“excluir”</i></b>
-<img src="./images_project/04.png"></img>
 <br>
+
+
+<p align="center"></p>
+<div align="center">
+
+</div>
+
+<div align="center">
+  <p>AUTOR</p>
+  <p>Carlos Cirqueira</p>
+
+   <a href="https://www.linkedin.com/in/carlos-cirqueira99" target="_blank">![Badge](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)</a>
+</div>
 
