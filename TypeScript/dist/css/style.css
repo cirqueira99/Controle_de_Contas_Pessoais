@@ -59,12 +59,12 @@ body{
 }
 
 .corpo__title span  {
-  width: 15%;
+  width: 18%;
 }
 
 .title{
   color: aliceblue;  
-  font-size: 1.5rem;
+  font-size: 30px;
   font-weight: bold;
   text-align: center;
   margin: 10px;
@@ -76,13 +76,9 @@ body{
   color: rgb(10, 10, 10);
   background-color: rgb(236, 152, 34);
   transition: 0.4s;
-  width: 15%;
+  width: 18%;
 }
 
-.btn-register:hover { 
-  background-color: rgb(192, 125, 32);
-  color: rgb(10, 10, 10);
-}
 
 .corpo__form {
   grid-area: campos;
