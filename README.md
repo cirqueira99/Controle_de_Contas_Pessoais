@@ -1,5 +1,5 @@
 
-<h2 align="center">Projeto Controle de Contas</h2>
+<h2 align="center">Projeto Controle de Contas Pessoais</h2>
 <h1 align="center">JavaScript e TypeScript</h1>
 
 <div align="center"><img src="./images_project/01.PNG" width="400" height="300"></img></div>
