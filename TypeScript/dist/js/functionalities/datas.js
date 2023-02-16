@@ -9,19 +9,18 @@ export class DateClass {
                 dates_unrepeated.push(list[account].date_account);
             }
         }
-        this.sortDates(dates_unrepeated);
-        return dates_unrepeated;
+        return this.sortDates(dates_unrepeated);
+        ;
     }
     static sortDates(datas) {
-        var sort_dates = datas;
-        sort_dates.sort((a, b) => {
+        datas.sort((a, b) => {
             const firsDate = new Date(parseInt(a.split("/")[2]), parseInt(a.split("/")[1]), parseInt(a.split("/")[0]));
             const secondDate = new Date(parseInt(b.split("/")[2]), parseInt(b.split("/")[1]), parseInt(b.split("/")[0]));
             const date1 = firsDate.getTime();
             const date2 = secondDate.getTime();
-            return date2 - date1;
+            return date1 - date2;
         });
-        return sort_dates;
+        return datas;
     }
     static retornCurrentMonth() {
         const data = new Date();

@@ -6,6 +6,7 @@ import { Account } from './Account.js';
 
 const createsNewLine = (id, date_account, description, type_account, cost, payment) => {  
   const table_tr = document.createElement('tr');
+  //table_tr.setAttribute('height', '40px')
   
   const td_pay = document.createElement('td');
   td_pay.classList.add('text-center');
@@ -19,10 +20,10 @@ const createsNewLine = (id, date_account, description, type_account, cost, payme
   
   const conteudo = 
   `
-    <th style="with: 15%;" class="text-center" scope="row">${date_account}</th>
-    <td style="with: 25%;">${description}</td>
-    <td style="with: 20%;">${type_account}</td>
-    <td style="with: 20%;" class="text-center">${money}</td>
+    <td>${date_account}</td>
+    <td>${description}</td>
+    <td>${type_account}</td>
+    <td>${money}</td>
   `;
 
   table_tr.innerHTML = conteudo;
@@ -63,6 +64,7 @@ const listAccounts = async (date_month) =>  {
     const list = await account.searchAccounts();   
 
     const dates_unrepeated = DatesClass.removesRepeatedDates(list, date_month);
+    
     
     dates_unrepeated.forEach( (day)=>{
       const dataMoment = moment(day, 'DD/MM/YYYY');

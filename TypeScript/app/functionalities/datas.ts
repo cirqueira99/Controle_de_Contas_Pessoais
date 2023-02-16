@@ -13,27 +13,22 @@ export class DateClass {
       if( (dates_unrepeated.indexOf(list[account].date_account) === -1) && (month_list == month_date) ){ dates_unrepeated.push(list[account].date_account) }
     } 
         
-    this.sortDates(dates_unrepeated);  
-
-    return dates_unrepeated;
+    return this.sortDates(dates_unrepeated);;
   }
 
   public static sortDates(datas: Array<string>): Array<string>{ 
-    var sort_dates: Array<string> = datas;
-
-    sort_dates.sort((a, b) => {
+    datas.sort((a, b) => {
       const firsDate: Date = new Date( parseInt(a.split("/")[2]), parseInt(a.split("/")[1]), parseInt(a.split("/")[0]) );
       const secondDate: Date = new Date( parseInt(b.split("/")[2]), parseInt(b.split("/")[1]), parseInt(b.split("/")[0]) );
       
       const date1: number = firsDate.getTime();
       const date2: number = secondDate.getTime();
 
-     return date2 - date1;
+     return date1 - date2;
     })
 
-    return sort_dates;
+    return datas;
   }
-
 
   public static retornCurrentMonth(): string{    
     const data: Date = new Date();    

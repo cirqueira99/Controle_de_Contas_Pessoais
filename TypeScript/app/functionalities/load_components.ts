@@ -42,13 +42,13 @@ export function startElementsPage() {
   const btn_search_month: HTMLElement = document.querySelector('[data-monthsearch-button]');
   btn_search_month.addEventListener('click', ListController.listInputMonth)
 
-  const button_scroll: HTMLElement = <HTMLButtonElement>document.getElementById('bak-to-top');
+  const button_scroll: HTMLElement = <HTMLDivElement>document.getElementsByClassName('btn-scroll')[0];
   button_scroll.addEventListener('click', function(){
     window.scrollTo(0,0)
   });
 
   const modal: HTMLElement = <HTMLDivElement>document.getElementsByClassName("div__form")[0];
-  const btn_newRegister: HTMLElement = <HTMLButtonElement>document.getElementsByClassName("btn-register")[0];
+  const btn_newRegister: HTMLElement = <HTMLButtonElement>document.getElementsByClassName("btn-newAccount")[0];
   const span: HTMLElement = <HTMLSpanElement>document.getElementsByClassName("close__form")[0];
 
   btn_newRegister.addEventListener('click', function() {

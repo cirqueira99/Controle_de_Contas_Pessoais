@@ -21,10 +21,10 @@ export class ListController {
         td_delete.classList.add('text-center');
         td_delete.classList.add('table-buttons');
         const conteudo = `
-      <th style="with: 15%;" class="text-center" scope="row">${date_account}</th>
-      <td style="with: 25%; class="description">${description}</td>
-      <td style="with: 20%;">${type_account}</td>
-      <td style="wpayment: 20%;" class="text-center">${money}</td>
+      <td>${date_account}</td>
+      <td>${description}</td>
+      <td>${type_account}</td>
+      <td>${money}</td>
     `;
         table_tr.innerHTML = conteudo;
         payment == true ? td_pay.appendChild(ButtonsController.ButtonPaidAccount()) : td_pay.appendChild(ButtonsController.ButtonPayAccount(id));
@@ -54,7 +54,7 @@ export class ListController {
                 dates_unrepeated.forEach((dia) => {
                     for (var [key, value] of Object.entries(list_accounts)) {
                         if (value.date_account === dia) {
-                            table_list.appendChild(this.createsNewLine(value.id, value.data_account, value.description, value.type_account, value.cost, value.payment));
+                            table_list.appendChild(this.createsNewLine(value.id, value.date_account, value.description, value.type_account, value.cost, value.payment));
                             value.payment == true ? paid += value.cost : pendant += value.cost;
                         }
                     }

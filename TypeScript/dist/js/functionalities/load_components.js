@@ -29,12 +29,12 @@ export function startElementsPage() {
     arrow_next.addEventListener('click', ListController.monthNext);
     const btn_search_month = document.querySelector('[data-monthsearch-button]');
     btn_search_month.addEventListener('click', ListController.listInputMonth);
-    const button_scroll = document.getElementById('bak-to-top');
+    const button_scroll = document.getElementsByClassName('btn-scroll')[0];
     button_scroll.addEventListener('click', function () {
         window.scrollTo(0, 0);
     });
     const modal = document.getElementsByClassName("div__form")[0];
-    const btn_newRegister = document.getElementsByClassName("btn-register")[0];
+    const btn_newRegister = document.getElementsByClassName("btn-newAccount")[0];
     const span = document.getElementsByClassName("close__form")[0];
     btn_newRegister.addEventListener('click', function () {
         modal.style.display = "flex";

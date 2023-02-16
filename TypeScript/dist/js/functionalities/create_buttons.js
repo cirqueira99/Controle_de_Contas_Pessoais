@@ -5,9 +5,8 @@ export class ButtonsController {
         btnPay.setAttribute('type', 'button');
         btnPay.setAttribute('id', 'p' + id);
         btnPay.classList.add('btn');
-        btnPay.classList.add('btn-success');
-        btnPay.classList.add('table_butpagar');
-        btnPay.innerText = 'Pagar';
+        btnPay.classList.add('btn-pay');
+        btnPay.innerText = 'pagar';
         btnPay.style.fontSize = "15px";
         btnPay.addEventListener('click', AccountController.confirmPayAccount);
         return btnPay;
@@ -16,8 +15,7 @@ export class ButtonsController {
         const btnPaid = document.createElement('button');
         btnPaid.setAttribute('type', 'button');
         btnPaid.classList.add('btn');
-        btnPaid.classList.add('btn-info');
-        btnPaid.classList.add('table_butpago');
+        btnPaid.classList.add('btn-paid');
         btnPaid.style.backgroundColor = "transparent";
         btnPaid.style.border = "transparent";
         btnPaid.disabled = true;
@@ -31,9 +29,7 @@ export class ButtonsController {
         btnDelete.setAttribute('type', 'button');
         btnDelete.setAttribute('id', 'd' + id);
         btnDelete.classList.add('btn');
-        btnDelete.classList.add('btn-danger');
-        btnDelete.classList.add('table_butdelete');
-        btnDelete.style.backgroundColor = "rgb(207 121 129)";
+        btnDelete.classList.add('btn-del');
         btnDelete.style.color = "white";
         btnDelete.style.fontSize = "15px";
         btnDelete.innerText = 'excluir';

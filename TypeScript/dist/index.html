@@ -4,14 +4,14 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./assets/css/reset.css">
-  <link rel="stylesheet" href="./assets/css/style.css">
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/style.css">
 
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=BioRhyme&amp;family=Space+Mono&amp;display=swap">
   <link href="https://fonts.googleapis.com/css2?family=Raleway&family=Roboto:wght@100;300&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-  <title>Controle de Contas | JS</title>
+  <title>Controle de Contas | TS</title>
 </head>
 <body>
   <div class="container">
@@ -21,14 +21,12 @@
         <div class="corpo__title">
           <span></span>
           <h1 class="title">Controle de Contas</h1> 
-          <button class="btn btn-newAccount"><i class="fa fa-plus" aria-hidden="true"></i></button>           
+          <button class="btn btn-newAccount"><i class="fa fa-plus" aria-hidden="true"></i></button>
         </div>
-        
+
         <div class="corpo__form">
           <div class="div__form">
             <div class="card_form">
-             
-
               <form class="form" action="#">
                 <div class="close__form"><i class="fa fa-times" aria-hidden="true"></i></div>
 
@@ -36,7 +34,7 @@
                   <input class="input" name="nome" id="nome" type="text" placeholder="Descrição" data-form-description>
                   <label class="form__label" for="nome">Descrição</label>
                 </div>
-      
+
                 <div class="input__container form__select">
                   <select class="input" name="tipo" id="tipo" data-form-select> 
                     <option value="" class="select-first">Selecione um tipo...</option>
@@ -51,17 +49,17 @@
                   </select>
                   <label id="label_tipo" class="form__label" for="tipo">Tipo</label>
                 </div>
-      
+
                 <div class="input__container form__money">
                   <input class="input" id="valor" type="number" data-form-money placeholder="00.00">
                   <label class="form__label" for="valor">Valor R$ 0,00</label>
                 </div>
-      
+
                 <div class="input__container form__date">
                   <input id="form-date" class="input" type="date" data-form-date>
                   <label id="label_date" class="form__label" for="form-date">Data</label>
                 </div>
-      
+
                 <div class="form__button">
                   <button id="" class="btn btn-add" data-form-add><i class="fa fa-plus" aria-hidden="true"></i>Adicionar</button>
                 </div>
@@ -93,35 +91,35 @@
               <div class="box__text"><p class="">Total Pendente</p></div>
               <div class="box__valor"><p id="v_pend"></p></div>
             </div>
-          </div>         
-          
-        </div>
-      </div>
+          </div>      
+      </div>      
+    </div>   
+    
+    <div class="list__table">
+      <table class="table" aria-hidden="true">
+        <thead class="">  
+          <tr>
+            <th class="td_data">Data</th>
+            <th class="td_desc">Descrição</th>
+            <th class="td_type">Tipo</th>
+            <th class="td_value">Valor</th>
+            <th class="td_btn"></th>
+            <th class="td_btn"></th>
+          </tr>                    
+        </thead>
+        <tbody data-table-list></tbody>
+      </table>
+    </div>      
 
-      <div class="list__table">
-        <table class="table" aria-hidden="true">
-          <thead class="">  
-            <tr>
-              <th class="td_data">Data</th>
-              <th class="td_desc">Descrição</th>
-              <th class="td_type">Tipo</th>
-              <th class="td_value">Valor</th>
-              <th class="td_btn"></th>
-              <th class="td_btn"></th>
-            </tr>                    
-          </thead>
-          <tbody data-table-list></tbody>
-        </table>
-      </div>
-      
+    <div class="back-to-top">
+      <button class="btn btn-scroll"><i class="fa fa-arrow-up me me-2" aria-hidden="true"></i></button>
+    </div>
+       
     </div>   
   </div>
-  <div class="back-to-top">
-    <button class="btn btn-scroll"><i class="fa fa-arrow-up me me-2" aria-hidden="true"></i></button>
-  </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
-  <script type="module" src="main.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>  
+  <script type="module" src="./js/app.js"></script> 
   
 </body>
 </html>

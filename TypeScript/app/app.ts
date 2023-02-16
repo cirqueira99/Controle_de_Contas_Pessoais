@@ -14,8 +14,10 @@ if(month_storage == null){
 
 ListController.listAccounts(month_storage);
 
-window.addEventListener("scroll", (event) => {
-  var scroll_y: number = window.scrollY;
+const div_btnUp: HTMLElement = <HTMLDivElement>document.getElementsByClassName('back-to-top')[0];
 
-  scroll_y < 399 ? document.getElementById('bak-to-top').style.display = 'none': document.getElementById('bak-to-top').style.display = 'block';
+window.addEventListener("scroll", (event) => {
+  const scroll_y: number = window.scrollY;
+
+  scroll_y < 400 ? div_btnUp.style.display = 'none': div_btnUp.style.display = 'block';
 })

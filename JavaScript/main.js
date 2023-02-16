@@ -3,7 +3,6 @@ import { startElementsPage } from "./componentes/load_components.js";
 import { ListController } from "./componentes/list_accounts.js";
 
 
-
 startElementsPage();
 
 var month_storage = sessionStorage.getItem('month_storage');
@@ -15,10 +14,13 @@ if(month_storage == null){
 
 ListController.listAccounts(month_storage);
 
-window.addEventListener("scroll", (event) => {
-  var scroll_y = window.scrollY;
+const div_btnUp = document.getElementsByClassName('back-to-top')[0];
 
-  scroll_y < 399 ? document.getElementById('bak-to-top').style.display = 'none': document.getElementById('bak-to-top').style.display = 'block';
+window.addEventListener("scroll", (event) => {
+  const scroll_y = window.scrollY;
+
+  scroll_y < 400 ? div_btnUp.style.display = 'none': div_btnUp.style.display = 'block';
+
 })
 
 
