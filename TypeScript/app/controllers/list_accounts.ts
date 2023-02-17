@@ -55,7 +55,7 @@ export class ListController {
       var paid: number | string = 0.0;
       var pendant: number | string = 0.0;
 
-      const list_accounts: Object = await Account.searchAccounts();
+      const list_accounts: Object = await Account.getAccounts();
     
       const dates_unrepeated: Array<string> = DateClass.removesRepeatedDates(list_accounts, data_month);   
       

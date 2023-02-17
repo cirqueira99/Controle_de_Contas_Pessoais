@@ -61,7 +61,7 @@ const listAccounts = async (date_month) =>  {
     var pendant = 0.0;
 
     const account = new Account();
-    const list = await account.searchAccounts();   
+    const list = await account.getAccounts();   
 
     const dates_unrepeated = DatesClass.removesRepeatedDates(list, date_month);
     

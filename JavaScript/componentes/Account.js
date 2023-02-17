@@ -8,6 +8,26 @@ export class Account{
     this.payment = false;
   }
 
+  getAccount = (id) => {
+    return fetch(`http://localhost:3000/contas/${id}`)
+    .then(resposta => {
+        if(resposta.ok){
+            return resposta.json()
+        }
+        throw new Error('Não foi possível encontrar a conta!')
+    })
+  }
+
+  getAccounts = () => {
+    return fetch(`http://localhost:3000/contas`)
+    .then(resposta => {
+        if(resposta.ok){
+            return resposta.json()
+        }
+        throw new Error('Não foi possível encontrar as contas')
+    })
+  }
+
   registerAccount(){
     return fetch(`http://localhost:3000/contas`, {
       method: 'POST', 
@@ -64,15 +84,5 @@ export class Account{
     })
   }
   
-
-  searchAccounts = () => {
-    return fetch(`http://localhost:3000/contas`)
-    .then(resposta => {
-        if(resposta.ok){
-            return resposta.json()
-        }
-        throw new Error('Não foi possível listar as contas')
-    })
-  }
 
 }

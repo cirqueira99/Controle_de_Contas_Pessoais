@@ -1,44 +1,20 @@
 {
   "contas": [
     {
-      "description": "Gássssssssssssssss ",
-      "type_account": "Moradia",
-      "cost": 80,
-      "date_account": "06/02/2023",
-      "payment": true,
+      "description": "Ingês",
+      "type_account": "Educação",
+      "cost": 222,
+      "date_account": "17/02/2023",
+      "payment": false,
       "id": 1
     },
     {
-      "description": "Gásssssssssssssssssssssss",
-      "type_account": "Moradia",
-      "cost": 80000,
-      "date_account": "07/02/2023",
-      "payment": true,
+      "description": "Uber",
+      "type_account": "Transporte",
+      "cost": 13.4,
+      "date_account": "20/02/2023",
+      "payment": false,
       "id": 2
-    },
-    {
-      "description": "Gásssssssssssssssssssssss",
-      "type_account": "Moradia",
-      "cost": 80000,
-      "date_account": "05/02/2023",
-      "payment": false,
-      "id": 3
-    },
-    {
-      "description": "Gásssssssssssssssssssssss",
-      "type_account": "Moradia",
-      "cost": 80000,
-      "date_account": "05/02/2023",
-      "payment": false,
-      "id": 4
-    },
-    {
-      "description": "Gásssssssssssssssssssssss",
-      "type_account": "Moradia",
-      "cost": 80000,
-      "date_account": "05/02/2023",
-      "payment": false,
-      "id": 7
     }
   ]
 }

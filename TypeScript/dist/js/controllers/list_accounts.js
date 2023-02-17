@@ -49,7 +49,7 @@ export class ListController {
                 var total = 0.0;
                 var paid = 0.0;
                 var pendant = 0.0;
-                const list_accounts = yield Account.searchAccounts();
+                const list_accounts = yield Account.getAccounts();
                 const dates_unrepeated = DateClass.removesRepeatedDates(list_accounts, data_month);
                 dates_unrepeated.forEach((dia) => {
                     for (var [key, value] of Object.entries(list_accounts)) {

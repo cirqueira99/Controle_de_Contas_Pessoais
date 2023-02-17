@@ -43,7 +43,6 @@ export const startElementsPage = () => {
   const btn_search_month = document.querySelector('[data-monthsearch-button]');
   btn_search_month.addEventListener('click', ListController.listInputMonth)
 
-
   const button_scroll = document.getElementsByClassName('btn-scroll')[0];
   button_scroll.addEventListener('click', function(){
     window.scrollTo(0,0)

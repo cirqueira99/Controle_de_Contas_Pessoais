@@ -1,19 +1,21 @@
+import { AccountInterface } from './../interfaces/account-interface';
 import { ButtonsController } from './../functionalities/create_buttons';
 import { locale } from "moment";
 
-export class Account{
+export class Account implements AccountInterface{
   description: string;
   type_account: string;
   cost: number;
   date_account: string;
   payment: Boolean;
+  id?: string;
 
-  constructor(description: string = "", type_account: string = "", cost: number = 0.00, date_account: string = ""){
+  constructor(description: string = "", type_account: string = "", cost: number = 0, date_account: string = "", payment= false){      
     this.description = description;
     this.type_account = type_account;
     this.cost = cost;
     this.date_account = date_account;
-    this.payment = false;
+    this.payment = payment;
   }
 
   get infoAccount(){
@@ -21,33 +23,28 @@ export class Account{
     
     return dados;  
   }
-
-  static async searchAccounts(): Promise<Object>{
-    return fetch(`http://localhost:3005/contas`)
-    .then(async resposta => {
+  
+  public static async getAccount(id: string): Promise<AccountInterface>{
+    return await fetch(`http://localhost:3005/contas/${id}`)
+    .then(resposta => {
         if(resposta.ok){
-            return await resposta.json()
+            return resposta.json();
         }
-        throw new Error('Não foi possível listar as contas')
+        throw new Error('Não foi possível encontrar a contas!')
+    })
+  }
+  
+  public static async getAccounts(): Promise<AccountInterface[]>{
+    return await fetch(`http://localhost:3005/contas`)
+    .then(resposta => {
+        if(resposta.ok){
+            return resposta.json();
+        }
+        throw new Error('Não foi possível encontrar as contas!')
     })
   }
 
-  public static async searchAccountUni(id: number): Promise<Object>{
-    try { 
-      const lista_contas: object = await this.searchAccounts();
-      
-      for( var [key, value] of Object.entries(lista_contas) ){
-        if(value.id == id){
-          return value;
-        }
-      }
-    }
-    catch(erro){
-      console.log(erro)
-    }  
-  }
-
-  registerAccount() {
+  registerAccount(){
     return fetch(`http://localhost:3005/contas`, {
       method: 'POST', 
       headers: {
@@ -65,28 +62,22 @@ export class Account{
         if(resposta.ok){
             return resposta.body
         }
-        throw new Error('Não foi possível criar uma conta')
+        throw new Error('Não foi possível cadastar a conta!');
     })
   }
 
-  public static async updateAccount(id: string){
-    const id_int: number = parseInt(id);    
-    const conta: object = await this.searchAccountUni(id_int); 
-    const dados: Array<string | number | boolean> = [];
-
-    for( var [key, value] of Object.entries(conta) ) { dados.push(value) }
-    
+  static async updateAccount(id: string, date_account: string, description:string, type_account:string, cost: number, payment: boolean){    
     return fetch(`http://localhost:3005/contas/${id}`, {
       method: 'PUT',
       headers: { 
           'Content-type' : 'application/json'
       },
       body: JSON.stringify({
-        description:  dados[0],
-        type_account:  dados[1],
-        cost: dados[2],
-        date_account:  dados[3],
-        payment: true
+        description:  description,
+        type_account:  type_account,
+        cost: cost,
+        date_account:  date_account,
+        payment: payment
       })
     })
     .then( resposta => {
@@ -99,8 +90,7 @@ export class Account{
     })
   }
 
-  public static deleteAccount(id: string){
-   
+  public static deleteAccount(id: string){  
     
     return fetch(`http://localhost:3005/contas/${id}`, {
         method: 'DELETE'

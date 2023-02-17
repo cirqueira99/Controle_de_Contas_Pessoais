@@ -8,41 +8,37 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 export class Account {
-    constructor(description = "", type_account = "", cost = 0.00, date_account = "") {
+    constructor(description = "", type_account = "", cost = 0, date_account = "", payment = false) {
         this.description = description;
         this.type_account = type_account;
         this.cost = cost;
         this.date_account = date_account;
-        this.payment = false;
+        this.payment = payment;
     }
     get infoAccount() {
         var dados = [this.description, this.type_account, this.type_account, this.date_account, this.payment];
         return dados;
     }
-    static searchAccounts() {
+    static getAccount(id) {
         return __awaiter(this, void 0, void 0, function* () {
-            return fetch(`http://localhost:3005/contas`)
-                .then((resposta) => __awaiter(this, void 0, void 0, function* () {
+            return yield fetch(`http://localhost:3005/contas/${id}`)
+                .then(resposta => {
                 if (resposta.ok) {
-                    return yield resposta.json();
+                    return resposta.json();
                 }
-                throw new Error('Não foi possível listar as contas');
-            }));
+                throw new Error('Não foi possível encontrar a contas!');
+            });
         });
     }
-    static searchAccountUni(id) {
+    static getAccounts() {
         return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const lista_contas = yield this.searchAccounts();
-                for (var [key, value] of Object.entries(lista_contas)) {
-                    if (value.id == id) {
-                        return value;
-                    }
+            return yield fetch(`http://localhost:3005/contas`)
+                .then(resposta => {
+                if (resposta.ok) {
+                    return resposta.json();
                 }
-            }
-            catch (erro) {
-                console.log(erro);
-            }
+                throw new Error('Não foi possível encontrar as contas!');
+            });
         });
     }
     registerAccount() {
@@ -63,28 +59,22 @@ export class Account {
             if (resposta.ok) {
                 return resposta.body;
             }
-            throw new Error('Não foi possível criar uma conta');
+            throw new Error('Não foi possível cadastar a conta!');
         });
     }
-    static updateAccount(id) {
+    static updateAccount(id, date_account, description, type_account, cost, payment) {
         return __awaiter(this, void 0, void 0, function* () {
-            const id_int = parseInt(id);
-            const conta = yield this.searchAccountUni(id_int);
-            const dados = [];
-            for (var [key, value] of Object.entries(conta)) {
-                dados.push(value);
-            }
             return fetch(`http://localhost:3005/contas/${id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-type': 'application/json'
                 },
                 body: JSON.stringify({
-                    description: dados[0],
-                    type_account: dados[1],
-                    cost: dados[2],
-                    date_account: dados[3],
-                    payment: true
+                    description: description,
+                    type_account: type_account,
+                    cost: cost,
+                    date_account: date_account,
+                    payment: payment
                 })
             })
                 .then(resposta => {

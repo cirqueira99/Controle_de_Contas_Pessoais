@@ -8,11 +8,11 @@
   --blue-medium-dark: #005084;
   --blue-dark: #082745;
   --green-medium: #00850f;
-  --green-dark: #00730e;
+  --green-dark: #00610b;
   --orange-medium: #ff9319;
   --orange-light: #fbb127;
   --red-medium: #ad4949;
-  --red-dark: #761717;
+  --red-dark: #b40000;
   --gray-medium: #6e6e6e;
 }
 
@@ -31,6 +31,94 @@ body{
 .p {
   margin: 0;
 }
+
+
+.modal-dialog {
+  display: none; /*Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 80px; /* Location of the box */
+  left: 0;
+  top: 0;
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
+  transition: 0.3s;
+  height: 100%; /* Full height */
+  width: 100%; /* Full width */
+}
+
+.modal-content {
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  height: 100%;
+  width: 100%;
+}
+
+.modal-confirm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #F5F5F5;
+  border-radius: 5px;
+  height: 150px;
+  width: 350px;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ff9600;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  height: 80px;
+  width: 100%;
+}
+
+.modal-header h5{
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--bs-gray-800);
+}
+
+.modal-exclamation {
+  display: flex;
+  justify-content: center;
+  width: 95%;
+}
+
+.modal-body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 125px;
+  width: 100%;
+}
+
+.btn-yes, .btn-not {
+  color: white;
+  margin: 0px 20px;
+  height: 50px;
+  width: 80px;
+}
+
+.btn-yes {
+  background-color: var(--green-medium);
+}
+.btn-yes:hover {
+  background-color: var(--green-dark);
+}
+
+.btn-not {
+  background-color: var(--red-medium);
+}
+.btn-not:hover {
+  background-color: var(--red-dark);
+}
+
+/*----------------------------*/
 
 .container{
   display: flex;

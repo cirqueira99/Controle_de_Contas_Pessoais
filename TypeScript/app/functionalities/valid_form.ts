@@ -20,8 +20,7 @@ export class Valid {
       }else{
         element.style.border = 'none'
         element.style.borderBottom = '1px solid #082745';
-        element.setCustomValidity("");
-        
+        element.setCustomValidity("");        
       }
     })
 
