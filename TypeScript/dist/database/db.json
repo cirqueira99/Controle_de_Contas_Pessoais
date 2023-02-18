@@ -1,15 +1,15 @@
 {
   "contas": [
     {
-      "description": "Ingês",
+      "description": "Inglês",
       "type_account": "Educação",
       "cost": 222,
       "date_account": "17/02/2023",
-      "payment": true,
+      "payment": false,
       "id": 1
     },
     {
-      "description": "Uber",
+      "description": "Ônibus",
       "type_account": "Transporte",
       "cost": 13.4,
       "date_account": "20/02/2023",
@@ -17,8 +17,8 @@
       "id": 2
     },
     {
-      "description": "Uber",
-      "type_account": "Transporte",
+      "description": "Conta de Luz",
+      "type_account": "Moradia",
       "cost": 13.4,
       "date_account": "20/02/2023",
       "payment": true,

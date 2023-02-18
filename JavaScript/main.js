@@ -19,7 +19,7 @@ const div_btnUp = document.getElementsByClassName('back-to-top')[0];
 window.addEventListener("scroll", (event) => {
   const scroll_y = window.scrollY;
 
-  scroll_y < 400 ? div_btnUp.style.display = 'none': div_btnUp.style.display = 'block';
+  scroll_y < 400 ? div_btnUp.style.display = 'none': div_btnUp.style.display = 'flex';
 
 })
 

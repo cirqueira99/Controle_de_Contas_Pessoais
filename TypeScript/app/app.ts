@@ -19,5 +19,5 @@ const div_btnUp: HTMLElement = <HTMLDivElement>document.getElementsByClassName('
 window.addEventListener("scroll", (event) => {
   const scroll_y: number = window.scrollY;
 
-  scroll_y < 400 ? div_btnUp.style.display = 'none': div_btnUp.style.display = 'block';
+  scroll_y < 400 ? div_btnUp.style.display = 'none': div_btnUp.style.display = 'flex';
 })

@@ -620,10 +620,10 @@ margin: 0px 5px;
 
 .back-to-top {
   display: none;
+  justify-content: center;
   position: fixed;
-  bottom: 100px;
-  margin-left: 25%;
-  width: 300px;
+  bottom: 88%;
+  width: 100%;
 }
 
 .btn-scroll {    
