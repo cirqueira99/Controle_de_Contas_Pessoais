@@ -1,17 +1,46 @@
 import { AccountController } from "./account_controller.js";
 
 const ButtonPayAccount = (id) => {
+  
   const btnPay = document.createElement('button');
   btnPay.setAttribute('type', 'button');
   btnPay.setAttribute('id', 'p'+id);
   btnPay.classList.add('btn');
   btnPay.classList.add('btn-pay');
-  btnPay.innerText = 'pagar';
-  btnPay.style.fontSize = "15px";
-  
+  btnPay.style.color = 'white';
   btnPay.addEventListener('click', AccountController.confirmPayAccout);
+
+  const btn_span = document.createElement('span');
+
+  btn_span.innerHTML = `
+    <p id="icon-btn-pay">pagar</p>
+    <i id="icon-pay"class="fa fa-money" aria-hidden="true"></i>
+  `;
+
+  btnPay.appendChild(btn_span);
   
   return btnPay;  
+}
+
+const ButtonDeleteAccount = (id) => { 
+  const btnDelete = document.createElement('button');
+  btnDelete.setAttribute('type', 'button');
+  btnDelete.setAttribute('id', 'd'+id);
+  btnDelete.classList.add('btn');
+  btnDelete.classList.add('btn-del');
+  btnDelete.addEventListener('click', AccountController.confirmDeleteAccout);
+  btnDelete.style.color = 'white';
+  
+  const btn_span = document.createElement('span');
+
+  btn_span.innerHTML = `
+    <p id="icon-btn-del">exluir</p>
+    <i id="icon-del" class="fa fa-trash" aria-hidden="true"></i>
+  `;
+
+  btnDelete.appendChild(btn_span);
+  
+  return btnDelete;
 }
 
 const ButtonPaidAccount = (id) => {
@@ -30,21 +59,6 @@ const ButtonPaidAccount = (id) => {
 
   return btnPaid;
 }
-
-const ButtonDeleteAccount = (id) => { 
-  const btnDelete = document.createElement('button');
-  btnDelete.setAttribute('type', 'button');
-  btnDelete.setAttribute('id', 'd'+id);
-  btnDelete.classList.add('btn');
-  btnDelete.classList.add('btn-del');
-  btnDelete.style.color = "white";
-  btnDelete.style.fontSize = "15px";
-  btnDelete.innerText = 'excluir';
-  btnDelete.addEventListener('click', AccountController.confirmDeleteAccout);
-
-  return btnDelete;
-}
-
 export const ButtonsController = {
   ButtonDeleteAccount,
   ButtonPayAccount,

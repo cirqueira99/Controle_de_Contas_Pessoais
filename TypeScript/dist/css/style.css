@@ -124,14 +124,13 @@ body{
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100vw;
-  /*min-height: 80vh;*/
 }
 
 .conteudo{
   display: flex;
   flex-direction: column;
   margin-top: 35px;
+  width: 800px;
 }
 
 .corpo{
@@ -146,8 +145,6 @@ body{
   padding: 1rem 2rem;
   border-top-right-radius: 10px;
   border-top-left-radius: 10px;
-  min-width: 700px;
-  min-height: 300px;
 }
 
 .corpo__title{
@@ -603,6 +600,23 @@ margin: 0px 5px;
 .btn-del:hover {
   background-color: var(--red-dark);
 }
+
+#icon-del {
+  display: none;
+}
+
+#icon-btn-del {
+  display: block;
+}
+
+#icon-pay {
+  display: none;
+}
+
+#icon-btn-pay {
+  display: block;
+}
+
 
 .back-to-top {
   display: none;

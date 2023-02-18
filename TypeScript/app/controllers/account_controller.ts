@@ -16,8 +16,9 @@ export class AccountController {
     }
   }
 
-  public static async deleteAccount(event: any) {
-    const id_account: string = event.target.id.slice(1);   
+  public static async deleteAccount(event: MouseEvent) {
+    const element: HTMLElement = event.target as HTMLElement;
+    const id_account: string = element.id.slice(1);   
     
     try {
       await Account.deleteAccount(id_account);
@@ -26,13 +27,14 @@ export class AccountController {
     }
   }
 
-  public static confirmPayAccount(event: any): void {
-    const id_account: string = event.target.id.slice(1);   
+  public static confirmPayAccount(event: MouseEvent): void {
+    const element: HTMLElement = event.target as HTMLElement;
+    const id_account: string = element.id.slice(1);   
     const modal: HTMLElement = <HTMLDivElement>document.getElementsByClassName('modal-dialog')[0];
     const btn_yes: HTMLElement = <HTMLButtonElement>document.getElementsByClassName('btn-yes')[0];
     const btn_not: HTMLElement = <HTMLButtonElement>document.getElementsByClassName('btn-not')[0];
 
-    ModalConfirm.modalConfirm(modal, 'Confirmar exclusão?');
+    ModalConfirm.modalConfirm(modal, 'Confirmar pagamento?');
     
     btn_yes.setAttribute('id', `c${id_account}`);
     btn_yes.addEventListener('click', AccountController.verifyAccount);
@@ -42,8 +44,9 @@ export class AccountController {
     });
   }
     
-  public static async verifyAccount(event: any){
-    const id_account: string = event.target.id.slice(1);
+  public static async verifyAccount(event: MouseEvent){
+    const element: HTMLElement = event.target as HTMLElement;
+    const id_account: string = element.id.slice(1);   
 
     try { 
       const account: AccountInterface = await Account.getAccount(id_account);
@@ -54,8 +57,9 @@ export class AccountController {
     }  
   }
 
-  public static confirmDeleteAccout(event: any): void{
-    const id_account: string = event.target.id.slice(1);   
+  public static confirmDeleteAccout(event: MouseEvent): void{
+    const element: HTMLElement = event.target as HTMLElement;
+    const id_account: string = element.id.slice(1);   
     const modal: HTMLElement = <HTMLDivElement>document.getElementsByClassName('modal-dialog')[0];
     const btn_yes: HTMLElement = <HTMLButtonElement>document.getElementsByClassName('btn-yes')[0];
     const btn_not: HTMLElement = <HTMLButtonElement>document.getElementsByClassName('btn-not')[0];

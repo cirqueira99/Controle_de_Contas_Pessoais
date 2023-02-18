@@ -47,7 +47,7 @@ const confirmPayAccout = (event) => {
   const btn_yes = document.getElementsByClassName('btn-yes')[0];
   const btn_not = document.getElementsByClassName('btn-not')[0];
   
-  modalConfirm(modal, 'Confirmar exclusão?');
+  modalConfirm(modal, 'Confirmar pagamento?');
   
   btn_yes.setAttribute('id', `c${id_account}`)
   btn_yes.addEventListener('click', verifyAccount);

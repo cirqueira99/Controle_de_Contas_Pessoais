@@ -26,7 +26,8 @@ export class AccountController {
     }
     static deleteAccount(event) {
         return __awaiter(this, void 0, void 0, function* () {
-            const id_account = event.target.id.slice(1);
+            const element = event.target;
+            const id_account = element.id.slice(1);
             try {
                 yield Account.deleteAccount(id_account);
             }
@@ -36,11 +37,12 @@ export class AccountController {
         });
     }
     static confirmPayAccount(event) {
-        const id_account = event.target.id.slice(1);
+        const element = event.target;
+        const id_account = element.id.slice(1);
         const modal = document.getElementsByClassName('modal-dialog')[0];
         const btn_yes = document.getElementsByClassName('btn-yes')[0];
         const btn_not = document.getElementsByClassName('btn-not')[0];
-        ModalConfirm.modalConfirm(modal, 'Confirmar exclusão?');
+        ModalConfirm.modalConfirm(modal, 'Confirmar pagamento?');
         btn_yes.setAttribute('id', `c${id_account}`);
         btn_yes.addEventListener('click', AccountController.verifyAccount);
         btn_not.addEventListener('click', function () {
@@ -49,7 +51,8 @@ export class AccountController {
     }
     static verifyAccount(event) {
         return __awaiter(this, void 0, void 0, function* () {
-            const id_account = event.target.id.slice(1);
+            const element = event.target;
+            const id_account = element.id.slice(1);
             try {
                 const account = yield Account.getAccount(id_account);
                 yield Account.updateAccount(account.id, account.date_account, account.description, account.type_account, account.cost, true);
@@ -60,7 +63,8 @@ export class AccountController {
         });
     }
     static confirmDeleteAccout(event) {
-        const id_account = event.target.id.slice(1);
+        const element = event.target;
+        const id_account = element.id.slice(1);
         const modal = document.getElementsByClassName('modal-dialog')[0];
         const btn_yes = document.getElementsByClassName('btn-yes')[0];
         const btn_not = document.getElementsByClassName('btn-not')[0];

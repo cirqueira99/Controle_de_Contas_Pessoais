@@ -6,9 +6,13 @@ export class ButtonsController {
         btnPay.setAttribute('id', 'p' + id);
         btnPay.classList.add('btn');
         btnPay.classList.add('btn-pay');
-        btnPay.innerText = 'pagar';
-        btnPay.style.fontSize = "15px";
         btnPay.addEventListener('click', AccountController.confirmPayAccount);
+        const btn_span = document.createElement('span');
+        btn_span.innerHTML = `
+      <p id="icon-btn-pay">pagar</p>
+      <i id="icon-pay"class="fa fa-money" aria-hidden="true"></i>
+    `;
+        btnPay.appendChild(btn_span);
         return btnPay;
     }
     static ButtonPaidAccount() {
@@ -31,9 +35,13 @@ export class ButtonsController {
         btnDelete.classList.add('btn');
         btnDelete.classList.add('btn-del');
         btnDelete.style.color = "white";
-        btnDelete.style.fontSize = "15px";
-        btnDelete.innerText = 'excluir';
         btnDelete.addEventListener('click', AccountController.confirmDeleteAccout);
+        const btn_span = document.createElement('span');
+        btn_span.innerHTML = `
+      <p id="icon-btn-del">exluir</p>
+      <i id="icon-del" class="fa fa-trash" aria-hidden="true"></i>
+    `;
+        btnDelete.appendChild(btn_span);
         return btnDelete;
     }
 }

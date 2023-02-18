@@ -15,6 +15,14 @@
       "date_account": "20/02/2023",
       "payment": false,
       "id": 2
+    },
+    {
+      "description": "Uber",
+      "type_account": "Transporte",
+      "cost": 13.4,
+      "date_account": "20/02/2023",
+      "payment": true,
+      "id": 3
     }
   ]
 }
