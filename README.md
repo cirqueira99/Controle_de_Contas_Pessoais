@@ -2,7 +2,7 @@
 <h2 align="center">Projeto Controle de Contas Pessoais</h2>
 <h1 align="center">JavaScript e TypeScript</h1>
 
-<div align="center"><img src="./images_project/d1.png" width="400" height="300"></img></div>
+<div align="center"><img src="./images_project/d1.png" width="900" height="600"></img></div>
 <br>
 
 <br>
@@ -66,18 +66,20 @@
 
 <table align="center">
   <tr>
-    <td><img align=top src="./images_project/d4.png" width="400" height="300"></img></td>
-    <td><img align=top src="./images_project/d5.png" width="400" height="300"></img></td>
+    <td><img align=top src="./images_project/d4.png" width="700" height="400"></img></td>
   <tr>
+  <tr>
+    <td><img align=top src="./images_project/d5.png" width="700" height="400"></img></td>
+  </tr>
 <table>
 <br>
 
 <p align="center">- Funcionalidade 2: Navegação entre os meses utilizando as <b><i>“setas”</i></b> e pesquisa de um mês específico atavés do botão <b><i>“pesquisar”</i></b>.</p>
-<div align="center"><img src="./images_project/d2.png" width="400" height="300"></img></div>
+<div align="center"><img src="./images_project/d2.png" width="750" height="500"></img></div>
 <br>
 
 <p align="center">- Funcionalidade 3: pagamento e exclusão de conta desejada através dos botões <b><i>“pagar”</i></b> e <b><i>“excluir”</i></b>.</p>
-<div align="center"><img src="./images_project/d3.png" width="400" height="300" align="center"></img></div>
+<div align="center"><img src="./images_project/d3.png" width="750" height="500" align="center"></img></div>
 <br>
 <br>
 
@@ -89,9 +91,9 @@
   <br>
   <table align="center">
     <tr>
-      <td><img align=top src="./images_project/t1.png" width="400" height="300"></img></td>
-      <td><img align=top src="./images_project/m1.png" width="400" height="300"></img></td>
-      <td><img align=top src="./images_project/m2.png" width="400" height="300"></img></td>
+      <td><img align=top src="./images_project/t1.png" width="550" height="400"></img></td>
+      <td><img align=top src="./images_project/m1.png" width="350" height="400"></img></td>
+      <td><img align=top src="./images_project/m2.png" width="350" height="400"></img></td>
     <tr>
   <table>
 </div>
