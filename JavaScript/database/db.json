@@ -21,7 +21,7 @@
       "type_account": "Moradia",
       "cost": 13.4,
       "date_account": "20/02/2023",
-      "payment": true,
+      "payment": false,
       "id": 3
     }
   ]
