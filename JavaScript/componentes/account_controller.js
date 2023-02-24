@@ -14,35 +14,8 @@ const createAccount = async (description, type_account, cost, date_account, date
   }
 }
 
-const deleteAccount = async (event) => {
-  const id_account = event.target.id.slice(1);   
-  const account = new Account();
-
-  try {
-    await account.deleteAccount(id_account); 
-  } catch (error) {
-    console.log("error: " + error);
-  }
-}
-
-const confirmDeleteAccout = (event) => {
-  const id_account = event.target.id.slice(1);   
-  const modal = document.getElementsByClassName('modal-dialog')[0];
-  const btn_yes = document.getElementsByClassName('btn-yes')[0];
-  const btn_not = document.getElementsByClassName('btn-not')[0];
-  
-  modalConfirm(modal, 'Confirmar exclusão?');
-  
-  btn_yes.setAttribute('id', `c${id_account}`)
-  btn_yes.addEventListener('click', deleteAccount);
-
-  btn_not.addEventListener('click', function() {
-    modal.style.display = "none";
-  })  
-}
-
 const confirmPayAccout = (event) => {
-  const id_account = event.target.id.slice(1);   
+  const id_account = event.currentTarget.id.slice(1);   
   const modal = document.getElementsByClassName('modal-dialog')[0];
   const btn_yes = document.getElementsByClassName('btn-yes')[0];
   const btn_not = document.getElementsByClassName('btn-not')[0];
@@ -59,7 +32,7 @@ const confirmPayAccout = (event) => {
 }
 
 const verifyAccount = async (event) => {
-  const id_account = event.target.id.slice(1);
+  const id_account = event.target.id.slice(1); 
   const account_class = new Account();
 
   try { 
@@ -69,6 +42,33 @@ const verifyAccount = async (event) => {
   catch(erro){
     console.log("error: " + erro);
   }  
+}
+
+const deleteAccount = async (event) => {
+  const id_account = event.target.id.slice(1);   
+  const account = new Account();
+  
+  try {
+    await account.deleteAccount(id_account); 
+  } catch (error) {
+    console.log("error: " + error);
+  }
+}
+
+const confirmDeleteAccout = (event) => {
+  const id_account = event.currentTarget.id.slice(1);   
+  const modal = document.getElementsByClassName('modal-dialog')[0];
+  const btn_yes = document.getElementsByClassName('btn-yes')[0];
+  const btn_not = document.getElementsByClassName('btn-not')[0];
+  
+  modalConfirm(modal, 'Confirmar exclusão?');
+  
+  btn_yes.setAttribute('id', `c${id_account}`)
+  btn_yes.addEventListener('click', deleteAccount);
+
+  btn_not.addEventListener('click', function() {
+    modal.style.display = "none";
+  })  
 }
 
 export const AccountController = {

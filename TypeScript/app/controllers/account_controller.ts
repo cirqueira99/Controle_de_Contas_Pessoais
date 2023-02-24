@@ -16,19 +16,8 @@ export class AccountController {
     }
   }
 
-  public static async deleteAccount(event: MouseEvent) {
-    const element: HTMLElement = event.target as HTMLElement;
-    const id_account: string = element.id.slice(1);   
-    
-    try {
-      await Account.deleteAccount(id_account);
-    } catch (error) {
-      console.log("error: " + error);
-    }
-  }
-
   public static confirmPayAccount(event: MouseEvent): void {
-    const element: HTMLElement = event.target as HTMLElement;
+    const element: HTMLElement = event.currentTarget as HTMLElement;
     const id_account: string = element.id.slice(1);   
     const modal: HTMLElement = <HTMLDivElement>document.getElementsByClassName('modal-dialog')[0];
     const btn_yes: HTMLElement = <HTMLButtonElement>document.getElementsByClassName('btn-yes')[0];
@@ -56,9 +45,20 @@ export class AccountController {
       console.log("error: " + error);
     }  
   }
+  
+  public static async deleteAccount(event: MouseEvent) {
+    const element: HTMLElement = event.target as HTMLElement;
+    const id_account: string = element.id.slice(1);   
+    
+    try {
+      await Account.deleteAccount(id_account);
+    } catch (error) {
+      console.log("error: " + error);
+    }
+  }
 
   public static confirmDeleteAccout(event: MouseEvent): void{
-    const element: HTMLElement = event.target as HTMLElement;
+    const element: HTMLElement = event.currentTarget as HTMLElement;
     const id_account: string = element.id.slice(1);   
     const modal: HTMLElement = <HTMLDivElement>document.getElementsByClassName('modal-dialog')[0];
     const btn_yes: HTMLElement = <HTMLButtonElement>document.getElementsByClassName('btn-yes')[0];

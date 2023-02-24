@@ -4,8 +4,8 @@
       "description": "Inglês",
       "type_account": "Educação",
       "cost": 222,
-      "date_account": "17/02/2023",
-      "payment": false,
+      "date_account": "17/01/2023",
+      "payment": true,
       "id": 1
     },
     {
@@ -21,8 +21,32 @@
       "type_account": "Moradia",
       "cost": 13.4,
       "date_account": "20/02/2023",
-      "payment": false,
+      "payment": true,
       "id": 3
+    },
+    {
+      "description": "Inglês",
+      "type_account": "Educação",
+      "cost": 222,
+      "date_account": "17/02/2023",
+      "payment": true,
+      "id": 4
+    },
+    {
+      "description": "Conta de Luz",
+      "type_account": "Moradia",
+      "cost": 13.4,
+      "date_account": "10/03/2023",
+      "payment": false,
+      "id": 5
+    },
+    {
+      "description": "Academia",
+      "type_account": "Saúde",
+      "cost": 13.4,
+      "date_account": "23/03/2023",
+      "payment": false,
+      "id": 6
     }
   ]
 }
